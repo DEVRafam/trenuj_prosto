@@ -1,0 +1,31 @@
+{
+  "folders": [
+	{
+		"path": "D:\\XAMPP\\htdocs\\rocket"
+	},
+	{
+		"path": "D:\\aa_node_learning"
+	},
+	{
+		"path": "D:\\zadanie informatyka"
+	},
+	{
+		"path": "..\\ERP"
+	},
+	{
+		"path": "..\\rmtcfm_erp"
+	},
+	{
+		"path": "D:\\PYTHON"
+	},
+	{
+		"path": "..\\MySQL VSCode"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "proj strony"
+  }
+}
