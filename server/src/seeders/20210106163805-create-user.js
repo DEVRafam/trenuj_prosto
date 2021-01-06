@@ -5,7 +5,7 @@ module.exports = {
         const di = require(path.join(__dirname, "..", "di", "index"));
         const { User } = di.get("models");
         //
-        User.create({
+        await User.create({
             name: "Kacper",
             surname: "Ksiazek",
             email: "kacperksiazek@gmail.com",
