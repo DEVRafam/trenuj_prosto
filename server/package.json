@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "serve": "cross-env NODE_ENV=development nodemon src/server.js",
-        "db-rebuild": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate "
+        "db:rebuild": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all"
     },
     "author": "",
     "license": "ISC",

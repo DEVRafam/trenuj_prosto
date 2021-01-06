@@ -4,8 +4,10 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+    state: {
+        API_ADDRESS: "http://localhost:3000"
+    },
+    mutations: {},
+    actions: {},
+    modules: {}
 });
