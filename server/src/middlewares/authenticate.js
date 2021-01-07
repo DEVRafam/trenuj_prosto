@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
         jwt.verify(token, access_secret, (err, dataFromToken) => {
+            if (err) return res.sendStatus(401);
             //
             const keys = Object.keys(dataFromToken);
             const propertiesToCheck = ["id", "name", "surname", "email", "password", "tokens", "createdAt", "updatedAt", "iat", "exp"];
