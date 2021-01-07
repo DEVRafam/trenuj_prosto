@@ -1,23 +1,30 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const path = require("path");
+const config = require(path.join(__dirname, "..", "config", "config"));
 //
 module.exports = {
     parameters: {
         jwt,
         bcrypt,
+        config,
     },
     services: {
         "controllers.user": {
             class: "controllers/UserController",
             arguments: ["@models"],
         },
-        "controllers.login": {
+        "controllers.auth.login": {
             class: "controllers/auth/LoginController",
             arguments: ["@models", "%jwt%", "%bcrypt%"],
         },
-        "controllers.logout": {
+        "controllers.auth.logout": {
             class: "controllers/auth/LogoutController",
             arguments: ["@models", "%jwt%"],
+        },
+        "controllers.auth.refresh": {
+            class: "controllers/auth/RefreshTokenController",
+            arguments: ["@models", "%jwt%", "%config%"],
         },
     },
 };
