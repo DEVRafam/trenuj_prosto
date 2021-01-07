@@ -1,25 +1,15 @@
 const path = require("path");
-const betterJoiErorrs = require(path.join("..", "..", "helpers", "betterJoiErorrs"));
 const generateJWT = require(path.join("..", "..", "helpers", "generateJWT"));
 //
 class LoginController {
     //
-    constructor(models, Joi, jwt, bcrypt) {
+    constructor(models, jwt, bcrypt) {
         this.UserModel = models.User;
-        this.Joi = Joi;
         this.jwt = jwt;
         this.bcrypt = bcrypt;
     }
     //
     async login(req, res) {
-        // validate email and password
-        const error = this.validateBody(req.body);
-        if (error) {
-            return res.send({
-                result: "negative",
-                errors: betterJoiErorrs(error),
-            });
-        }
         // try to find User with given email in the database
         // then if find someone compare his password with given password
         const { email, password } = req.body;
@@ -39,27 +29,6 @@ class LoginController {
             ...this.UserObjectToReturn(),
             ...(await this.generateTokens()),
         });
-    }
-    // validate email and password syntax
-    validateBody(body) {
-        const { password, email } = body;
-        const { Joi } = this;
-        //
-        const scheme = Joi.object({
-            email: Joi.string().lowercase().trim().max(255).email().required().messages({
-                "string.email": "Nieprawidłowy format adresu email",
-                "string.trim": "Adres email nie może zawierać żadnych spacji na początku i końcu",
-                "string.empty": "Adres email jest wymagany!",
-                "string.max": "Maksymalna ilość znaków to {#limit}",
-            }),
-            password: Joi.string().max(32).required().trim().messages({
-                "string.trim": "Hasło nie może zawierać żadnych spacji na początku i końcu",
-                "string.empty": "Hasło jest wymagane!",
-                "string.max": "Maksymalna ilość znaków to {#limit}",
-            }),
-        });
-        const { error } = scheme.validate({ email, password }, { abortEarly: false });
-        return error;
     }
     // exclude some properties from User object
     UserObjectToReturn() {

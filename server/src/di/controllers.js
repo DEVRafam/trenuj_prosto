@@ -1,10 +1,8 @@
-const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 //
 module.exports = {
     parameters: {
-        Joi,
         jwt,
         bcrypt,
     },
@@ -15,7 +13,7 @@ module.exports = {
         },
         "controllers.login": {
             class: "controllers/auth/LoginController",
-            arguments: ["@models", "%Joi%", "%jwt%", "%bcrypt%"],
+            arguments: ["@models", "%jwt%", "%bcrypt%"],
         },
     },
 };
