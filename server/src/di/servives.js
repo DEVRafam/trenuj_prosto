@@ -13,5 +13,11 @@ module.exports = {
                 method: "connect",
             },
         },
+        middlewares: {
+            factory: {
+                class: "di/services/MiddlewaresFactory",
+                method: "getAllMiddlewares",
+            },
+        },
     },
 };

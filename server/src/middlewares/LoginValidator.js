@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const path = require("path");
-const betterJoiErorrs = require(path.join("..", "..", "helpers", "betterJoiErorrs"));
+const betterJoiErorrs = require(path.join("..", "helpers", "betterJoiErorrs"));
 //
 module.exports = (req, res, next) => {
     const { password, email } = req.body;

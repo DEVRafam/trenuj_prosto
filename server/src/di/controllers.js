@@ -15,5 +15,9 @@ module.exports = {
             class: "controllers/auth/LoginController",
             arguments: ["@models", "%jwt%", "%bcrypt%"],
         },
+        "controllers.logout": {
+            class: "controllers/auth/LogoutController",
+            arguments: ["@models", "%jwt%"],
+        },
     },
 };
