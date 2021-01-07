@@ -25,6 +25,7 @@ module.exports = {
     tokens: {
         access_secret: env("ACCESS_TOKEN_SECRET", "@%@#$%#@$@#_access_secret"),
         refresh_secret: env("REFRESH_TOKEN_SECRET", "&$%^#$@#!^$_refresh_secret"),
-        expiration: env("TOKEN_EXPIRATION", "15m"),
+        access_expiration: env("ACCESS_TOKEN_EXPIRATION", "15m"),
+        refresh_expiration: env("REFRESH_TOKEN_EXPIRATION", "3h"),
     },
 };
