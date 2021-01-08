@@ -1,4 +1,11 @@
+// vue bootstrap
+@import 'bootstrap/scss/bootstrap.scss'
+@import 'bootstrap-vue/src/icons.scss'
+@import 'bootstrap-vue/src/index.scss'
+// main
 @import ./general/main
-// body
-//     div#app
-//         @import 'footer'
+@import ./helpers/helpers_wrapper
+// pages
+body
+    div#app
+        @import ./pages/pages_wrapper

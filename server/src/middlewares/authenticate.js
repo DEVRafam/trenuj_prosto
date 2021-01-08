@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
             if (err) return res.sendStatus(401);
             //
             const keys = Object.keys(dataFromToken);
-            const propertiesToCheck = ["id", "name", "surname", "email", "password", "tokens", "createdAt", "updatedAt", "iat", "exp"];
+            const propertiesToCheck = ["id", "name", "surname", "email", "password", "createdAt", "iat", "exp"];
             let tokenIsRight = true;
             //
             propertiesToCheck.forEach((property) => {

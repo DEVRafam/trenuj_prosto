@@ -1,0 +1,43 @@
+@mixin absoluteFull
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+//
+@mixin absoluteCenter
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+//
+@mixin flexCenter
+    display: flex
+    justify-content: center
+    align-items: center
+//
+@mixin textUS
+    cursor: default
+    user-select: none
+//
+@mixin smoothHover($color: $mainColor)
+    color: $color !important
+    background-color: #fff
+    transition: all .3s
+    &:hover
+        color: #fff !important
+        background-color: $color !important
+//
+@mixin smoothHoverReversed($color: $mainColor)
+    transition: all .3s
+    color: #fff
+    background-color: $color
+    &:hover
+        color: $color
+        background-color: #fff
+//
+@mixin coloredFocus
+    &:focus
+        border-color: rgba(54, 9, 144,.8)
+        box-shadow: 0 0 0 0.2rem rgba(54, 9, 144, .25)
+        outline: none

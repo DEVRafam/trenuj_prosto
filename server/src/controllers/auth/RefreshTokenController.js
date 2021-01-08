@@ -8,7 +8,7 @@ class RefreshTokenController {
         this.jwt = jwt;
         this.config = config;
         // state
-        this.propertiesToCompare = ["id", "name", "surname", "email", "password", "tokens", "createdAt", "updatedAt"];
+        this.propertiesToCompare = ["id", "name", "surname", "email", "password", "createdAt"];
         this.refreshTokenData = null;
         this.decodedRefreshToken = null;
         this.User = null;
@@ -21,10 +21,10 @@ class RefreshTokenController {
         const { accessToken, refreshToken } = this.body;
         if (!accessToken || !refreshToken) return res.sendStatus(400);
         // decode refresh token
-        if (this.decodeRefreshToken() === false) return res.sendStatus(400);
+        if (this.decodeRefreshToken() === false) return res.sendStatus(401);
         // find associated with refresh token user in the db
         if ((await this.findAccociatedUser()) === null) {
-            return res.sendStatus(400);
+            return res.sendStatus(401);
         }
         //
         const { errorCode } = await this.verifyRefreshToken();
@@ -36,7 +36,7 @@ class RefreshTokenController {
                 accessToken: generateJWT(this.User, "ACCESS"),
             });
             //
-        } else res.status(400).send("tokens_represent_diffrent_data");
+        } else res.sendStatus(401);
         //
     }
     //
@@ -53,7 +53,7 @@ class RefreshTokenController {
         } catch (e) {
             // check if refresh token has expired
             if (await this.refreshTokenHasExpired()) return { errorCode: 410 };
-            else return { errorCode: 400 };
+            else return { errorCode: 401 };
             //
         }
     }

@@ -1,0 +1,100 @@
+@keyframes fade-center
+    0%
+        opacity: 0
+        transform: scale(0)
+    1%
+        transform: scale(1)
+    100%
+        opacity: 1
+        transform: scale(1)
+//
+@keyframes fade-bottom
+    0%
+        opacity: 0
+        transform: translateY(30%)
+    30%
+        opacity: 1
+    100%
+        opacity: 1
+        transform: translateY(0)
+//
+@keyframes fade-top
+    0%
+        opacity: 0
+        transform: translateY(-30%)
+    30%
+        opacity: 1
+    100%
+        opacity: 1
+        transform: translateY(0)
+//
+@keyframes fade-left
+    0%
+        opacity: 0
+        transform: translateX(-30%)
+    30%
+        opacity: 1
+    100%
+        transform: translateX(0)
+//
+@keyframes fade-right
+    0%
+        opacity: 0
+        transform: translateX(30%)
+    30%
+        opacity: 1
+    100%
+        transform: translateX(0)
+//
+@keyframes zoom-center
+    0%
+        opacity: 0
+        transform: scale(0)
+    25%
+        opacity: 1
+    100%
+        transform: scale(1)
+//
+@keyframes zoom-left
+    0%
+        opacity: 0
+        transform: scale(0)
+        transform-origin: center left
+    25%
+        opacity: 1
+    100%
+        transform-origin: center left
+        transform: scale(1)
+//
+@keyframes zoom-right
+    0%
+        opacity: 0
+        transform-origin: center right
+        transform: scale(0)
+    25%
+        opacity: 1
+    100%
+        transform-origin: center right
+        transform: scale(1)
+//
+@keyframes zoom-top
+    0%
+        transform-origin: top center
+        opacity: 0
+        transform: scale(0)
+    25%
+        opacity: 1
+    100%
+        transform-origin: top center
+        transform: scale(1)
+//
+@keyframes zoom-bottom
+    0%
+        transform-origin: bottom center
+        opacity: 0
+        transform: scale(0)
+    25%
+        opacity: 1
+    100%
+        transform-origin: bottom center
+        transform: scale(1)

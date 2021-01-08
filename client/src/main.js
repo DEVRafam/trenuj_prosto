@@ -3,13 +3,19 @@ import Vue from "vue";
 import "./sass/wrapper.sass";
 // Components
 import Main from "./components/Main.vue";
+//
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 // Plugins
 import axios from "axios";
 import vueAxios from "vue-axios";
+import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
+//
+Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons);
 Vue.use(vueAxios, axios);
+//
 Vue.config.productionTip = false;
 //
 new Vue({

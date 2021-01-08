@@ -26,6 +26,7 @@ class LoginController {
         // and return a proper object
         this.verifiedUser = User;
         return res.send({
+            result: "positive",
             ...this.UserObjectToReturn(),
             ...(await this.generateTokens()),
         });

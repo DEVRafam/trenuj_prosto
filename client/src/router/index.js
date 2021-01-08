@@ -3,7 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import ApiTestComponent from "../components/ApiTestComponent";
 Vue.use(VueRouter);
-
+// routes
+import admin from "./admin";
+//
 const routes = [
     {
         path: "/",
@@ -14,7 +16,8 @@ const routes = [
         path: "/api-test",
         name: "Api test",
         component: ApiTestComponent
-    }
+    },
+    ...admin
 ];
 
 const router = new VueRouter({
@@ -22,5 +25,13 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes
 });
-
+// set page title
+router.beforeEach((to, from, next) => {
+    const DEFAULT_PAGE_NAME = "Trenuj prosto";
+    //
+    let title = (to.matched[0].meta && to.matched[0].meta.title) || DEFAULT_PAGE_NAME;
+    document.title = title;
+    next();
+});
+//
 export default router;

@@ -1,0 +1,32 @@
+section#login
+    @include absoluteCenter
+    width: 500px
+    //
+    div#login-form
+        @include flexCenter
+        width: 100%
+        flex-direction: column
+        //
+        div.field
+            display: flex
+            align-items: stretch
+            width: 100%
+            margin-bottom: 10px
+            label
+                @include flexCenter
+                @include textUS
+                width: 200px
+                margin: 0
+                padding: 0
+                letter-spacing: 3px
+            input
+                @include coloredFocus
+                flex-grow: 1
+                box-sizing: border-box
+        button
+            @include smoothHover
+            margin-top: 20px
+            width: 75%
+            border: $mainColor 2px solid
+            border-radius: 2px
+            letter-spacing: 5px
