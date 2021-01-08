@@ -1,5 +1,5 @@
 <template>
-    <section id="login" :key="`gen-${refresh}`">
+    <section id="login">
         <div id="login-form">
             <!--  -->
             <div class="field">
@@ -28,8 +28,7 @@ export default {
             credentials: {
                 email: "kacperksiazek@gmail.com",
                 password: "zaq12345"
-            },
-            refresh: 0
+            }
         };
     },
     methods: {
