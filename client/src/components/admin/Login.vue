@@ -4,12 +4,12 @@
             <!--  -->
             <div class="field">
                 <label for="email">Email:</label>
-                <b-form-input :state="setInputState('email')" placeholder="No validation" v-model="credentials.email"></b-form-input>
+                <b-form-input :state="setInputState('email')" placeholder="Podaj adres email..." v-model="credentials.email"></b-form-input>
             </div>
             <!--  -->
             <div class="field">
                 <label for="password">Hasło:</label>
-                <b-form-input type="password" :state="setInputState('password')" placeholder="No validation" v-model="credentials.password"></b-form-input>
+                <b-form-input type="password" :state="setInputState('password')" placeholder="Podaj hasło..." v-model="credentials.password"></b-form-input>
             </div>
             <!--  -->
             <button @click="handleLogin">Zaloguj</button>

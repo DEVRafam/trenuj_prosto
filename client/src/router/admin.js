@@ -1,5 +1,6 @@
 import Login from "../components/admin/Login";
 import AuthTest from "../components/_to_delete_AUTH_GUARD_TEST";
+import AddOffer from "../components/admin/addOffer/AddOffer_MAIN";
 import { deepUserAuthorization, unauthorized } from "./_guards";
 //
 export default [
@@ -20,5 +21,13 @@ export default [
             title: "AuthTest"
         },
         beforeEnter: deepUserAuthorization
+    },
+    {
+        path: "/admin/dodaj-oferte",
+        name: "AddOffer",
+        component: AddOffer,
+        meta: {
+            title: "Dodaj oferte"
+        }
     }
 ];
