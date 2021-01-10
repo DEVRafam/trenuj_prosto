@@ -1,0 +1,22 @@
+header#main
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    margin-bottom: 10px
+    width: 100%
+    h1
+        @include textUS
+        text-align: left
+        font-size: 3rem
+        letter-spacing: 5px
+        margin: 0
+    button
+        @include smoothHoverReversed
+        font-size: 1.2rem
+        padding: 0 20px
+        letter-spacing: 5px
+        margin-left: 20px
+        &:focus
+            outline: none
+    button.stage-manager
+        width: 200px

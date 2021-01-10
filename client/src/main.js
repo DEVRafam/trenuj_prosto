@@ -1,6 +1,7 @@
 import Vue from "vue";
-// Styles
+// Styles && Filters
 import "./sass/wrapper.sass";
+import "./filters/index";
 // Components
 import Main from "./components/Main.vue";
 //

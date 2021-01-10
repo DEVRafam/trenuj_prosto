@@ -1,20 +1,15 @@
 <template>
     <section id="add-offer">
-        <header id="main">
-            <h1>Dodaj ofertę</h1>
-            <button>Kontynuuj</button>
-            <button>Resetuj</button>
-        </header>
+        <OfferHeader @reset="reset"></OfferHeader>
         <!--  -->
         <div class="stages">
-            <div class="stage" id="content">
+            <!--  -->
+            <section class="stage" id="wrap-content" :class="{ active: currentStage === 'content' }">
                 <Describe :offerData="offerData"></Describe>
                 <Activities :offerData="offerData"></Activities>
-            </div>
+            </section>
             <!--  -->
-            <div class="stage" id="images">
-                <!-- IMAGES UPLOAD TO DO -->
-            </div>
+            <Upload :offerData="offerData" id="wrap-upload" :class="{ active: currentStage === 'upload' }"></Upload>
         </div>
     </section>
 </template>
@@ -22,16 +17,22 @@
 //
 import Describe from "./describe/DescribeOffer_MAIN";
 import Activities from "./activities/Activites_MAIN";
+import OfferHeader from "./Header";
+import Upload from "./upload/Upload_MAIN";
 //
+import { mapState } from "vuex";
 export default {
-    components: { Describe, Activities },
+    components: { Describe, Activities, OfferHeader, Upload },
+    computed: {
+        ...mapState("admin_add_offer", ["currentStage"])
+    },
     data() {
         return {
             offerData: {
                 destination: "",
                 description: "",
                 logo: "",
-                gallery: "",
+                gallery: [],
                 start: "",
                 end: "",
                 price: 0,
@@ -42,13 +43,32 @@ export default {
                 logo: {},
                 gallery: {}
             },
+            //
             PROPERTY_NAME_IN_LOCAL_STORAGE: "new_offer"
         };
+    },
+    methods: {
+        reset() {
+            this.offerData = {
+                destination: "",
+                description: "",
+                logo: "",
+                gallery: [],
+                start: "",
+                end: "",
+                price: 0,
+                activities: [],
+                turistBonPayment: false
+            };
+            location.reload();
+        }
     },
     mounted() {
         const offerFromLocalStorage = localStorage.getItem(this.PROPERTY_NAME_IN_LOCAL_STORAGE);
         if (offerFromLocalStorage != null) {
             this.offerData = JSON.parse(offerFromLocalStorage);
+            this.offerData.logo = "";
+            this.offerData.gallery = [];
         }
     },
     watch: {
