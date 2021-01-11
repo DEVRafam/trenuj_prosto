@@ -12,6 +12,13 @@ module.exports = {
                 method: "create",
             },
         },
+        "models.offer.schema": {
+            arguments: ["%DataTypes%"],
+            factory: {
+                class: "di/modelSchemas/OfferModelSchema",
+                method: "create",
+            },
+        },
         models: {
             arguments: ["@sequelize"],
             factory: {

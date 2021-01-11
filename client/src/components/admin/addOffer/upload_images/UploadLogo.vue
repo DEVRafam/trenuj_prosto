@@ -30,16 +30,30 @@ export default {
     methods: {
         ...mapMutations("admin_add_offer", ["setLogoVisualization"]),
         handleUploadLogo(e) {
-            const { setLogoVisualization } = this;
             const img = e.target.files[0];
             this.offerData.logo = img;
-            //
-            const reader = new FileReader();
-            reader.readAsDataURL(img);
-            reader.onload = preview => setLogoVisualization(preview.target.result);
         },
         selectImgButtonClick() {
             this.$refs["img-input"].click();
+        }
+    },
+    watch: {
+        // Generate logo img preview &&
+        // prevent from displaying old logo when current is blank
+        offerData: {
+            deep: true,
+            immediate: true,
+            handler(val) {
+                const { setLogoVisualization } = this;
+                //
+                const { logo } = val;
+                if (!logo) setLogoVisualization("");
+                else {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(logo);
+                    reader.onload = preview => setLogoVisualization(preview.target.result);
+                }
+            }
         }
     }
 };

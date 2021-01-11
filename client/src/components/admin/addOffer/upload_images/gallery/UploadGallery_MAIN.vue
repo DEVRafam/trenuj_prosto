@@ -19,12 +19,25 @@ import GalleryHeader from "./GalleryHeader";
 import AddItemToGallery from "./AddItemToGallery";
 import SingleGalleryItem from "./SingleGalleryItem";
 //
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
     components: { GalleryHeader, AddItemToGallery, SingleGalleryItem },
     props: ["offerData"],
     computed: {
         ...mapState("admin_add_offer", ["galleryVisualization"])
+    },
+    methods: {
+        ...mapMutations("admin_add_offer", ["resetGalleryVisualization"])
+    },
+    watch: {
+        // prevent from displaying old gallery when current is empty
+        offerData: {
+            deep: true,
+            immediate: true,
+            handler(val) {
+                if (val.gallery.length === 0) this.resetGalleryVisualization();
+            }
+        }
     }
 };
 </script>

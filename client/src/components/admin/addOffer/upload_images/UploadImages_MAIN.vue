@@ -1,5 +1,5 @@
 <template>
-    <section id="wrap-upload" class="stage">
+    <section id="wrap-images" class="stage">
         <UploadLogo :offerData="offerData"></UploadLogo>
         <UploadGallery :offerData="offerData"></UploadGallery>
     </section>

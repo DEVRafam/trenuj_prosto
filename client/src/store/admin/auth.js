@@ -1,6 +1,8 @@
 import { API_ADDRESS } from "../index";
 import axios from "axios";
+import { refreshToken } from "../../router/_guards";
 //
+
 export default {
     namespaced: true,
     actions: {
@@ -30,6 +32,9 @@ export default {
             await axios.post(url, data, options);
             localStorage.setItem("user", JSON.stringify({}));
             location.reload();
+        },
+        async refreshToken() {
+            return await refreshToken();
         }
     }
 };

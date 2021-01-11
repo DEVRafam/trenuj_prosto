@@ -1,0 +1,40 @@
+section#wrap-uploading
+    justify-content: center
+    div.content
+        width: 50vw
+        position: relative
+        div.status
+            @include absoluteFull
+            @include flexCenter
+            @include textUS
+            animation: fade-center-out .3s both
+            flex-direction: column
+        div.status.active
+            animation: fade-center .3s both
+        div.pending
+            svg
+                font-size: 10rem
+                color: $mainColor
+        div.error
+            h2.status
+                color: $red
+                font-size: 3rem
+                letter-spacing: 2px
+            button
+                @include smoothHover($red)
+                font-size: 1.2rem
+                letter-spacing: 3px
+                padding: 2px 30px
+        div.positive
+            svg
+                font-size: 10rem
+                color: $green
+            h2
+                margin: 20px 0
+            a
+                @include smoothHover($green)
+                font-size: 1.2rem
+                letter-spacing: 3px
+                padding: 2px 30px
+                text-decoration: none
+                cursor: pointer

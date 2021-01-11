@@ -1,6 +1,6 @@
 <template>
     <section id="add-offer">
-        <OfferHeader @reset="reset"></OfferHeader>
+        <OfferHeader @reset="reset" :offerData="offerData"></OfferHeader>
         <!--  -->
         <div class="stages">
             <!--  -->
@@ -9,7 +9,9 @@
                 <Activities :offerData="offerData"></Activities>
             </section>
             <!--  -->
-            <Upload :offerData="offerData" id="wrap-upload" :class="{ active: currentStage === 'upload' }"></Upload>
+            <UploadImages :offerData="offerData" :class="{ active: currentStage === 'images' }"></UploadImages>
+            <!--  -->
+            <OfferUploading :class="{ active: currentStage === 'upload' }"></OfferUploading>
         </div>
     </section>
 </template>
@@ -17,12 +19,13 @@
 //
 import Describe from "./describe/DescribeOffer_MAIN";
 import Activities from "./activities/Activites_MAIN";
-import OfferHeader from "./Header";
-import Upload from "./upload/Upload_MAIN";
+import OfferHeader from "./header/Header_MAIN";
+import UploadImages from "./upload_images/UploadImages_MAIN.vue";
+import OfferUploading from "./OfferUploading";
 //
 import { mapState } from "vuex";
 export default {
-    components: { Describe, Activities, OfferHeader, Upload },
+    components: { Describe, Activities, OfferHeader, UploadImages, OfferUploading },
     computed: {
         ...mapState("admin_add_offer", ["currentStage"])
     },
