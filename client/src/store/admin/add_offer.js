@@ -7,7 +7,8 @@ export default {
         galleryVisualization: [],
         logoVisualization: "",
         currentStage: "content",
-        uploadingStatus: "pending"
+        uploadingStatus: "pending",
+        PROPERTY_NAME_IN_LOCAL_STORAGE: "new_offer"
     },
     mutations: {
         setLogoVisualization: (state, val) => (state.logoVisualization = val),
@@ -42,7 +43,7 @@ export default {
             //
             return result;
         },
-        async uploadNewOffer(module, offerData) {
+        async uploadNewOffer({ state }, offerData) {
             //
             const data = new FormData();
             for (let key in offerData) {
@@ -62,6 +63,7 @@ export default {
             };
             const url = `${API_ADDRESS}/api/offer/create`;
             await axios.post(url, data, options);
+            localStorage.removeItem(state.PROPERTY_NAME_IN_LOCAL_STORAGE);
         }
     }
 };

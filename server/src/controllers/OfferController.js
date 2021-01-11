@@ -11,8 +11,8 @@ class OfferController {
         try {
             const { destination, start } = req.body;
             const dirName = `${start}_${destination}`;
-            const root = path.join(__dirname, "..", "..", "upload", dirName);
-            //
+            const root = path.join(__dirname, "..", "..", "upload", "offers", dirName);
+            // variables to store uploaded images names
             let logo,
                 gallery = [];
             // Upload images
@@ -20,10 +20,11 @@ class OfferController {
             for (let imgKey in req.files) {
                 const file = req.files[imgKey];
                 const ext = file.name.split(".")[1];
-                const uploadImg = promisify(file.mv);
                 const fileName = `${imgKey}.${ext}`;
                 //
+                const uploadImg = promisify(file.mv);
                 await uploadImg(`${root}/${fileName}`);
+                //
                 if (imgKey === "logo") logo = fileName;
                 else gallery.push(fileName);
             }

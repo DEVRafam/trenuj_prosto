@@ -1,10 +1,6 @@
 <template>
     <div>
         <button class="upload" v-if="uploadAcess" @click="uploadButtonClick">Dodaj</button>
-        <!--  -->
-        <b-modal id="offer-uploading-modal" title="Dodawanie oferty" ref="modal" hide-footer @ok="preventModalFromClosing">
-            <h3>Trwa dodawanie nowej oferty</h3>
-        </b-modal>
     </div>
 </template>
 
@@ -20,8 +16,8 @@ export default {
         async uploadButtonClick() {
             const { setCurrentStage, changeUploadingStatus } = this;
             //
-            // if (this.uploadAcess === false) return;
-            // if ((await this.refreshToken()) === "UNAUTHORIZED") this.$router.push("/admin/login");
+            if (this.uploadAcess === false) return;
+            if ((await this.refreshToken()) === "UNAUTHORIZED") return this.$router.push("/admin/login");
             //
             setCurrentStage("upload");
             try {
@@ -32,7 +28,6 @@ export default {
             }
         },
         preventModalFromClosing(e) {
-            console.log("dasd");
             e.preventDefault();
         }
     },
@@ -45,11 +40,8 @@ export default {
         offerData: {
             deep: true,
             immediate: true,
-            // async handler(val) {
-            //     // this.uploadAcess = await this.validateOfferDataObject(val);
-            // }
-            handler() {
-                this.uploadAcess = true;
+            async handler(val) {
+                this.uploadAcess = await this.validateOfferDataObject(val);
             }
         }
     }

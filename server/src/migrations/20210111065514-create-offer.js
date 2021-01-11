@@ -1,5 +1,6 @@
-"use strict";
-
+const fs = require("fs");
+const path = require("path");
+//
 module.exports = {
     up: async (queryInterface, Sequelize) => {
         const di = require("../di/index");
@@ -26,6 +27,11 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
+        const dirPath = path.join(__dirname, "..", "..", "upload", "offers");
+        //
+        fs.rmdirSync(dirPath, { recursive: true });
+        fs.mkdirSync(dirPath);
+        //
         await queryInterface.dropTable("Offers");
     },
 };

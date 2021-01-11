@@ -11,7 +11,7 @@
             <!--  -->
             <UploadImages :offerData="offerData" :class="{ active: currentStage === 'images' }"></UploadImages>
             <!--  -->
-            <OfferUploading :class="{ active: currentStage === 'upload' }"></OfferUploading>
+            <OfferUploading :class="{ active: currentStage === 'upload' }" :offerData="offerData"></OfferUploading>
         </div>
     </section>
 </template>
@@ -23,11 +23,11 @@ import OfferHeader from "./header/Header_MAIN";
 import UploadImages from "./upload_images/UploadImages_MAIN.vue";
 import OfferUploading from "./OfferUploading";
 //
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
     components: { Describe, Activities, OfferHeader, UploadImages, OfferUploading },
     computed: {
-        ...mapState("admin_add_offer", ["currentStage"])
+        ...mapState("admin_add_offer", ["currentStage", "PROPERTY_NAME_IN_LOCAL_STORAGE"])
     },
     data() {
         return {
@@ -45,12 +45,12 @@ export default {
             imagesToDisplay: {
                 logo: {},
                 gallery: {}
-            },
+            }
             //
-            PROPERTY_NAME_IN_LOCAL_STORAGE: "new_offer"
         };
     },
     methods: {
+        ...mapMutations("admin_add_offer", ["setCurrentStage", "changeUploadingStatus"]),
         reset() {
             this.offerData = {
                 destination: "",
@@ -81,6 +81,10 @@ export default {
                 localStorage.setItem(this.PROPERTY_NAME_IN_LOCAL_STORAGE, JSON.stringify(val));
             }
         }
+    },
+    beforeDestroy() {
+        this.setCurrentStage("content");
+        this.changeUploadingStatus("pending");
     }
 };
 </script>

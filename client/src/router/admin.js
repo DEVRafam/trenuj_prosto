@@ -28,6 +28,7 @@ export default [
         component: AddOffer,
         meta: {
             title: "Dodaj oferte"
-        }
+        },
+        beforeEnter: deepUserAuthorization
     }
 ];

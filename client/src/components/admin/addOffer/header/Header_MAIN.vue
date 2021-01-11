@@ -1,10 +1,9 @@
 <template>
-    <header id="main">
+    <header id="main" v-if="currentStage !== 'upload'">
         <h1>Dodaj ofertę</h1>
         <!-- Stage manager -->
         <button v-if="currentStage === 'content'" @click="setCurrentStage('images')" class="stage-manager">Kontynuuj</button>
         <button v-if="currentStage === 'images'" @click="setCurrentStage('content')" class="stage-manager">Wróć</button>
-        <button v-if="currentStage === 'upload'" class="stage-manager"></button>
         <!--  -->
         <Reset @reset="$emit('reset')"></Reset>
         <!--  -->
