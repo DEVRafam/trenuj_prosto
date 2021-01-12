@@ -41,5 +41,33 @@ class OfferController {
             res.sendStatus(500);
         }
     }
+    //
+    async getAll(req, res) {
+        const exclude = ["id", "createdAt", "updatedAt", "gallery", "turistBonPayment"];
+        const result = await this.Offer.findAll({
+            attributes: {
+                exclude,
+            },
+            order: ["id"],
+        });
+        res.send(result);
+    }
+    //
+    async getSingle(req, res) {
+        const { destination } = req.params;
+        //
+        const exclude = ["id", "createdAt", "updatedAt"];
+        const result = await this.Offer.findOne({
+            where: { destination },
+            // attributes: { exclude },
+        });
+        res.send(result);
+    }
+    //
+    async getLogo(req, res) {
+        const { destination } = req.params;
+        const Offer = await this.Offer.findOne({ where: { destination } });
+        res.sendFile(path.join(__dirname, "..", "..", "upload", "offers", Offer.path, Offer.logo));
+    }
 }
 module.exports = OfferController;

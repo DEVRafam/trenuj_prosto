@@ -9,8 +9,11 @@
             <!--  -->
             <div class="status error" :class="{ active: uploadingStatus === 'negative' }">
                 <h2 class="status">Coś poszło nie tak !</h2>
-                <h2>Spróbuj się wylogować i zalogować ponownie</h2>
-                <button @click="logout">Wyloguj</button>
+                <h2>Sprawdź dokładnie, czy wypełniłeś wszystkie pola, jeżeli tak to spróbuj się wylogować i zalogować ponownie</h2>
+                <div class="btn-wrap">
+                    <button @click="logout">Wyloguj</button>
+                    <button @click="setCurrentStage('content')">Powrót</button>
+                </div>
             </div>
             <!--  -->
             <div class="status positive" :class="{ active: uploadingStatus === 'positive' }">
@@ -23,7 +26,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 export default {
     props: ["offerData"],
     computed: {
@@ -31,6 +34,7 @@ export default {
     },
     methods: {
         ...mapActions("admin_auth", ["logout"]),
+        ...mapMutations("admin_add_offer", ["setCurrentStage"]),
         newOfferPath() {
             return `/oferty/${this.offerData.destination}`;
         }

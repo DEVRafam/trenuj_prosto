@@ -5,6 +5,7 @@ import ApiTestComponent from "../components/ApiTestComponent";
 Vue.use(VueRouter);
 // routes
 import admin from "./admin";
+import offers from "./offers";
 //
 const routes = [
     {
@@ -17,7 +18,8 @@ const routes = [
         name: "Api test",
         component: ApiTestComponent
     },
-    ...admin
+    ...admin,
+    ...offers
 ];
 
 const router = new VueRouter({

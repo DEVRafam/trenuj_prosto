@@ -43,16 +43,18 @@ export default {
             //
             return result;
         },
-        async uploadNewOffer({ state }, offerData) {
+        async uploadNewOffer({ state, commit }, offerData) {
+            commit("changeUploadingStatus", "pending");
             //
             const data = new FormData();
             for (let key in offerData) {
-                if (key !== "gallery") data.append(key, offerData[key]);
+                if (!["gallery", "activities"].includes(key)) data.append(key, offerData[key]);
             }
             //
             offerData.gallery.forEach((item, index) => {
                 data.append(`gallery-item-${index}`, item);
             });
+            data.append("activities", JSON.stringify(offerData.activities));
             //
             const token = JSON.parse(localStorage.getItem("user")).accessToken;
             const options = {

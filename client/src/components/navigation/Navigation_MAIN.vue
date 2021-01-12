@@ -5,5 +5,6 @@
         <router-link to="/admin/login">Logowanie</router-link>
         <router-link to="/admin/auth_test">Test autentykacji</router-link>
         <router-link to="/admin/dodaj-oferte">Dodaj oferte</router-link>
+        <router-link to="/oferty">Oferty</router-link>
     </section>
 </template>
