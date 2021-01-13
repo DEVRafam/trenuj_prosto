@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fse = require("fs-extra");
 const path = require("path");
 const dirPath = path.join(__dirname, "..", "..", "upload", "offers");
 //
@@ -7,7 +7,7 @@ module.exports = {
         const di = require("../di/index");
         const schema = di.get("models.offer.schema");
         // create directory for storage uploaded offers images
-        fs.mkdirSync(dirPath);
+        fse.ensureDirSync(dirPath);
         //
         await queryInterface.createTable("Offers", {
             id: {
@@ -32,7 +32,7 @@ module.exports = {
 
     down: async (queryInterface, Sequelize) => {
         //
-        fs.rmdirSync(dirPath, { recursive: true });
+        fse.removeSync(dirPath);
         //
         await queryInterface.dropTable("Offers");
     },

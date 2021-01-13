@@ -8,3 +8,5 @@
 di_test.js
 #
 .http
+#
+/server/upload/offers/*

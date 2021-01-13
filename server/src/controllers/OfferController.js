@@ -43,7 +43,7 @@ class OfferController {
     }
     //
     async getAll(req, res) {
-        const exclude = ["id", "createdAt", "updatedAt", "gallery", "turistBonPayment"];
+        const exclude = ["id", "createdAt", "updatedAt"];
         const result = await this.Offer.findAll({
             attributes: {
                 exclude,
