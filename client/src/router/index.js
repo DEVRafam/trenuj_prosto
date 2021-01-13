@@ -29,7 +29,7 @@ const router = new VueRouter({
 });
 // set page title
 router.beforeEach((to, from, next) => {
-    console.clear();
+    // console.clear();
     const DEFAULT_PAGE_NAME = "Trenuj prosto";
     //
     let title = (to.matched[0].meta && to.matched[0].meta.title) || DEFAULT_PAGE_NAME;

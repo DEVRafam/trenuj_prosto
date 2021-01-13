@@ -16,10 +16,40 @@ export const refreshToken = async () => {
         return "UNAUTHORIZED";
     }
 };
+//
+export const localStorageAuthentication = () => {
+    //
+    try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        let result = true;
+        // [propertyName,propertyLength]
+        [
+            ["name", 2],
+            ["surname", 3],
+            ["accessToken", 67],
+            ["refreshToken", 67]
+        ].forEach(property => {
+            if (user[property[0]].length < property[1]) {
+                result = false;
+            }
+        });
+        //
+        if (!result) return false;
+        else return true;
+        //
+    } catch (e) {
+        return false;
+    }
+};
+//
 export const deepUserAuthorization = async (to, from, next) => {
-    const response = await refreshToken();
-    if (response === "AUTHORIZED") next();
-    else next("/admin/login");
+    if (localStorageAuthentication()) {
+        const response = await refreshToken();
+        if (response === "AUTHORIZED") next();
+        else next("/admin/login");
+    } else {
+        next("/admin/login");
+    }
 };
 //
 export const unauthorized = (to, from, next) => {

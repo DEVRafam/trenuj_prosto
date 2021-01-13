@@ -1,6 +1,6 @@
 import { API_ADDRESS } from "../index";
 import axios from "axios";
-import { refreshToken } from "../../router/_guards";
+import { refreshToken, localStorageAuthentication } from "../../router/_guards";
 //
 
 export default {
@@ -35,6 +35,12 @@ export default {
         },
         async refreshToken() {
             return await refreshToken();
+        },
+        async localStorageAuthentication() {
+            return localStorageAuthentication();
+        },
+        async deepAuthentication() {
+            return localStorageAuthentication() && (await refreshToken()) === "AUTHORIZED";
         }
     }
 };
