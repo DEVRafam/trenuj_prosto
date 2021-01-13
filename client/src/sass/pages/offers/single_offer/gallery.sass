@@ -1,5 +1,4 @@
 section#gallery
-    margin-top: 20px
     width: 100%
     h3
         @include textUS
@@ -9,9 +8,51 @@ section#gallery
     div.gallery-items
         width: 100%
         display: flex
+        flex-wrap: wrap
         div.single-gallery-item
-            @include confBgImg
             width: 33.333%
             height: 300px
-            background-color: red
             border: 10px solid #fff
+            position: relative
+            overflow: hidden
+            &:hover
+                div.img
+                    transform: scale(1.1)
+                    &::after
+                        opacity: .3
+                span
+                    opacity: 1
+            div.img
+                @include confBgImg
+                @include absoluteFull
+                transition: all .3s
+                z-index: 2
+                position: relative
+                &::after
+                    content: ''
+                    @include absoluteFull
+                    background-color: #000
+                    opacity: 0
+                    z-index: 2
+                    transition: opacity .3s
+
+            span
+                @include absoluteCenter
+                z-index: 3
+                cursor: pointer
+                font-size: 1.2rem
+                letter-spacing: 2px
+                padding: 5px 30px
+                color: #fff
+                border: 2px solid
+                background-color: rgba(0,0 ,0 ,.5 )
+                transition: all .3s
+                opacity: 0
+                
+        //tu
+        @media screen and ( max-width: 1000px )
+            div.single-gallery-item
+                width: 50%
+        @media screen and ( max-width: 700px )
+            div.single-gallery-item
+                width: 100%

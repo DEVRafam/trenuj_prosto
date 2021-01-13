@@ -48,7 +48,7 @@ class OfferController {
             attributes: {
                 exclude,
             },
-            order: ["id"],
+            order: [["id", "DESC"]],
         });
         res.send(result);
     }

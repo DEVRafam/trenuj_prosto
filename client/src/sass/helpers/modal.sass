@@ -3,9 +3,17 @@ div.modal
     @include flexCenter
     // bootstrap style remove
     div.modal-dialog
-        max-width: 80vw
+        width: 95vw
+        max-width: 1500px
+        margin-top: 50px
     div#img-preview-modal___BV_modal_body_
-        width: 80vw
+        width: 95vw
+        max-width: 1500px
+        span.gallery-page
+            @include textUS
+            font-size: 1.5rem
+            height: 100%
+            margin-right: 20px
     // my styles
     div.modal-img
         @include confBgImg
@@ -16,8 +24,8 @@ div.modal
         letter-spacing: 2px
         font-size: 1.1rem
     div.buttons-wrap
-        display: flex
-        justify-content: center
+        @include flexCenter
+        margin-top: 10px
         button
             @include textUS
             font-size: 1.2rem
@@ -27,6 +35,8 @@ div.modal
                 margin-right: 20px
             &:focus
                 outline: none
+        button
+            @include smoothHover
         button.deny
             @include smoothHoverReversed($red)
         button.allow

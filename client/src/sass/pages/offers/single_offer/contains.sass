@@ -1,0 +1,56 @@
+div.activities-list
+    padding: 30px 10%
+    margin-bottom: 20px
+    position: relative
+    margin: 30px 0
+    display: flex
+    flex-direction: column
+    &::before,
+    &::after
+        content: ''
+        position: absolute
+        left: 0
+        height: 4px
+        width: 100%
+        background-color: $mainColor
+        transform: skew(-45deg)
+    &::before
+        top: 0
+    &::after
+        bottom: 0
+    div.activities
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+    div.single-activity
+        width: 48%
+        display: flex
+        align-items: center
+        svg
+            font-size: 4rem
+            color: $mainColor
+            width: 20%
+        span.text
+            width: 80%
+            font-size: 1rem
+            letter-spacing: 2px
+            text-align: left
+    h4.bon-payment
+        @include textUS
+        align-self: flex-end
+        color: $mainColor
+        letter-spacing: 2px
+        align-self: flex-end
+        margin-top: 10px
+    h3.price
+        margin: 0 0 30px 0
+        letter-spacing: 2px
+        strong
+            color: $mainColor
+    @media screen and ( max-width: 800px )
+        padding: 30px 10px
+    @media screen and ( max-width: 500px )
+        div.single-activity
+            width: 100%
+
+        
