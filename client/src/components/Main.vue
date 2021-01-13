@@ -9,6 +9,8 @@
             </transition>
         </main>
         <!--  -->
+        <ScrollBtn></ScrollBtn>
+        <!--  -->
         <footer id="main-footer">
             <h1>Footer</h1>
         </footer>
@@ -17,8 +19,9 @@
 <script>
 //---
 import Navigation from "./navigation/Navigation_MAIN";
+import ScrollBtn from "./ScrollBtn";
 export default {
-    components: { Navigation },
+    components: { Navigation, ScrollBtn },
     methods: {
         beforeLeave() {
             scrollTo({
