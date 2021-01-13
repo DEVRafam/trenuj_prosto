@@ -17,6 +17,9 @@ export default [
         component: AllOffers,
         meta: {
             title: "Oferty"
+        },
+        query: {
+            page: 1
         }
     },
     {

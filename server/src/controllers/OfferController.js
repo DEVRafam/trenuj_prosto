@@ -44,13 +44,25 @@ class OfferController {
     //
     async getAll(req, res) {
         const exclude = ["id", "createdAt", "updatedAt"];
-        const result = await this.Offer.findAll({
+        let offers = await this.Offer.findAll({
             attributes: {
                 exclude,
             },
             order: [["id", "DESC"]],
         });
-        res.send(result);
+        const totalAmount = offers.length;
+        // Pagination
+        const page = req.query.page * 1,
+            limit = req.query.limit * 1;
+        const start = (page - 1) * limit,
+            end = start + limit;
+        //
+        offers = offers.splice(start, end);
+        //
+        res.send({
+            items: offers,
+            totalPagesAmount: Math.ceil(totalAmount / limit),
+        });
     }
     //
     async getSingle(req, res) {
