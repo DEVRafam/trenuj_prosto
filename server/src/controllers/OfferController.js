@@ -69,5 +69,13 @@ class OfferController {
         const Offer = await this.Offer.findOne({ where: { destination } });
         res.sendFile(path.join(__dirname, "..", "..", "upload", "offers", Offer.path, Offer.logo));
     }
+    //
+    async getGalleryImg(req, res) {
+        const { destination, index } = req.params;
+        const Offer = await this.Offer.findOne({ where: { destination } });
+        //
+        const img = JSON.parse(Offer.gallery)[index];
+        res.sendFile(path.join(__dirname, "..", "..", "upload", "offers", Offer.path, img));
+    }
 }
 module.exports = OfferController;

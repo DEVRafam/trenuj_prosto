@@ -1,6 +1,7 @@
 <template>
     <section id="all-offers">
-        <h1>Wszystkie oferty</h1>
+        <ActivitiesHeader></ActivitiesHeader>
+        <OffersNavigation></OffersNavigation>
         <!--  -->
         <template v-if="offers.length">
             <SingleOffer v-for="(offer, index) in offers" :key="index" :offer="offer"></SingleOffer>
@@ -10,9 +11,11 @@
 
 <script>
 import SingleOffer from "./SingleOfferSummary";
+import OffersNavigation from "../OffersNavigation";
 import { mapState } from "vuex";
+//
 export default {
-    components: { SingleOffer },
+    components: { SingleOffer, OffersNavigation },
     computed: {
         ...mapState(["API_ADDRESS"])
     },
@@ -24,7 +27,6 @@ export default {
     async mounted() {
         const { axios, API_ADDRESS } = this;
         const { data } = await axios.get(`${API_ADDRESS}/api/offer/all`);
-        console.log(data);
         this.offers = data;
     }
 };

@@ -1,0 +1,71 @@
+section#all-offers
+    display: flex
+    flex-direction: column
+    align-items: center
+    div.single-offer
+        display: flex
+        max-width: 1200px
+        width: 95vw
+        padding-bottom: 30px
+        margin-bottom: 70px
+        position: relative
+        &::after
+           content: ''
+           position: absolute
+           bottom: 0
+           left: 50%
+           transform: translateX(-50%)
+           width: 75%
+           height: 3px
+           background-color: $mainColor 
+        div.img
+            @include confBgImg
+            width: 400px
+            height: 250px
+        div.content
+            @include textUS
+            display: flex
+            flex-direction: column
+            justify-content: center
+            padding: 5px 0 5px 20px
+            width: calc( 100% - 400px )
+            text-align: left
+            h2
+                margin: 0
+                font-size: 2.2rem
+                letter-spacing: 2px
+            span
+                margin: 5px 0 10px 0
+                color: $mainColor
+                font-size: 1.2rem
+            p
+                font-size: 1.2rem
+                letter-spacing: 1px
+                text-indent: 20px
+            a
+                @include smoothHoverReversed
+                align-self: flex-end
+                margin-right: 15%
+                padding: 2px 20px
+                font-size: 1rem
+                letter-spacing: 2px
+                text-decoration: none
+    
+    @media screen and ( max-width: 1000px )
+        div.single-offer
+            div.img
+                width: 300px
+                height: 200px
+                align-self: center
+    @media screen and ( max-width: 850px )
+        div.single-offer
+            max-width: 600px
+            flex-direction: column
+            div.img,div.content
+                width: 100%
+            div.img
+                height: 300px
+            div.content
+                a
+                    align-self: center
+                    margin-right: 0

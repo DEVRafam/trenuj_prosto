@@ -1,0 +1,17 @@
+section#gallery
+    margin-top: 20px
+    width: 100%
+    h3
+        @include textUS
+        letter-spacing: 2px
+        svg
+            color: $mainColor
+    div.gallery-items
+        width: 100%
+        display: flex
+        div.single-gallery-item
+            @include confBgImg
+            width: 33.333%
+            height: 300px
+            background-color: red
+            border: 10px solid #fff

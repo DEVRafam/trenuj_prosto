@@ -4,6 +4,8 @@ import "./sass/wrapper.sass";
 import "./filters/index";
 // Components
 import Main from "./components/Main.vue";
+import ActivitiesHeader from "./components/ActivitiesHeader";
+Vue.component("ActivitiesHeader", ActivitiesHeader);
 //
 import router from "./router";
 import store from "./store";

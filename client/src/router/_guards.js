@@ -19,7 +19,7 @@ export const refreshToken = async () => {
 export const deepUserAuthorization = async (to, from, next) => {
     const response = await refreshToken();
     if (response === "AUTHORIZED") next();
-    else next("/");
+    else next("/admin/login");
 };
 //
 export const unauthorized = (to, from, next) => {

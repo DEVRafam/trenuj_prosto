@@ -1,5 +1,89 @@
 section#single-offer
-    div.img
-        @include confBgImg
-        width: 100px
-        height: 100px
+    display: flex
+    flex-direction: column
+    align-items: center
+    div.content
+        display: flex
+        flex-direction: column
+        align-items: center
+        cursor: default
+        max-width: 1200px
+        width: 100%
+        padding-bottom: 50px
+        //
+        @import ./gallery
+        //
+        h1
+            position: relative
+            color: $mainColor
+            text-transform: uppercase
+            letter-spacing: 2px
+            font-size: 3rem
+            padding-bottom: 10px
+            margin-bottom: 10px
+            &::after
+                content: ''
+                position: absolute
+                bottom: 0
+                left: 50%
+                height: 4px
+                width: 150%
+                background-color: $mainColor
+                transform: skew(-45deg) translate(-50%)
+        span.date
+            display: flex
+            flex-direction: column
+            color: $mainColor
+            font-size: 1.2rem
+            letter-spacing: 2px
+        div.logo
+            @include confBgImg
+            width: 100%
+            height: 600px
+            margin: 20px 0
+        p
+            position: relative
+            width: 95%
+            text-align: left
+            text-indent: 20px
+            font-size: 1.2rem
+            letter-spacing: 2px
+            padding-bottom: 30px
+            margin: 0
+            &::after
+                content: ''
+                position: absolute
+                left: 0
+                bottom: 0
+                height: 4px 
+                width: 100%
+                background-color: $mainColor
+                transform: skew(-45deg)
+        h3.price
+            margin: 30px 0
+            letter-spacing: 2px
+            strong
+                color: $mainColor
+        div.activities-list
+            padding: 0 10%
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            margin-bottom: 20px
+            div.single-activity
+                width: 48%
+                display: flex
+                align-items: center
+                svg
+                    font-size: 5rem
+                    color: $mainColor
+                span.text
+                    font-size: 1.2rem
+                    letter-spacing: 2px
+        h3.bon-payment
+            @include textUS
+            margin-bottom: 20px
+            align-self: flex-end
+            margin-right: 10%
+            color: $mainColor
+            letter-spacing: 2px

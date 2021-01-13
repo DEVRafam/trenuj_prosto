@@ -12,6 +12,7 @@ module.exports = (di) => {
     //
     router.get("/single/:destination/logo", (...args) => OfferController.getLogo(...args));
     //
+    router.get("/single/:destination/gallery/:index", (...args) => OfferController.getGalleryImg(...args));
     //
     //
     return router;
