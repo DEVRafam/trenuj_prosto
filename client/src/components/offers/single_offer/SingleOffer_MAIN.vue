@@ -11,6 +11,7 @@
             <!--  -->
             <Contains :offer="offer"></Contains>
             <Gallery :offer="offer"></Gallery>
+            <Organization></Organization>
         </div>
     </section>
 </template>
@@ -20,11 +21,12 @@ import Contains from "./Contains";
 import Gallery from "./Gallery";
 import OfferHeader from "./OfferHeader";
 import OfferLogo from "./OfferLogo";
+import Organization from "./Organization";
 //
 import { mapState } from "vuex";
 //
 export default {
-    components: { OffersNavigation, Contains, Gallery, OfferHeader, OfferLogo },
+    components: { OffersNavigation, Contains, Gallery, OfferHeader, OfferLogo, Organization },
     computed: {
         ...mapState(["API_ADDRESS"])
     },

@@ -11,12 +11,13 @@
             </template>
             <!--  -->
         </div>
+        <button @click="displayEntireGallery = !displayEntireGallery" class="display-control" v-text="displayEntireGallery ? 'Zwiń' : 'Rozwiń'">Rozwiń</button>
         <!--  -->
-        <b-modal id="img-preview-modal" :title="`Zdjęcie (${currentGalleryIndex + 1}/${gallery.length})`" hide-footer class="modal" ref="modal">
-            <div class="modal-img" :style="getGalleryImg(currentGalleryIndex)"></div>
+        <b-modal id="img-preview-modal" :title="`Zdjęcie (${currentGalleryModalIndex + 1}/${gallery.length})`" hide-footer class="modal" ref="modal">
+            <div class="modal-img" :style="getGalleryImg(currentGalleryModalIndex)"></div>
             <div class="buttons-wrap">
                 <button @click="changeCurrentModalItem('prev')">Poprzednie</button>
-                <span class="gallery-page" v-text="`(${currentGalleryIndex + 1}/${gallery.length})`"></span>
+                <span class="gallery-page" v-text="`(${currentGalleryModalIndex + 1}/${gallery.length})`"></span>
                 <button @click="changeCurrentModalItem('next')">Następne</button>
             </div>
         </b-modal>
@@ -28,12 +29,17 @@ import { mapState } from "vuex";
 export default {
     props: ["offer"],
     computed: {
-        ...mapState(["API_ADDRESS"])
+        ...mapState(["API_ADDRESS"]),
+        gallery() {
+            const gallery = JSON.parse(this.offer.gallery);
+            if (this.displayEntireGallery) return gallery;
+            else return gallery.slice(0, 3);
+        }
     },
     data() {
         return {
-            currentGalleryIndex: 0,
-            gallery: JSON.parse(this.offer.gallery)
+            currentGalleryModalIndex: 0,
+            displayEntireGallery: false
         };
     },
     methods: {
@@ -46,16 +52,16 @@ export default {
             return `background-image: url(${url})`;
         },
         openGalleryModal(index) {
-            this.currentGalleryIndex = index;
+            this.currentGalleryModalIndex = index;
             this.$refs.modal.show();
         },
         changeCurrentModalItem(direction) {
-            const { currentGalleryIndex: current, gallery } = this;
+            const { currentGalleryModalIndex: current, gallery } = this;
             const { length } = gallery;
             if (direction === "prev" && current > 0) {
-                this.currentGalleryIndex--;
+                this.currentGalleryModalIndex--;
             } else if (direction === "next" && current < length - 1) {
-                this.currentGalleryIndex++;
+                this.currentGalleryModalIndex++;
             }
         }
     }

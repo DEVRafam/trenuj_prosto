@@ -1,0 +1,24 @@
+section.organization
+    display: flex
+    align-self: center
+    align-self: flex-end
+    min-height: 100px
+    max-width: 800px
+    margin-top: 100px
+    //
+    $logo-width: 200px
+    div.o-logo
+        @include confBgImg
+        width: $logo-width
+        background-image: url('/img/logo.png')
+        background-size: contain
+    div.o-text
+        padding: 0 20px
+        @include flexCenter
+        flex-direction: column
+        width: calc( 100% - $logo-width )
+        letter-spacing: 2px
+        .line
+            margin-bottom: 5px
+        h4.line
+            margin-bottom: 15px

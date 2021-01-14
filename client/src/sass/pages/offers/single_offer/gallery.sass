@@ -5,6 +5,13 @@ section#gallery
         letter-spacing: 2px
         svg
             color: $mainColor
+    button.display-control
+        @include smoothHover
+        font-size: 1.2rem
+        letter-spacing: 2px
+        padding: 2px 30px
+        &:focus
+            outline: none
     div.gallery-items
         width: 100%
         display: flex
@@ -35,6 +42,7 @@ section#gallery
                     opacity: 0
                     z-index: 2
                     transition: opacity .3s
+                animation: fade-center .3s both
 
             span
                 @include absoluteCenter
