@@ -1,5 +1,7 @@
 <template>
     <div class="single-offer">
+        <DeleteOffer :offer="offer" v-if="auth"></DeleteOffer>
+        <!--  -->
         <div class="img" :style="getLogo()"></div>
         <div class="content">
             <h2 v-text="offer.destination"></h2>
@@ -11,12 +13,14 @@
 </template>
 
 <script>
+import DeleteOffer from "./DeleteSingleOffer";
 import { mapState } from "vuex";
 export default {
+    components: { DeleteOffer },
     computed: {
         ...mapState(["API_ADDRESS"])
     },
-    props: ["offer"],
+    props: ["offer", "auth"],
     data() {
         return {
             descriptionLength: 200

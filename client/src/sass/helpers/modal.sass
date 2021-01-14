@@ -2,6 +2,8 @@ div.modal
     display: flex !important
     @include flexCenter
     // bootstrap style remove
+    div.modal-dialog.modal-sm
+        max-width: 500px !important
     div.modal-dialog
         width: 95vw
         max-width: 1500px
@@ -14,6 +16,8 @@ div.modal
             font-size: 1.5rem
             height: 100%
             margin-right: 20px
+        button
+            @include smoothHover
     // my styles
     div.modal-img
         @include confBgImg
@@ -36,8 +40,7 @@ div.modal
                 margin-right: 20px
             &:focus
                 outline: none
-        button
-            @include smoothHover
+
         button.deny
             @include smoothHoverReversed($red)
         button.allow

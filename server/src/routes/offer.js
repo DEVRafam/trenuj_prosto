@@ -3,8 +3,9 @@ module.exports = (di) => {
     const OfferController = di.get("controllers.offer");
     const { authenticate } = di.get("middlewares");
     //
-    router.post("/create", [authenticate], (...args) => OfferController.createNewOffer(...args));
+    router.delete("/:id", [authenticate], (...args) => OfferController.deleteOffer(...args));
     //
+    router.post("/create", [authenticate], (...args) => OfferController.createNewOffer(...args));
     //
     router.get("/all", (...args) => OfferController.getAll(...args));
     //

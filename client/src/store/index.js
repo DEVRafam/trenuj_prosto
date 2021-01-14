@@ -10,7 +10,7 @@ import admin_add_offer from "./admin/add_offer";
 export default new Vuex.Store({
     state: {
         API_ADDRESS,
-        OFFERS_PER_PAGE: 2
+        OFFERS_PER_PAGE: 3
     },
     modules: {
         admin_auth,

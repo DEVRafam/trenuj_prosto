@@ -1,10 +1,12 @@
 const path = require("path");
 const fs = require("fs");
+const fse = require("fs-extra");
 const { promisify } = require("util");
 //
 class OfferController {
     constructor(models) {
         this.Offer = models.Offer;
+        this.User = models.User;
     }
     //
     async createNewOffer(req, res) {
@@ -43,7 +45,7 @@ class OfferController {
     }
     //
     async getAll(req, res) {
-        const exclude = ["id", "createdAt", "updatedAt"];
+        const exclude = ["createdAt", "updatedAt"];
         let offers = await this.Offer.findAll({
             attributes: {
                 exclude,
@@ -63,6 +65,27 @@ class OfferController {
             items: offers,
             totalPagesAmount: Math.ceil(totalAmount / limit),
         });
+    }
+    //
+    async deleteOffer(req, res) {
+        // validate token
+        const { User, Offer } = this;
+        const { id: userId } = req.authorizedToken;
+        const user = await User.findOne({ where: { id: userId } });
+        if (user === null) return res.sendStatus(403);
+        //
+        try {
+            const { id: offerId } = req.params;
+            const offer = await Offer.findOne({ where: { id: offerId * 1 } });
+            //
+            const dirPath = path.join(__dirname, "..", "..", "upload", "offers", offer.path);
+            fse.removeSync(dirPath);
+            await offer.destroy();
+            //
+            res.sendStatus(200);
+        } catch (e) {
+            res.sendStatus(500);
+        }
     }
     //
     async getSingle(req, res) {
