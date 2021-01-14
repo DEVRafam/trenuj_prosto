@@ -12,11 +12,11 @@
                 <span class="text">Dodaj oferte</span>
             </router-link>
             <!--  -->
-            <!--  -->
-            <a>
+            <router-link to="/admin/dodaj-aktualnosc">
                 <b-icon icon="chat-square-text"></b-icon>
-                <span class="text">Dodaj aktywność</span>
-            </a>
+                <span class="text">Dodaj aktualność</span>
+            </router-link>
+            <!--  -->
             <a @click="logout">
                 <b-icon icon="power"></b-icon>
                 <span class="text">Wyloguj</span>

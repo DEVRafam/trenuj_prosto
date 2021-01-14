@@ -24,7 +24,9 @@ import UploadImages from "./upload_images/UploadImages_MAIN.vue";
 import OfferUploading from "./OfferUploading";
 //
 import { mapState, mapMutations } from "vuex";
+import handleLocalStorage from "./saveOfferInLocalStorage";
 export default {
+    mixins: [handleLocalStorage],
     components: { Describe, Activities, OfferHeader, UploadImages, OfferUploading },
     computed: {
         ...mapState("admin_add_offer", ["currentStage", "PROPERTY_NAME_IN_LOCAL_STORAGE"])
@@ -64,22 +66,6 @@ export default {
                 turistBonPayment: false
             };
             location.reload();
-        }
-    },
-    mounted() {
-        const offerFromLocalStorage = localStorage.getItem(this.PROPERTY_NAME_IN_LOCAL_STORAGE);
-        if (offerFromLocalStorage != null) {
-            this.offerData = JSON.parse(offerFromLocalStorage);
-            this.offerData.logo = "";
-            this.offerData.gallery = [];
-        }
-    },
-    watch: {
-        offerData: {
-            deep: true,
-            handler(val) {
-                localStorage.setItem(this.PROPERTY_NAME_IN_LOCAL_STORAGE, JSON.stringify(val));
-            }
         }
     },
     beforeDestroy() {

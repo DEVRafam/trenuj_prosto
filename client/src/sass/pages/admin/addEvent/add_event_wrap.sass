@@ -1,0 +1,55 @@
+section#add-event
+    height: 100%
+    display: flex
+    justify-content: flex-end
+    flex-direction: column
+    align-items: center
+    width: 100%
+    padding: 30px 50px
+    position: relative
+    padding-bottom: 50px
+    &::after
+        content: ''
+        @include absoluteFull
+        background-image: url('/img/admin/add_event_background.jpg')
+        background-size: cover
+        background-repeat: no-repeat
+        background-position: center center
+        opacity: .4
+        z-index: 1
+    //
+    //
+    //
+    $maxWidth: 1600px
+    //
+    @import ./header
+    div#main-wrap
+        @import ./content/content_main
+        @import ./summary/summary_main
+    //
+    //
+    //
+    div#main-wrap
+        height: 500px
+        display: flex
+        justify-content: space-between
+        width: 95%
+        max-width: $maxWidth
+        position: relative
+        z-index: 2
+        section#content
+            width: 65%
+        section#summary
+            width: 30%
+        section#summary,
+        section#content
+            padding: 10px
+            background-color: rgba(255,255,255,.7)
+            height: 100%
+            input,
+            textarea
+                @include coloredFocus
+                font-size: 1rem
+                letter-spacing: 2px
+    //
+    

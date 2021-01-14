@@ -1,0 +1,22 @@
+section#content
+    header#control
+        @include textUS
+        display: flex
+        align-items: center
+        width: 100%
+        background-color: #fff
+        padding: 10px 30px
+        font-size: 1.2rem
+        letter-spacing: 2px
+        span
+            text-transform: uppercase
+        input
+            display: none
+        button
+            @include smoothHoverReversed
+            margin-left: 20px
+            letter-spacing: 1px
+            &:focus
+                outline: none
+        button.reset
+            @include smoothHoverReversed($red)
