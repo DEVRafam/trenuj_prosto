@@ -1,5 +1,13 @@
 section#content
-    header#control
+    div.all-fields
+        @import ./single_field/single_field_main
+//
+section#content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    position: relative
+    header.control
         @include textUS
         display: flex
         align-items: center
@@ -20,3 +28,33 @@ section#content
                 outline: none
         button.reset
             @include smoothHoverReversed($red)
+    div.all-fields
+        @include innerScrollbar
+        display: flex
+        flex-direction: column
+        width: 100%
+        overflow-y: scroll
+        padding-right: 10px
+        height: 400px
+    div.blank-notification
+        @include absoluteCenter
+        @include flexCenter
+        flex-direction: column
+        width: 100%
+        animation: fade-only-opacity .3s .2s both
+        padding-top: 50px
+        svg
+            font-size: 10rem
+            color: $mainColor
+            margin-bottom: 30px
+            animation: fade-center .3s .5s both
+        h3
+            @include textUS
+            letter-spacing: 2px
+        header.control
+            background: transparent !important
+            justify-content: center
+            span
+                display: none
+            button
+                @include smoothHover

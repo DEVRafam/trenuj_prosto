@@ -1,9 +1,11 @@
 <template>
     <div>
         <button @click="showModal">Resetuj</button>
-        <!-- RESET MODAL -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
         <b-modal id="confirmation-modal" class="modal" title="Potwierdzenie" hide-footer ref="confirmation_modal" size="sm">
-            <p class="info">Czy na pewno chcesz zresetować ofertę?</p>
+            <p class="info">Czy na pewno chcesz zresetować aktualność?</p>
             <div class="buttons-wrap">
                 <button class="deny" @click="hideModal">Nie</button>
                 <button class="allow" @click="handleReset">Tak</button>
@@ -13,22 +15,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
-    computed: {
-        ...mapState("admin_add_offer", ["currentStage"])
-    },
     methods: {
+        showModal() {
+            this.$refs["confirmation_modal"].show();
+        },
+        hideModal() {
+            this.$refs["confirmation_modal"].hide();
+        },
         handleReset() {
             this.$emit("reset");
             this.hideModal();
-        },
-        showModal() {
-            if (this.currentStage === "upload") return;
-            this.$refs.confirmation_modal.show();
-        },
-        hideModal() {
-            this.$refs.confirmation_modal.hide();
         }
     }
 };

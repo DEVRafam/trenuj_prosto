@@ -1,0 +1,55 @@
+header
+    margin-bottom: 5px
+    h5,button
+        @include textUS
+        letter-spacing: 2px
+    h5
+        text-align: left
+        padding-left: 30px
+        position: relative
+        &::after
+            content: ''
+            position: absolute
+            top: 50%
+            left: 0
+            transform: translateY(-50%) skewY(5deg)
+            width: 20px
+            height: 20px
+            background-color: $mainColor
+    div.wrap
+        @include flexCenter
+        button
+            padding: 0 10px
+            cursor: pointer
+            margin-left: 20px
+            &:first-of-type
+                margin-left: 20px
+            &:focus
+                outline: none
+        button.order
+            @include smoothHover
+        button.delete
+            @include smoothHoverReversed($red)
+        //
+        div.reorder
+            position: relative
+            width: 400px
+            height: 100%
+            display: flex
+            align-items: center
+            button.order.intro,
+            div.reorder-options
+                position: absolute
+                right: 0
+            button.order.intro
+                display: block
+            div.reorder-options
+                display: none
+                justify-content: flex-end
+                width: 100%
+        //
+        div.reorder.develop
+            button.order.intro
+                display: none
+            div.reorder-options
+                display: flex

@@ -1,5 +1,5 @@
 <template>
-    <header id="control">
+    <header class="control">
         <span>Dodaj</span>
         <!--  -->
         <button @click="addFieldToContent('header')">Nagłówek</button>
@@ -22,12 +22,18 @@ export default {
             };
             if (type === "img") {
                 delete obj.text;
+                obj.imgIndex = null;
+                //
                 this.$refs["img-input"].click();
             }
             this.eventData.content.push(obj);
         },
         handleUploadImage(e) {
-            console.log(e.target.files);
+            const imageIndex = Date.now();
+            const { content, images } = this.eventData;
+            //
+            images[imageIndex] = e.target.files[0];
+            content[content.length - 1].imgIndex = imageIndex;
         }
     }
 };

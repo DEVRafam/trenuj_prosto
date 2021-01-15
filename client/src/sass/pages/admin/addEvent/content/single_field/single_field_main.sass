@@ -1,0 +1,62 @@
+div.single-field
+    @import ./header
+//
+div.single-field
+    background-color: #fff
+    margin-top: 20px
+    padding: 10px 20px
+    animation: fade-center .3s .1s linear both
+    header,footer
+        display: flex
+        justify-content: space-between
+    footer
+        margin-top: 10px
+        span
+            @include textUS
+            color: $mainColor
+            font-size: 1.1rem
+            letter-spacing: 2px
+    //
+    div.body.header,
+    div.body.text
+        padding: 0 30px
+    div.body.img
+        input
+            display: none
+        //
+        div.wrap
+            @include flexCenter
+            button
+                @include smoothHover
+                @include textUS
+                margin-top: 10px
+                letter-spacing: 2px
+                cursor: pointer
+            //
+            div.field-is-empty
+                h3
+                    @include textUS
+                    @include flexCenter
+                    letter-spacing: 2px
+                    svg
+                        margin-left: 10px
+                        font-size: 2.5rem
+                        color: $mainColor
+            //
+            div.img-preview
+                width: 300px
+                height: 200px
+                @include confBgImg
+            div.text
+                margin-left: 50px
+                display: flex
+                flex-direction: column
+                span.size
+                    letter-spacing: 2px
+                    @include textUS
+                    strong
+                        color: $mainColor
+                
+                
+                
+                

@@ -1,6 +1,6 @@
 <template>
     <section id="add-event">
-        <Header :eventData="eventData"></Header>
+        <Header :eventData="eventData" @reset="reset"></Header>
         <!--  -->
         <div id="main-wrap">
             <Content :eventData="eventData"></Content>
@@ -25,11 +25,21 @@ export default {
                 title: "",
                 logo: "",
                 content: [],
-                images: []
+                images: {}
             },
             //
             PROPERTY_NAME_IN_LOCAL_STORAGE: "newEvent"
         };
+    },
+    methods: {
+        reset() {
+            this.eventData = {
+                title: "",
+                logo: "",
+                content: [],
+                images: {}
+            };
+        }
     }
 };
 </script>

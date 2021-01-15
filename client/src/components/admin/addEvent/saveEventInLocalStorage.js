@@ -4,7 +4,7 @@ export default {
         if (eventFromLocalStorage != null) {
             this.eventData = JSON.parse(eventFromLocalStorage);
             this.eventData.logo = "";
-            this.eventData.images = [];
+            this.eventData.images = {};
         }
     },
     watch: {
