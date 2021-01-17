@@ -17,7 +17,6 @@ class EventController {
             // Upload images
             fse.ensureDirSync(root);
             for (let imgKey in req.files) {
-                console.log(imgKey);
                 const file = req.files[imgKey];
                 const ext = file.name.split(".")[1];
                 const fileName = `${imgKey}.${ext}`;
@@ -38,10 +37,13 @@ class EventController {
             //
             res.sendStatus(200);
         } catch (e) {
-            console.log("server error");
             res.sendStatus(500);
         }
     }
     //
+    async getAll(req, res) {
+        const exclude = ["createdAt", "updatedAt", "id"];
+        res.send(await this.Event.findAll({ attributes: { exclude } }));
+    }
 }
 module.exports = EventController;

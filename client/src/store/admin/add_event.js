@@ -5,7 +5,7 @@ export default {
     namespaced: true,
     state: {
         HEADER_LENGTH: {
-            max: 50,
+            max: 250,
             min: 10
         },
         TEXT_LENGTH: {

@@ -4,6 +4,7 @@ module.exports = (di) => {
     const { authenticate } = di.get("middlewares");
     // //
     router.post("/create", [authenticate], (...args) => eventController.createNewEvent(...args));
+    router.get("/all", (...args) => eventController.getAll(...args));
     //
     return router;
 };
