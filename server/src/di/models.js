@@ -19,6 +19,13 @@ module.exports = {
                 method: "create",
             },
         },
+        "models.event.schema": {
+            arguments: ["%DataTypes%"],
+            factory: {
+                class: "di/modelSchemas/EventModelSchema",
+                method: "create",
+            },
+        },
         models: {
             arguments: ["@sequelize"],
             factory: {
