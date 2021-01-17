@@ -1,7 +1,4 @@
 class UserController {
-    /**
-     * @param {UserRepository} UserRepository
-     */
     constructor(models) {
         this.models = models;
     }

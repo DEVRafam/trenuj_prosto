@@ -12,7 +12,7 @@
         <!--  -->
         <footer>
             <span class="order" v-text="generateOrder()"></span>
-            <span class="length" v-text="generateLength()" v-if="item.type !== 'img'"></span>
+            <TextLengthInfo :item="item" v-if="item.type !== 'img'"></TextLengthInfo>
         </footer>
     </div>
 </template>
@@ -21,13 +21,10 @@
 import SingleFieldBody from "./SingleFieldBody";
 import DeleteField from "./DeleteField";
 import Reorder from "./Reorder";
+import TextLengthInfo from "./TextLengthInfo";
 //
-import { mapState } from "vuex";
 export default {
-    computed: {
-        ...mapState("admin_add_event", ["MAX_HEADER_LENGTH", "MAX_TEXT_LENGTH"])
-    },
-    components: { SingleFieldBody, DeleteField, Reorder },
+    components: { SingleFieldBody, DeleteField, Reorder, TextLengthInfo },
     props: ["item", "number", "totalElements", "images", "eventData"],
     methods: {
         generateHeader() {
@@ -37,12 +34,6 @@ export default {
                 text: "Pole tekstowe"
             };
             return translated[this.item.type];
-        },
-        generateLength() {
-            const { type, text } = this.item;
-            if (type === "header") return `${text.length}/${this.MAX_HEADER_LENGTH}`;
-            else if (type === "text") return `${text.length}/${this.MAX_TEXT_LENGTH}`;
-            else return "";
         },
         generateOrder() {
             const { number, totalElements } = this;

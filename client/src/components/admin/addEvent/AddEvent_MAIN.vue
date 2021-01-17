@@ -1,12 +1,16 @@
 <template>
     <section id="add-event">
-        <Header :eventData="eventData" @reset="reset"></Header>
         <!--  -->
-        <div id="main-wrap">
-            <Content :eventData="eventData"></Content>
-            <Summary :eventData="eventData"></Summary>
-        </div>
+        <template v-if="uloadStatus === false">
+            <Header :eventData="eventData" @reset="reset"></Header>
+            <!--  -->
+            <div id="main-wrap">
+                <Content :eventData="eventData"></Content>
+                <Summary :eventData="eventData"></Summary>
+            </div>
+        </template>
         <!--  -->
+        <Uploading :eventData="eventData" v-else></Uploading>
     </section>
 </template>
 
@@ -14,11 +18,16 @@
 import Content from "./content/Content_MAIN";
 import Summary from "./summary/Summary_MAIN";
 import Header from "./header/Header_MAIN";
+import Uploading from "./Uploading";
 //
 import handleLocalStorage from "./saveEventInLocalStorage";
+import { mapState, mapMutations } from "vuex";
 export default {
     mixins: [handleLocalStorage],
-    components: { Content, Summary, Header },
+    components: { Content, Summary, Header, Uploading },
+    computed: {
+        ...mapState("admin_add_event", ["uloadStatus", "PROPERTY_NAME_IN_LOCAL_STORAGE", "uploadAccess"])
+    },
     data() {
         return {
             eventData: {
@@ -26,12 +35,11 @@ export default {
                 logo: "",
                 content: [],
                 images: {}
-            },
-            //
-            PROPERTY_NAME_IN_LOCAL_STORAGE: "newEvent"
+            }
         };
     },
     methods: {
+        ...mapMutations("admin_add_event", ["setUploadStatus"]),
         reset() {
             this.eventData = {
                 title: "",
@@ -40,6 +48,9 @@ export default {
                 images: {}
             };
         }
+    },
+    beforeDestroy() {
+        this.setUploadStatus(false);
     }
 };
 </script>

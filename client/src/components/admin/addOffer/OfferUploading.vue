@@ -18,7 +18,10 @@
             <!--  -->
             <div class="status positive" :class="{ active: uploadingStatus === 'positive' }">
                 <b-icon icon="check-circle"></b-icon>
-                <h2>Oferta została dodana pomyślnie!</h2>
+                <h2>
+                    <span class="green">Oferta</span>
+                    <span> została dodana pomyślnie!</span>
+                </h2>
                 <router-link :to="newOfferPath()">Przejdź do oferty</router-link>
             </div>
         </div>

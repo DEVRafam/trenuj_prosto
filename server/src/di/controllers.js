@@ -18,6 +18,10 @@ module.exports = {
             class: "controllers/OfferController",
             arguments: ["@models"],
         },
+        "controllers.event": {
+            class: "controllers/EventController",
+            arguments: ["@models"],
+        },
         "controllers.auth.login": {
             class: "controllers/auth/LoginController",
             arguments: ["@models", "%jwt%", "%bcrypt%"],
