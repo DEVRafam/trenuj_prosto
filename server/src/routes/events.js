@@ -5,6 +5,9 @@ module.exports = (di) => {
     // //
     router.post("/create", [authenticate], (...args) => eventController.createNewEvent(...args));
     //
+    router.delete("/:id", [authenticate], (...args) => eventController.deleteSingleEvent(...args));
+
+    //
     router.get("/all", (...args) => eventController.getAll(...args));
     //
     router.get("/single/:title", (...args) => eventController.getSingle(...args));

@@ -6,6 +6,7 @@ const { Op } = require("sequelize");
 class EventController {
     constructor(models) {
         this.Event = models.Event;
+        this.User = models.User;
         //
         this.bulkDataExcludes = ["updatedAt", "path", "images", "content"];
     }
@@ -37,6 +38,26 @@ class EventController {
             dataToDB.path = dirName;
             //
             await this.Event.create(dataToDB);
+            //
+            res.sendStatus(200);
+        } catch (e) {
+            res.sendStatus(500);
+        }
+    }
+    //
+    async deleteSingleEvent(req, res) {
+        const { User, Event } = this;
+        const { id: userId } = req.authorizedToken;
+        const user = await User.findOne({ where: { id: userId } });
+        if (user === null) return res.sendStatus(403);
+        //
+        try {
+            const { id: eventID } = req.params;
+            const event = await Event.findOne({ where: { id: eventID * 1 } });
+            //
+            const dirPath = path.join(__dirname, "..", "..", "upload", "events", event.path);
+            fse.removeSync(dirPath);
+            await event.destroy();
             //
             res.sendStatus(200);
         } catch (e) {
