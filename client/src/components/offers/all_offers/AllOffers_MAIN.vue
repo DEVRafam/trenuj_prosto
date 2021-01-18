@@ -5,7 +5,7 @@
         <!--  -->
         <template v-if="offers.length">
             <SingleOffer v-for="(offer, index) in offers" :key="index" :offer="offer" :auth="auth"></SingleOffer>
-            <Pagination :pages="pages" :currentPage="currentPage"></Pagination>
+            <Pagination :pages="pages" :currentPage="currentPage" path="/oferty"></Pagination>
         </template>
         <!--  -->
     </section>
@@ -14,7 +14,7 @@
 <script>
 import SingleOffer from "./SingleOfferSummary";
 import OffersNavigation from "../OffersNavigation";
-import Pagination from "./Pagination";
+import Pagination from "../../Pagination";
 //
 import { mapState, mapActions } from "vuex";
 //

@@ -46,12 +46,23 @@ class EventController {
     //
     async getAll(req, res) {
         const { bulkDataExcludes: exclude } = this;
-        res.send(
-            await this.Event.findAll({
-                attributes: { exclude },
-                order: [["id", "DESC"]],
-            })
-        );
+        //
+        let events = await this.Event.findAll({
+            attributes: { exclude },
+            order: [["id", "DESC"]],
+        });
+        const totalAmount = events.length;
+        // Pagination
+        const page = req.query.page * 1,
+            limit = req.query.limit * 1;
+        const start = (page - 1) * limit,
+            end = start + limit;
+        //
+        events = events.splice(start, end);
+        res.send({
+            items: events,
+            totalPagesAmount: Math.ceil(totalAmount / limit),
+        });
     }
     //
     async getSingle(req, res) {
