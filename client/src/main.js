@@ -1,16 +1,24 @@
 import Vue from "vue";
+//
 // Styles && Filters
+//
 import "./sass/wrapper.sass";
 import "./filters/index";
+//
 // Components
+//
 import Main from "./components/Main.vue";
-import ActivitiesHeader from "./components/ActivitiesHeader";
-Vue.component("ActivitiesHeader", ActivitiesHeader);
+import OffersHeader from "./components/offers/OffersHeader";
+import EventsHeader from "./components/events/EventsHeader";
+Vue.component("OffersHeader", OffersHeader);
+Vue.component("EventsHeader", EventsHeader);
 //
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
+//
 // Plugins
+//
 import axios from "axios";
 import vueAxios from "vue-axios";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";

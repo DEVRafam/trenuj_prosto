@@ -1,6 +1,6 @@
 <template>
     <section id="all-offers">
-        <ActivitiesHeader></ActivitiesHeader>
+        <OffersHeader></OffersHeader>
         <OffersNavigation></OffersNavigation>
         <!--  -->
         <template v-if="offers.length">

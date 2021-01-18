@@ -14,10 +14,10 @@ export default {
     mounted() {
         const { classList } = this.$refs.btn;
         window.addEventListener("scroll", () => {
-            if (scrollY > 300) {
+            if (scrollY > 150) {
                 classList.add("active");
                 if (classList.contains("exit")) classList.remove("exit");
-            } else if (scrollY < 300) {
+            } else if (scrollY < 150) {
                 if (classList.contains("active")) classList.add("exit");
             }
         });

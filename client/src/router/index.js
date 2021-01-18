@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 // routes
 import admin from "./admin";
 import offers from "./offers";
+import events from "./events";
 //
 const routes = [
     {
@@ -19,7 +20,8 @@ const routes = [
         component: ApiTestComponent
     },
     ...admin,
-    ...offers
+    ...offers,
+    ...events
 ];
 
 const router = new VueRouter({

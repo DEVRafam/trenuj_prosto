@@ -1,6 +1,6 @@
 <template>
     <section id="single-offer">
-        <!-- <ActivitiesHeader></ActivitiesHeader> -->
+        <OffersHeader></OffersHeader>
         <OffersNavigation></OffersNavigation>
         <div class="content" v-if="offer">
             <!--  -->

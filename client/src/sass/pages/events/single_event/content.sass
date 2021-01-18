@@ -1,0 +1,74 @@
+section#single-event-content
+    margin-top: 50px
+    width: 90%
+    display: flex
+    align-items: center
+    flex-direction: column
+    letter-spacing: 2px
+    h3
+        position: relative
+        padding: 15px 10px
+        letter-spacing: 2px
+        &::after,
+        &::before
+            @include headerBottomLine
+            width: 300px
+        &::after
+            top: 0
+    h3,p,div.image-wrap
+        margin-bottom: 20px
+    p
+        text-indent: 20px
+        text-align: left
+        padding-left: 20px
+        border-left: 4px solid $mainColor
+        font-size: 1.2rem
+        width: 95%
+    div.image-wrap
+        position: relative
+        width: 100%
+        height: 500px
+        overflow: hidden
+        span.preview
+            @include absoluteCenter
+            font-size: 2rem
+            z-index: 10
+            color: #fff
+            letter-spacing: 5px
+            padding: 5px 30px
+            border: 2px solid #fff
+            opacity: 0
+            cursor: pointer
+            transition: opacity .3s
+        div.img
+            @include absoluteFull
+            @include absoluteCenter
+            @include confBgImg
+            transition: transform .3s
+            &::after
+                content: ''
+                @include absoluteFull
+                background-color: #000
+                opacity: 0
+                transition: opacity .3s
+        &:hover
+            span.preview
+                opacity: 1
+            div.img
+                transform: translate(-50%,-50%) scale(1.1)
+                &::after
+                    opacity: .3
+
+@media screen and ( max-width: 800px )
+    section#single-event-content
+        width: 100%
+        div.image-wrap
+            height: 400px
+@media screen and ( max-width: 600px )
+    section#single-event-content
+        div.image-wrap
+            height: 350px
+        p
+            padding-left: 0px
+            border-left: none
+    

@@ -1,25 +1,32 @@
-section#offer-navigation
-    @include flexCenter
+section#activities-header
     width: 100vw
-    min-height: 100px
-    margin-bottom: 50px
-    padding: 0 10px
-    a
-        @include smoothHover
-        margin-left: 20px
-        text-decoration: none
-        font-size: 1.2rem
-        padding: 5px 20px
-        letter-spacing: 2px
-        &:first-of-type
-            margin-left: 0px
-    a.router-link-exact-active
-        background-color: $mainColor
-        color: #fff !important
-        cursor: default
-    @media screen and ( max-width: 600px )
-        flex-direction: column
+    height: 200px
+    position: relative
+    div.right,
+    div.left
+        @include confBgImg
+        @include flexCenter
+        position: absolute
+        width: 53%
+        height: 100%
+        top: 0
         a
-            width: 100%
-            margin-left: 0
-            margin-top: 20px
+            font-size: 2rem
+            text-decoration: none
+            padding: 0px 40px
+            border: 2px solid #fff
+            transition: all .3s
+            color: #fff
+            letter-spacing: 2px
+            &:hover
+                color: $mainColor
+                background-color: #fff
+    div.left
+        background-image: url('/img/offers/header/left.png')
+        left: 0
+        background-position: right
+            
+    div.right
+        background-image: url('/img/offers/header/right.png')
+        right: 0
+        background-position: left

@@ -1,6 +1,6 @@
 <template>
     <section id="partners">
-        <ActivitiesHeader></ActivitiesHeader>
+        <OffersHeader></OffersHeader>
         <OffersNavigation></OffersNavigation>
         <div class="content">
             <template v-for="partner in partnersList">
@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         getImg(img) {
-            return `background-image: url('/img/partners/${img}')`;
+            return `background-image: url('/img/offers/partners/${img}')`;
         }
     }
 };
