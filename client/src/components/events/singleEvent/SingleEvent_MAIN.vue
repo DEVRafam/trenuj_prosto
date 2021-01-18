@@ -44,6 +44,7 @@ export default {
         // main event data
         const { data: eventData } = await axios.get(`${API_ADDRESS}/api/events/single/${title}`);
         this.eventData = eventData;
+        document.title = eventData.title;
         // reccomendatios for the event
         const { id } = eventData;
         const { data: recommendations } = await axios.get(`${API_ADDRESS}/api/events/single/${id}/recommendations`);

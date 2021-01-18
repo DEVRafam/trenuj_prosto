@@ -18,7 +18,7 @@ export default [
         name: "SingleEvent",
         component: SingleEvent,
         meta: {
-            title: "Aktualnosc"
+            title: "Aktualności"
         }
     }
 ];

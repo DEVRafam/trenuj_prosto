@@ -1,5 +1,5 @@
 <template>
-    <div class="single-offer">
+    <div class="single-offer" ref="offer">
         <DeleteOffer :offer="offer" v-if="auth"></DeleteOffer>
         <!--  -->
         <div class="img" :style="getLogo()"></div>

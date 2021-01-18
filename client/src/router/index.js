@@ -23,16 +23,17 @@ const routes = [
     ...offers,
     ...events
 ];
-
 const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes
 });
-// set page title
+// set static page title
+const DEFAULT_PAGE_NAME = "Trenuj prosto";
+document.title = DEFAULT_PAGE_NAME;
+// set different title for each page
 router.beforeEach((to, from, next) => {
     // console.clear();
-    const DEFAULT_PAGE_NAME = "Trenuj prosto";
     //
     let title = (to.matched[0].meta && to.matched[0].meta.title) || DEFAULT_PAGE_NAME;
     document.title = title;
