@@ -72,7 +72,7 @@ export default {
                     Authorization: `Bearer ${token}`
                 }
             };
-            const url = `${API_ADDRESS}/api/event/create`;
+            const url = `${API_ADDRESS}/api/events/create`;
             await axios.post(url, data, options);
             localStorage.removeItem(state.PROPERTY_NAME_IN_LOCAL_STORAGE);
         }

@@ -79,4 +79,17 @@ module.exports = [
         turistBonPayment: "true",
         path: "2021-03-18_Gdańsk",
     },
+    {
+        destination: "Paryż",
+        description:
+            "W granicach administracyjnych Paryża zamieszkują ponad 2 mln osób (według danych z 2020 było to 2 148 271[2]), w tzw. Wielkim Paryżu ok. 10,7 mln, a w całym zespole miejskim ponad 12 mln (w 2017 paryską przestrzeń aglomeracji zamieszkiwało 12 628 266 osób[3]). Po opuszczeniu przez Wielką Brytanię Unii Europejskiej, aglomeracja paryska stała się największą aglomeracją w Unii Europejskiej.\n\nParyż, który stanowi osobny departament o numerze 75, jest jednocześnie stolicą regionu administracyjnego Île-de-France. Oprócz departamentu paryskiego w jego skład wchodzą departamenty: Essonne (91), Hauts-de-Seine (92), Sekwana-Saint-Denis (93), Sekwana i Marna (77), Dolina Marny (94), Dolina Oise (95) oraz Yvelines (78).\n\nMiasto ma układ koncentryczny z rozchodzącymi się gwiaździście bulwarami. Jego oś stanowi wcięta dolina Sekwany, która dzieli Paryż na dwie części: prawobrzeżną (północną) Rive Droite oraz lewobrzeżną (południową) Rive Gauche.\n\nW 2018 Paryż odwiedziło 17,95 mln turystów.",
+        logo: "logo.jpg",
+        gallery: '["gallery-item-0.jpg","gallery-item-1.jpg","gallery-item-2.jpg","gallery-item-3.jpg","gallery-item-4.jpg"]',
+        start: "2021-02-08T00:00:00.000Z",
+        end: "2021-02-13T00:00:00.000Z",
+        price: 1500,
+        activities: '["\\tWieża Eiffla","\\tMuzeum w Luwrze ","Katedra Notre-Dame ","Łuk Triumfalny w Paryżu","Bazylika Sacré-Cœur","Panteon – dawny kościół,","budynki Sorbony","Les Invalides","Conciergerie ","Sainte-Chapelle ","Opéra Garnier","Hôtel Lambert "]',
+        turistBonPayment: "true",
+        path: "2021-02-08_Paryż",
+    },
 ];

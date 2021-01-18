@@ -37,7 +37,7 @@ export default {
         ...mapActions("admin_auth", ["logout"]),
         ...mapMutations("admin_add_event", ["setUploadStatus"]),
         newEventPath() {
-            return `/oferty/${this.eventData.title}`;
+            return `/aktualnosci/${this.eventData.title}`;
         }
     }
 };
