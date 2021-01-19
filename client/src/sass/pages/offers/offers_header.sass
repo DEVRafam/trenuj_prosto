@@ -21,12 +21,53 @@ section#activities-header
             &:hover
                 color: $mainColor
                 background-color: #fff
+    div.left.active,
+    div.right.active
+        a
+            background-color: #fff
+            color: $mainColor
     div.left
-        background-image: url('/img/offers/header/left.png')
+        background-image: url('/img/offers/header/left-dark.png')
         left: 0
         background-position: right
-            
+    div.left.active
+        background-image: url('/img/offers/header/left-light.png')
     div.right
-        background-image: url('/img/offers/header/right.png')
+        background-image: url('/img/offers/header/right-dark.png')
         right: 0
         background-position: left
+    div.right.active
+        background-image: url('/img/offers/header/right-light.png')
+    //
+    //
+    //
+    @media screen and ( max-width: 1400px )
+        div.left,
+        div.right
+            a
+                font-size: 1.6rem
+    //
+    @media screen and ( max-width: 1200px )
+        div.left,
+        div.right
+            a
+                max-width: 300px
+                font-size: 1.4rem
+    //
+    @media screen and ( max-width: 1000px )
+        @include flexCenter
+        flex-direction: column
+        background-image: url('/img/offers/header/mobile.jpg')
+        div.left,
+        div.right
+            position: static
+            width: 100%
+            background-image: none !important
+            height: auto
+            a
+                width: 90%
+                font-size: 1.8rem
+                max-width: 600px
+        div.left
+            a
+                margin-bottom: 20px                    

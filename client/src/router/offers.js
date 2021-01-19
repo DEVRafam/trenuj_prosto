@@ -1,6 +1,7 @@
 import SingleOffer from "../components/offers/single_offer/SingleOffer_MAIN";
 import AllOffers from "../components/offers/all_offers/AllOffers_MAIN";
 import Partners from "../components/offers/Partners";
+import Gymnastics from "../components/offers/gymnastics/Gymnastics_MAIN";
 //
 export default [
     {
@@ -28,6 +29,14 @@ export default [
         component: Partners,
         meta: {
             title: "Wyjeżdżali z nami"
+        }
+    },
+    {
+        path: "/gimnastyka-korektycyjna",
+        name: "Gymnastics",
+        component: Gymnastics,
+        meta: {
+            title: "Gimnastyka korektycyjna"
         }
     }
 ];

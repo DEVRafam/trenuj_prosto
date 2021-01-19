@@ -1,0 +1,67 @@
+section#gymnastics
+    display: flex
+    flex-direction: column
+    align-items: center
+    h1
+        @include textUS
+        position: relative
+        margin: 40px 0
+        padding-bottom: 10px
+        color: $mainColor
+        &::after
+            width: 50%
+            @include headerBottomLine
+    ul
+        li
+            list-style-type: none
+            letter-spacing: 2px
+            font-size: 1.2rem
+            margin-bottom: 20px
+            text-align: left
+            position: relative
+            padding-left: 40px
+            cursor: default
+            &::after
+                content: ''
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                width: 15px
+                height: 15px
+                background-color: $mainColor
+                left: 0
+            //
+            &:nth-of-type(1)
+                animation: fade-center .3s .1s both
+                &::after
+                    animation: fade-center .3s 1.6s both
+            &:nth-of-type(2)
+                animation: fade-center .3s .2s both
+                &::after
+                    animation: fade-center .3s 1.5s both
+            &:nth-of-type(3)
+                animation: fade-center .3s .3s both
+                &::after
+                    animation: fade-center .3s 1.4s both
+            &:nth-of-type(4)
+                animation: fade-center .3s .4s both
+                &::after
+                    animation: fade-center .3s 1.3s both
+            &:nth-of-type(5)
+                animation: fade-center .3s .5s both
+                &::after
+                    animation: fade-center .3s 1.2s both
+            &:nth-of-type(6)
+                animation: fade-center .3s .6s both
+                &::after
+                    animation: fade-center .3s 1.1s both
+            &:nth-of-type(7)
+                animation: fade-center .3s .7s both
+                &::after
+                    animation: fade-center .3s 1s both
+            &:nth-of-type(8)
+                animation: fade-center .3s .8s both
+                &::after
+                    animation: fade-center .3s .9s both
+                
+            
