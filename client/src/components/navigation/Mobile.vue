@@ -12,7 +12,6 @@
             <router-link to="/oferty" class="route">nasza oferta</router-link>
             <router-link to="/aktualnosci" class="route">aktualnosci</router-link>
             <a class="route">instruktorzy</a>
-            <a class="route">kontakt</a>
         </div>
     </div>
 </template>

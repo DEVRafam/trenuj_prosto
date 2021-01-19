@@ -1,0 +1,49 @@
+section#main-page
+    min-height: 200vh
+    section.logo
+        width: 100vw
+        height: 700px
+        position: relative
+        div.description
+            display: flex
+            position: absolute
+            top: 30px
+            right: 30px
+            z-index: 20
+            color: #fff
+            div.img
+                @include confBgImg
+                background-size: contain
+                width: 200px
+                height: 120px
+                background-image: url('/img/logo-big.png')
+            div.text
+                @include textUS
+                display: flex
+                flex-direction: column
+                justify-content: center
+                text-align: left
+                h3
+                    font-weight: bold
+                    font-size: 3rem
+                    letter-spacing: 3px
+                p
+                    letter-spacing: 2px
+                    font-size: 1rem
+        //
+        div.left,
+        div.right
+            @include confBgImg
+            position: absolute
+            width: 56vw
+            height: 100%
+            top: -70px
+        //
+        div.left
+            background-image: url('/img/home_page/left.png')
+            background-position: right
+            left: 0
+        div.right
+            background-image: url('/img/home_page/right.png')
+            background-position: left
+            right: 0

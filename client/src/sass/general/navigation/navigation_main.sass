@@ -1,6 +1,16 @@
 section#main-navigation
     @import ./mobile
 //
+@media screen and ( min-width: 1001px )
+    section#main-navigation.displayNone
+        display: none !important
+    section#main-navigation.hide
+        animation: fade-center-out .3s both linear
+    //
+    section#main-navigation.unhide
+        animation: fade-center .3s both linear
+        
+//
 section#main-navigation
     position: fixed
     top: 0

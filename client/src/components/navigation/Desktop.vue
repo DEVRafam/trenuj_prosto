@@ -4,7 +4,6 @@
         <router-link to="/oferty" class="route" :class="getClass('offer')">nasza oferta</router-link>
         <router-link to="/aktualnosci" class="route" :class="getClass('events')">aktualnosci</router-link>
         <a class="route">instruktorzy</a>
-        <a class="route">kontakt</a>
     </div>
 </template>
 

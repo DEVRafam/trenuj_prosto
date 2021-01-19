@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../components/home_page/Home_MAIN";
+import NotFoundException from "../components/404.vue";
 Vue.use(VueRouter);
 // routes
 import admin from "./admin";
@@ -8,6 +9,14 @@ import offers from "./offers";
 import events from "./events";
 //
 const routes = [
+    {
+        path: "*",
+        name: "404",
+        component: NotFoundException,
+        meta: {
+            title: "Aktualności"
+        }
+    },
     {
         path: "/",
         name: "Home",
