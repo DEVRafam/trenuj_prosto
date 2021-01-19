@@ -1,0 +1,60 @@
+div.mobile
+    display: none
+@media screen and ( max-width: 1000px )
+    div.desktop
+        display: none !important
+    div.mobile
+        display: block
+        span.open-mobile-menu
+            position: absolute
+            z-index: 1001
+            top: 50%
+            right: 50px
+            transform: translateY(-50%)
+            height: 50px
+            width: 50px
+            border: 2px solid
+            display: flex
+            justify-content: space-evenly
+            align-items: center
+            flex-direction: column
+            border-radius: 5px
+            padding: 0 5px
+            span.line
+                width: 100%
+                height: 3px
+                background-color: $mainColor
+                display: block
+                border-radius: 20px
+                transform-origin: left
+                transition: all .3s
+        span.open-mobile-menu.active
+            span.line
+                &:nth-of-type(1)
+                    transform: rotate(36.5deg) scaleX(1.2)
+                &:nth-of-type(2)
+                    opacity: 0
+                &:nth-of-type(3)
+                    transform: rotate(-36.5deg) scaleX(1.2)
+        
+        span.open-mobile-menu
+        div.content.developed
+            transform: translateX(0%)
+        div.content
+            @include flexCenter
+            flex-direction: column
+            position: fixed
+            top: 0
+            right: 0
+            width: 100vw
+            height: 100%
+            background-color: #fff
+            z-index: 1000
+            transition: transform .3s linear
+            transform: translateX(100%)
+            a
+                letter-spacing: 2px
+                font-size: 2rem
+                color: $mainColor
+                text-decoration: none
+                margin-bottom: 10px

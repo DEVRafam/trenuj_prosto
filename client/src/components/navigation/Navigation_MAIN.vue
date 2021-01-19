@@ -1,10 +1,17 @@
 <template>
     <section id="main-navigation">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/api-test">TEST API</router-link>
-        <router-link to="/admin/login">Logowanie</router-link>
-        <router-link to="/admin/auth_test">Test autentykacji</router-link>
-        <router-link to="/aktualnosci">Aktualnosci</router-link>
-        <router-link to="/oferty">Oferty</router-link>
+        <router-link to="/" class="logo"></router-link>
+        <!--  -->
+        <Desktop></Desktop>
+        <Mobile></Mobile>
+        <!--  -->
     </section>
 </template>
+<script>
+import Desktop from "./Desktop";
+import Mobile from "./Mobile";
+//
+export default {
+    components: { Desktop, Mobile }
+};
+</script>
