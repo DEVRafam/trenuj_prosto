@@ -1,0 +1,206 @@
+section#logo
+    &::after
+        content: ''
+        @include absoluteFull
+        background-color: $mainColor
+        height: calc( 100%)
+        top: -70px
+        z-index: 1
+        animation: fade-center-out .6s 1.3s both
+    div.navigation
+        animation: fade-center .5s .7s both
+    div.left
+        div.route
+            h2
+                animation: fade-bottom .5s 1.9s both
+            a
+                animation: fade-center .5s 2.4s both
+    div.right
+        div.route
+            h2
+                animation: fade-bottom .5s 1.6s both
+            a
+                animation: fade-center .5s 2.3s both
+    div.description
+        div.img
+            animation: fade-center .3s .8s both
+        div.text
+            h3
+                animation: fade-center .3s .6s both
+            p
+                animation: fade-center .3s .7s both
+//
+//
+//
+@media screen and ( min-width: 1001px )
+    section#play-with-us
+        section.route
+            div.cutted-img
+                opacity: 0
+        section.text
+            div.activities
+                opacity: 0
+            div.text-wrap
+                p
+                    opacity: 0
+    section#play-with-us.scroll-animation
+        section.route
+            div.cutted-img
+                animation: fade-left 1s .5s both
+        section.text
+            div.activities
+                animation: fade-center .5s .2s both
+            div.text-wrap
+                p
+                    &:nth-of-type(1)
+                        animation: fade-bottom .5s .4s both
+                    &:nth-of-type(2)
+                        animation: fade-bottom .5s .6s both
+    //
+    //
+    //
+    section#our-offer
+        section.route
+            div.cutted-img
+                opacity: 0
+        section.text
+            h2
+                opacity: 0
+            div.col
+                p
+                    opacity: 0
+                    &::after
+                        transform-origin: top
+    section#our-offer.scroll-animation
+        section.route
+            div.cutted-img
+                animation: fade-right 1s .5s both
+        section.text
+            h2
+                animation: fade-bottom .5s .3s both
+            div.col
+                &:nth-of-type(1)
+                    p
+                        &:nth-of-type(1)
+                            animation: fade-top .5s .5s both
+                            &::after
+                                animation: scaleHeight .5s 1.5s both
+                        &:nth-of-type(2)
+                            animation: fade-top .5s 1s both
+                            &::after
+                                animation: scaleHeight .5s 2s both
+                &:nth-of-type(2)
+                    p
+                        &:nth-of-type(1)
+                            animation: fade-top .5s .8s both
+                            &::after
+                                animation: scaleHeight .5s 1.8s both
+                        &:nth-of-type(2)
+                            animation: fade-top .5s 1.2s both
+                            &::after
+                                animation: scaleHeight .5s 2.2s both
+    //
+    //
+    //
+    section#camps
+        span.space
+            transform: scaleY(0)
+        div.left,div.right
+            h4
+                opacity: 0
+        div.left
+            ul
+                li
+                    opacity: 0
+        div.right
+            div.email-wrap
+                opacity: 0
+    section#camps.scroll-animation
+        span.space
+            animation: scaleHeight .5s 2s both
+        div.left
+            h4
+                animation: fade-top .5s .3s both
+            ul
+                li
+                    &:nth-of-type(1)
+                        animation: fade-center .3s .1s both
+                        &::after
+                            animation: fade-center .3s 1.6s both
+                    &:nth-of-type(2)
+                        animation: fade-center .3s .2s both
+                        &::after
+                            animation: fade-center .3s 1.5s both
+                    &:nth-of-type(3)
+                        animation: fade-center .3s .3s both
+                        &::after
+                            animation: fade-center .3s 1.4s both
+                    &:nth-of-type(4)
+                        animation: fade-center .3s .4s both
+                        &::after
+                            animation: fade-center .3s 1.3s both
+                    &:nth-of-type(5)
+                        animation: fade-center .3s .5s both
+                        &::after
+                            animation: fade-center .3s 1.2s both
+        div.right
+            h4
+                animation: fade-top .5s .5s both
+            div.email-wrap
+                animation: fade-top .5s 1s both
+    //
+    //
+    //
+    section#instructors
+        section.route
+            div.cutted-img
+                opacity: 0
+        section.text
+            h2,p
+                opacity: 0
+            div.routes-wrap
+                a
+                    opacity: 0
+    section#instructors.scroll-animation
+        section.route
+            div.cutted-img
+                animation: fade-left 1s .5s both
+        section.text
+            h2
+                animation: fade-top .5s .3s both
+            p
+                animation: fade-top .5s .8s both
+            div.routes-wrap
+                a
+                    &:nth-of-type(1)
+                        animation: fade-top .5s 1s both
+                    &:nth-of-type(2)
+                        animation: fade-top .5s 1.2s both
+    //
+    //
+    //
+    section#contact
+        section.route
+            div.cutted-img
+                opacity: 0
+        section.text
+            div.contact-form
+                opacity: 0
+    section#contact.scroll-animation
+        section.route
+            div.cutted-img
+                animation: fade-right 1s .5s both
+        section.text
+            div.contact-form
+                &:nth-of-type(1)
+                    animation: fade-top .5s .7s both
+                    svg
+                        animation: fade-center .5s 1.3s both
+                &:nth-of-type(2)
+                    animation: fade-top .5s .5s both
+                    svg
+                        animation: fade-center .5s 1.5s both
+                &:nth-of-type(3)
+                    animation: fade-top .5s .3s both
+                    svg
+                        animation: fade-center .5s 1.7s both

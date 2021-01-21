@@ -1,49 +1,96 @@
 section#main-page
-    min-height: 200vh
-    section.logo
-        width: 100vw
-        height: 700px
-        position: relative
-        div.description
-            display: flex
-            position: absolute
-            top: 30px
-            right: 30px
-            z-index: 20
-            color: #fff
-            div.img
-                @include confBgImg
-                background-size: contain
-                width: 200px
-                height: 120px
-                background-image: url('/img/logo-big.png')
-            div.text
-                @include textUS
-                display: flex
-                flex-direction: column
-                justify-content: center
+    @import ./entrances_animations
+    //
+    @import ./logo
+    @import ./play_with_us
+    @import ./our_offer
+    @import ./camps
+    @import ./instructos
+    @import ./contact
+    //
+    $spaceAmountElements: 100px
+    section#logo,
+    section#our-offer,
+    section#instructors,
+    section#play-with-us,
+    section#camps
+        margin-bottom: $spaceAmountElements
+//
+section#main-page
+    section#our-offer,
+    section#instructors,
+    section#contact,
+    section#play-with-us
+        display: flex
+        align-items: flex-start !important
+        section.text
+            width: 60%
+            padding: 0 5%
+            cursor: default
+            h2
+                margin-bottom: 50px
+            p
+                padding: 0 0 0 20px
+                letter-spacing: 2px
+                margin-bottom: 30px
                 text-align: left
-                h3
-                    font-weight: bold
-                    font-size: 3rem
-                    letter-spacing: 3px
-                p
+                text-indent: 20px
+                position: relative
+                &::after
+                    content: ''
+                    position: absolute
+                    top: 0
+                    left: 0
+                    height: 100%
+                    width: 4px
+                    background-color: $mainColor
+        section.route
+            @include flexCenter
+            flex-direction: column
+            width: 40%
+            max-width: 100vw
+            div.cutted-img
+                width: 100%
+                height: 220px
+                background-size: cover
+                background-repeat: no-repeat
+                position: relative
+                span.text
+                    @include absoluteCenter
+                    @include textUS
+                    font-size: 2rem
+                    color: #fff
+                    background-color: rgba(0,0,0,.4)
+                    padding: 5px 20px
                     letter-spacing: 2px
-                    font-size: 1rem
+                    border-left: 2px solid #fff
+                    
+    
+        @media screen and ( max-width: 1400px )
+            flex-direction: column
+            section.text
+                width: 100%
+                order: 2
+            section.route
+                width: 75%
+                order: 1
         //
-        div.left,
-        div.right
-            @include confBgImg
-            position: absolute
-            width: 56vw
-            height: 100%
-            top: -70px
+        @media screen and ( max-width: 800px )
+            section.route
+                width: 100%
+                div.cutted-img
+                    background-position: center !important
+                    background-size: 145%
         //
-        div.left
-            background-image: url('/img/home_page/left.png')
-            background-position: right
-            left: 0
-        div.right
-            background-image: url('/img/home_page/right.png')
-            background-position: left
-            right: 0
+        @media screen and ( max-width: 600px )
+            section.text
+                padding: 0 10px
+                h2
+                    font-size: 1.5rem
+                    padding: 0 10px
+        //
+        @media screen and ( max-width: 600px )
+            section.route
+                div.cutted-img
+                    span.text
+                        font-size: 1.5rem

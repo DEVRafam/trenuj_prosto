@@ -1,0 +1,27 @@
+section#instructors
+    align-items: center
+    section.route
+        div.cutted-img
+            background-image: url('/img/home_page/instructors.jpg')
+            background-position: right
+    section.text
+        strong
+            color: $mainColor
+        div.routes-wrap
+            @include flexCenter
+            a
+                @include textUS
+                @include smoothHover 
+                font-size: 1.2rem
+                letter-spacing: 2px
+                cursor: pointer
+                text-decoration: none
+                margin-left: 20px
+                padding: 2px 20px
+                &:first-of-type
+                    margin-left: 0
+    @media screen and ( max-width: 1400px )
+        section.route
+            align-self: flex-start
+            margin-bottom: 20px
+        

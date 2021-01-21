@@ -1,0 +1,56 @@
+@media screen and ( max-width: 1000px )
+    div.navigation
+        display: none !important
+//
+div.navigation
+    @include flexCenter
+    position: absolute
+    bottom: -10px
+    left: 0
+    width: 100vw
+    height: 80px
+    background-color: $mainColor
+    z-index: 100
+    border-top: 10px #fff solid
+    .nav-logo
+        background-image: url('/img/logo.png')
+        width: 70px
+        height: 100%
+        background-size: contain
+        background-position: center
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        left: 100px
+        z-index: 1001
+    a.route
+        color: #fff
+        margin-left: 10px
+        letter-spacing: 3px
+        color: #fff
+        font-size: 1.3rem
+        cursor: pointer
+        text-decoration: none
+        position: relative
+        padding-bottom: 5px
+        margin-top: 5px
+        transition: all .3s
+        padding: 2px 20px
+        &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+            height: 3px
+            background-color: #fff
+            transition: width .3s
+            width: 0
+        &:nth-of-type(1)
+            margin-left: 0px
+        &:hover
+            &::after
+                width: 50%
+        &.active
+            background-color: #fff
+            color: $mainColor

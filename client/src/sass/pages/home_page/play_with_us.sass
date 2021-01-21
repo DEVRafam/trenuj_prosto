@@ -1,0 +1,62 @@
+section#play-with-us
+    section.text
+        cursor: default
+        display: flex
+        align-items: center
+        flex-direction: column
+        div.text-wrap
+            display: flex
+            flex-direction: column
+        div.activities,
+        div.activities-two
+            background-image: url('/img/home_page/activities.png')
+            height: 120px
+            width: 100%
+            background-position: center
+            background-size: contain
+            background-repeat: no-repeat
+            margin-bottom: 50px
+        div.activities-two
+            display: none
+            
+    section.route
+        @include textUS
+        div.cutted-img
+            background-position: right
+            background-image: url('/img/home_page/train-with-us.jpg')
+        h4
+            margin: 20px 0
+        a
+            @include smoothHover
+            text-decoration: none
+            padding: 5px 20px
+            font-size: 1.2rem
+            letter-spacing: 2px
+    
+    @media screen and ( max-width: 1400px )
+        section.text
+            div.activities
+                margin: 20px 0 50px 0
+            div.text-wrap
+                flex-direction: row
+                justify-content: space-between
+                p
+                    width: 45%
+    //
+    @media screen and ( max-width: 600px )
+        section.route
+            margin-bottom: 20px
+        section.text
+            div.activities
+                margin: 10px 0
+                background-image: url('/img/home_page/activities-two.png')
+            div.activities-two
+                margin: 10px 0
+                background-image: url('/img/home_page/activities-one.png')
+                display: block
+            // 
+            div.text-wrap
+                flex-direction: column
+                p
+                    width: 100%
+                    margin: 0

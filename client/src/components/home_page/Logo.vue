@@ -1,5 +1,5 @@
 <template>
-    <section class="logo">
+    <section id="logo">
         <!--  -->
         <div class="description">
             <div class="img"></div>
@@ -11,13 +11,24 @@
         <!--  -->
         <div class="left">
             <div class="route">
-                <h3></h3>
-                <router-link to="/gimnastyka-korektycyjna">Gimnastyka Korekcyjna</router-link>
+                <h2>Gimnastyka Korekcyjna</h2>
+                <router-link to="/gimnastyka-korektycyjna">Dowiedz się więcej</router-link>
             </div>
         </div>
         <div class="right">
-            <h3></h3>
-            <router-link to="/oferty">Obozy Sportowe i Tematyczne</router-link>
+            <div class="route">
+                <h2>Obozy Sportowe i Tematyczne</h2>
+                <router-link to="/oferty">Dowiedz się więcej</router-link>
+            </div>
+        </div>
+        <!--  -->
+        <div class="navigation">
+            <div class="nav-logo"></div>
+            <!--  -->
+            <router-link to="/" class="route active">strona główna</router-link>
+            <router-link to="/oferty" class="route">nasza oferta</router-link>
+            <router-link to="/aktualnosci" class="route">aktualnosci</router-link>
+            <a class="route">instruktorzy</a>
         </div>
     </section>
 </template>
@@ -36,7 +47,7 @@ export default {
         navigationElement.classList.add("displayNone");
         //
         window.addEventListener("scroll", () => {
-            this.navigationIsHidden = scrollY < 300;
+            this.navigationIsHidden = scrollY < window.innerHeight - 250;
         });
     },
     methods: {

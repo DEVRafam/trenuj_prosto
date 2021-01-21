@@ -1,3 +1,9 @@
+@keyframes scaleHeight
+    0%
+        transform: scaleY(0)
+    100%
+        transform: scaleY(1)
+        
 @keyframes fade-center
     0%
         opacity: 0
@@ -40,10 +46,11 @@
 @keyframes fade-left
     0%
         opacity: 0
-        transform: translateX(50px)
+        transform: translateX(-50px)
     30%
         opacity: 1
     100%
+        opacity: 1
         transform: translateX(0)
 //
 @keyframes fade-right
@@ -53,6 +60,7 @@
     30%
         opacity: 1
     100%
+        opacity: 1
         transform: translateX(0)
 //
 @keyframes fade-only-opacity
