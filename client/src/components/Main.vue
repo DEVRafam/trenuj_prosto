@@ -12,9 +12,7 @@
         <ScrollBtn></ScrollBtn>
         <AdminInterface></AdminInterface>
         <!--  -->
-        <footer id="main-footer">
-            <h1>Footer</h1>
-        </footer>
+        <Footer></Footer>
     </div>
 </template>
 <script>
@@ -22,8 +20,9 @@
 import Navigation from "./navigation/Navigation_MAIN";
 import ScrollBtn from "./ScrollBtn";
 import AdminInterface from "./admin/interface/AdminInterface_MAIN";
+import Footer from "./Footer";
 export default {
-    components: { Navigation, ScrollBtn, AdminInterface },
+    components: { Navigation, ScrollBtn, AdminInterface, Footer },
     methods: {
         beforeLeave() {
             scrollTo({

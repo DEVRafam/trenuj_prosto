@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../components/home_page/Home_MAIN";
 import NotFoundException from "../components/404.vue";
+import RODO from "../components/RODO";
 Vue.use(VueRouter);
 // routes
 import admin from "./admin";
@@ -21,6 +22,14 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home
+    },
+    {
+        path: "/rodo",
+        name: "RODO",
+        component: RODO,
+        meta: {
+            title: "Polityka RODO"
+        }
     },
     ...admin,
     ...offers,

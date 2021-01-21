@@ -32,9 +32,11 @@ export default {
                 diff = main.offsetTop + offsetHeight / 0.75 - window.innerHeight;
             }
             //
-            window.addEventListener("scroll", () => {
+            const handle = () => {
                 if (scrollY >= diff) main.classList.add("scroll-animation");
-            });
+            };
+            handle();
+            window.addEventListener("scroll", handle);
         });
     }
 };
