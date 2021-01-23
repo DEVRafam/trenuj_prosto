@@ -29,6 +29,10 @@
                 </div>
                 <!--  -->
                 <div class="element">
+                    <router-link to="/admin/login">Zaloguj</router-link>
+                </div>
+                <!--  -->
+                <div class="element">
                     <router-link to="/rodo">RODO</router-link>
                 </div>
             </div>
