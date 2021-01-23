@@ -6,17 +6,16 @@ section.organization
     max-width: 800px
     margin-top: 100px
     //
-    $logo-width: 200px
     div.o-logo
         @include confBgImg
-        width: $logo-width
+        width: 200px
         background-image: url('/img/logo.png')
         background-size: contain
     div.o-text
         padding: 0 20px
         @include flexCenter
         flex-direction: column
-        width: calc( 100% - $logo-width )
+        width: calc( 100% - 200px )
         letter-spacing: 2px
         .line
             margin-bottom: 5px
