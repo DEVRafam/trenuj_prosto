@@ -11,7 +11,7 @@
             <router-link to="/" class="route">strona główna</router-link>
             <router-link to="/oferty" class="route">nasza oferta</router-link>
             <router-link to="/aktualnosci" class="route">aktualnosci</router-link>
-            <a class="route">instruktorzy</a>
+            <router-link to="/instruktorzy" class="route">instruktorzy</router-link>
         </div>
     </div>
 </template>

@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 import admin from "./admin";
 import offers from "./offers";
 import events from "./events";
+import instructors from "./instructors";
 //
 const routes = [
     {
@@ -33,7 +34,8 @@ const routes = [
     },
     ...admin,
     ...offers,
-    ...events
+    ...events,
+    ...instructors
 ];
 const router = new VueRouter({
     mode: "history",

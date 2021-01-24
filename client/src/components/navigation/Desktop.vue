@@ -3,7 +3,7 @@
         <router-link to="/" class="route" :class="getClass('home')">strona główna</router-link>
         <router-link to="/oferty" class="route" :class="getClass('offer')">nasza oferta</router-link>
         <router-link to="/aktualnosci" class="route" :class="getClass('events')">aktualnosci</router-link>
-        <a class="route">instruktorzy</a>
+        <router-link to="/instruktorzy" class="route" :class="getClass('instructors')">instruktorzy</router-link>
     </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
             else if (offersRoutesNames.includes(name)) return "offer";
             // events
             else if (eventsRoutesNames.includes(name)) return "events";
+            else if (name === "Instructors") return "instructors";
             else return "";
             // others, to do
         }

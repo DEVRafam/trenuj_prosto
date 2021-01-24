@@ -1,0 +1,26 @@
+section#instructors-navigation
+    margin: 30px 0
+    display: flex
+    justify-content: center
+        
+    button
+        color: $mainColor
+        background-color: #fff
+        transition: all .3s
+        border: 2px solid $mainColor
+        margin-left: 20px
+        font-size: 1.2rem
+        letter-spacing: 2px
+        &:disabled
+            color: #fff
+            background-color: $mainColor
+        &:hover
+            color: #fff
+            background-color: $mainColor
+        &:first-of-type
+            margin-left: 0
+    @media screen and ( max-width: 500px )
+        flex-direction: column
+        padding: 0 5%
+        button
+            margin: 0 0 10px 0
