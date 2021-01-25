@@ -10,18 +10,21 @@ module.exports = {
         config,
     },
     services: {
-        "controllers.user": {
-            class: "controllers/UserController",
+        // offers
+        "controllers.offers.admin": {
+            class: "controllers/offers/OffersAdminController",
             arguments: ["@models"],
         },
-        "controllers.offer": {
-            class: "controllers/OfferController",
+        "controllers.offers.getters": {
+            class: "controllers/offers/OffersGettersController",
             arguments: ["@models"],
         },
+        // events
         "controllers.event": {
             class: "controllers/EventController",
             arguments: ["@models"],
         },
+        // authorization
         "controllers.auth.login": {
             class: "controllers/auth/LoginController",
             arguments: ["@models", "%jwt%", "%bcrypt%"],

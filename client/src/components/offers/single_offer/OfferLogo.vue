@@ -14,9 +14,9 @@ export default {
         getLogo() {
             if (!this.offer) return;
             const { API_ADDRESS } = this;
-            const { destination } = this.$route.params;
+            const { id } = this.offer;
             //
-            const url = `${API_ADDRESS}/api/offer/single/${destination}/logo`;
+            const url = `${API_ADDRESS}/api/offer/single/${id}/logo`;
             return `background-image: url(${url})`;
         }
     }

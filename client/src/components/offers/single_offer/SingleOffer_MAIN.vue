@@ -39,9 +39,13 @@ export default {
         const { axios, API_ADDRESS } = this;
         const { destination } = this.$route.params;
         //
-        const { data: offer } = await axios.get(`${API_ADDRESS}/api/offer/single/${destination}`);
-        this.offer = offer;
-        document.title = `Oferta | ${offer.destination}`;
+        try {
+            const { data: offer } = await axios.get(`${API_ADDRESS}/api/offer/single/${destination}`);
+            this.offer = offer;
+            document.title = offer.destination;
+        } catch (e) {
+            this.$router.push({ path: "/404" });
+        }
     }
 };
 </script>

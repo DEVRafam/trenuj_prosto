@@ -4,6 +4,8 @@ import { API_ADDRESS } from "../index";
 export default {
     namespaced: true,
     state: {
+        uloadStatus: false,
+        PROPERTY_NAME_IN_LOCAL_STORAGE: "newEvent",
         HEADER_LENGTH: {
             max: 250,
             min: 10
@@ -12,8 +14,10 @@ export default {
             min: 10,
             max: 750
         },
-        PROPERTY_NAME_IN_LOCAL_STORAGE: "newEvent",
-        uloadStatus: false
+        EVENT_TITLE_LENGTH: {
+            min: 10,
+            max: 60
+        }
     },
     mutations: {
         setUploadStatus(state, val) {
@@ -23,8 +27,11 @@ export default {
     actions: {
         async validateData({ state }, eventData) {
             const { content, logo, images, title } = eventData;
-            // validate lengths
-            if (content.length < 1 || title.length < 10 || !logo) return false;
+            // check whether content and logo exist
+            if (content.length < 1 || !logo) return false;
+            // check title length
+            const { EVENT_TITLE_LENGTH: etl } = state;
+            if (title.length < etl.min || title.length > etl.max) return false;
             // validate content
             let result = true;
             content.forEach(item => {

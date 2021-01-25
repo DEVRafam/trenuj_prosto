@@ -27,7 +27,7 @@ module.exports = [
             "5 Wojskowy Szpital Kliniczny z Polikliniką im. Mariana Garlickiego",
         ]),
         turistBonPayment: "true",
-        path: "2021-01-13_Kraków",
+        path: "offer_1610882549105",
     },
     {
         destination: "Berlin",
@@ -55,7 +55,7 @@ module.exports = [
             "Cmentarz żydowski w Berlinie-Weißensee",
         ]),
         turistBonPayment: "true",
-        path: "2021-01-19_Berlin",
+        path: "offer_1610882857502",
     },
     {
         destination: "Gdańsk",
@@ -77,7 +77,7 @@ module.exports = [
             "Forum Gdańsk",
         ]),
         turistBonPayment: "true",
-        path: "2021-03-18_Gdańsk",
+        path: "offer_1610883251295",
     },
     {
         destination: "Paryż",
@@ -90,6 +90,6 @@ module.exports = [
         price: 1500,
         activities: '["\\tWieża Eiffla","\\tMuzeum w Luwrze ","Katedra Notre-Dame ","Łuk Triumfalny w Paryżu","Bazylika Sacré-Cœur","Panteon – dawny kościół,","budynki Sorbony","Les Invalides","Conciergerie ","Sainte-Chapelle ","Opéra Garnier","Hôtel Lambert "]',
         turistBonPayment: "true",
-        path: "2021-02-08_Paryż",
+        path: "offer_1610883251262",
     },
 ];

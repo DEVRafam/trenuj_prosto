@@ -42,11 +42,15 @@ export default {
         const { title } = this.$route.params;
         const { axios, API_ADDRESS } = this;
         // main event data
-        const { data: eventData } = await axios.get(`${API_ADDRESS}/api/events/single/${title}`);
-        this.eventData = eventData;
-        document.title = eventData.title;
+        try {
+            const { data: eventData } = await axios.get(`${API_ADDRESS}/api/events/single/${title}`);
+            this.eventData = eventData;
+            document.title = eventData.title;
+        } catch (e) {
+            this.$router.push({ path: "/404" });
+        }
         // reccomendatios for the event
-        const { id } = eventData;
+        const { id } = this.eventData;
         const { data: recommendations } = await axios.get(`${API_ADDRESS}/api/events/single/${id}/recommendations`);
         this.recommendationsList = recommendations;
     }

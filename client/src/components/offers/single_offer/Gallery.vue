@@ -45,10 +45,10 @@ export default {
     methods: {
         getGalleryImg(index) {
             if (!this.gallery) return;
-            const { API_ADDRESS } = this;
-            const { destination } = this.$route.params;
+            const { API_ADDRESS, offer } = this;
+            const { id } = offer;
             //
-            const url = `${API_ADDRESS}/api/offer/single/${destination}/gallery/${index}`;
+            const url = `${API_ADDRESS}/api/offer/single/${id}/gallery/${index}`;
             return `background-image: url(${url})`;
         },
         openGalleryModal(index) {

@@ -1,3 +1,14 @@
 @import ./login
 @import ./addOffer/add_offer_main
 @import ./addEvent/add_event_wrap
+//
+span.textLengthInfo
+    @include textUS
+    @include flexCenter
+    letter-spacing: 2px
+    color: $mainColor
+    margin-left: 20px
+    transition: color .3s
+    font-weight: bold
+    &.error
+        color: $red

@@ -8,7 +8,20 @@ export default {
         logoVisualization: "",
         currentStage: "content",
         uploadingStatus: "pending",
-        PROPERTY_NAME_IN_LOCAL_STORAGE: "new_offer"
+        //
+        PROPERTY_NAME_IN_LOCAL_STORAGE: "new_offer",
+        DESTINATION_LENGTH: {
+            min: 3,
+            max: 60
+        },
+        DESCRIPTION_LENGTH: {
+            min: 20,
+            max: 1000
+        },
+        ACTIVITY_LENGTH: {
+            min: 10,
+            max: 50
+        }
     },
     mutations: {
         setLogoVisualization: (state, val) => (state.logoVisualization = val),
@@ -24,7 +37,7 @@ export default {
         changeUploadingStatus: (state, val) => (state.uploadingStatus = val)
     },
     actions: {
-        validateOfferDataObject(module, offerData) {
+        validateOfferDataObject({ state }, offerData) {
             let result = true;
             // required properites
             ["logo", "start", "end", "price"].forEach(property => {
@@ -33,12 +46,13 @@ export default {
             if (result === false) return false;
             // validate length of certin properties
             [
-                { prop: "destination", min: 3 },
-                { prop: "description", min: 20 },
-                { prop: "activities", min: 1 }
+                { prop: "destination", ...state.DESTINATION_LENGTH },
+                { prop: "description", ...state.DESCRIPTION_LENGTH },
+                { prop: "activities", min: 1, max: 99 }
             ].forEach(propObject => {
-                const { prop, min } = propObject;
-                if (offerData[prop].length < min) result = false;
+                const { prop, min, max } = propObject;
+                const { length } = offerData[prop];
+                if (length < min || length > max) result = false;
             });
             //
             return result;

@@ -1,20 +1,22 @@
 const router = require("express").Router();
 module.exports = (di) => {
-    const OfferController = di.get("controllers.offer");
+    // Offers controllers:
+    const AdminController = di.get("controllers.offers.admin");
+    const GettersController = di.get("controllers.offers.getters");
+    // Middlewares:
     const { authenticate } = di.get("middlewares");
     //
-    router.delete("/:id", [authenticate], (...args) => OfferController.deleteOffer(...args));
+    // admin routes
     //
-    router.post("/create", [authenticate], (...args) => OfferController.createNewOffer(...args));
+    router.delete("/:id", [authenticate], (...args) => AdminController.deleteOffer(...args));
+    router.post("/create", [authenticate], (...args) => AdminController.createNewOffer(...args));
     //
-    router.get("/all", (...args) => OfferController.getAll(...args));
+    // common user routes
     //
-    router.get("/single/:destination", (...args) => OfferController.getSingle(...args));
-    //
-    router.get("/single/:destination/logo", (...args) => OfferController.getLogo(...args));
-    //
-    router.get("/single/:destination/gallery/:index", (...args) => OfferController.getGalleryImg(...args));
-    //
+    router.get("/all", (...args) => GettersController.allOffers(...args));
+    router.get("/single/:destination", (...args) => GettersController.singleOffer(...args));
+    router.get("/single/:id/logo", (...args) => GettersController.logo(...args));
+    router.get("/single/:id/gallery/:index", (...args) => GettersController.galleryImage(...args));
     //
     return router;
 };
