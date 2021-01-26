@@ -1,11 +1,9 @@
 const path = require("path");
-const fs = require("fs");
-const fse = require("fs-extra");
 //
-class OffersAdminController extends require("./abstracts/AdminAbstract") {
+class OffersAdminController extends require(path.join(__dirname, "..", "AdminAbstract")) {
     constructor(models) {
-        const pathToUploadedOffers = path.join(__dirname, "..", "..", "..", "upload/offers");
-        super(models, pathToUploadedOffers);
+        const pathToUploadedDir = path.join(__dirname, "..", "..", "..", "upload/offers");
+        super(models, pathToUploadedDir);
     }
     /**
      * @api {post} /api/offer/create Create new offer
@@ -51,9 +49,9 @@ class OffersAdminController extends require("./abstracts/AdminAbstract") {
                 return res.sendStatus(403);
             }
             // generate root dir name
-            const dirName = this.generateRootDirForCreatingOffer();
+            const dirName = this.createDirToStoreImages("offer");
             // upload all images
-            const { logo, gallery } = await this.uploadAllImagesForCreatingOffer(req, dirName);
+            const { logo, gallery } = await this.uploadAllImages(req, dirName);
             // insert new offer data into database
             const dataToDB = this.generateDataObjectForCreatingOffer(req, dirName, logo, gallery);
             await this.Offer.create(dataToDB);
@@ -82,22 +80,12 @@ class OffersAdminController extends require("./abstracts/AdminAbstract") {
      *
      */
     async deleteOffer(req, res) {
-        // validate token
-        const { Offer } = this;
-        if (!(await this.deepUserAuthorization(req))) {
-            return res.sendStatus(403);
-        }
-        //
         try {
-            const { id: offerId } = req.params;
-            const offer = await Offer.findOne({ where: { id: offerId * 1 } });
-            if (offer === null) return res.sendStatus(404);
-            //
-            const dirPath = path.join(this.pathToUploadedOffers, offer.path);
-            fse.removeSync(dirPath);
-            await offer.destroy();
-            //
-            res.sendStatus(200);
+            if (!(await this.deepUserAuthorization(req))) {
+                return res.sendStatus(403);
+            } else {
+                return res.sendStatus(await this.deleteRow(req, "Offer"));
+            }
         } catch (e) {
             res.sendStatus(500);
         }

@@ -11,7 +11,9 @@
             </template>
             <!--  -->
         </div>
-        <button @click="displayEntireGallery = !displayEntireGallery" class="display-control" v-text="displayEntireGallery ? 'Zwiń' : 'Rozwiń'">Rozwiń</button>
+        <template v-if="JSON.parse(offer.gallery).length > 3">
+            <button @click="displayEntireGallery = !displayEntireGallery" class="display-control" v-text="displayEntireGallery ? 'Zwiń' : 'Rozwiń'">Rozwiń</button>
+        </template>
         <!--  -->
         <b-modal id="img-preview-modal" :title="`Zdjęcie (${currentGalleryModalIndex + 1}/${gallery.length})`" hide-footer class="modal" ref="modal">
             <div class="modal-img" :style="getGalleryImg(currentGalleryModalIndex)"></div>

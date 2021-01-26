@@ -20,8 +20,12 @@ module.exports = {
             arguments: ["@models"],
         },
         // events
-        "controllers.event": {
-            class: "controllers/EventController",
+        "controllers.events.getters": {
+            class: "controllers/events/EventsGettersController",
+            arguments: ["@models"],
+        },
+        "controllers.events.admin": {
+            class: "controllers/events/EventsAdminController",
             arguments: ["@models"],
         },
         // authorization

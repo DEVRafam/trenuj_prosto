@@ -1,6 +1,7 @@
 const path = require("path");
+const paginationHandler = require(path.join(__dirname, "..", "..", "helpers", "paginationHandler"));
 //
-class OffersGettersController extends require(path.join(__dirname, "abstracts", "GettersAbstract")) {
+class OffersGettersController extends require(path.join(__dirname, "GettersAbstract")) {
     constructor(models) {
         const pathToUploadedOffers = path.join(__dirname, "..", "..", "..", "upload/offers");
         super(models, pathToUploadedOffers);
@@ -10,6 +11,8 @@ class OffersGettersController extends require(path.join(__dirname, "abstracts", 
     }
     /**
      * @api {get} /api/offer/all Get all offers for certin page
+     * @apiQuery page {Number} number of page
+     * @apiQuery limit {Number} limit for offers amount per single page
      * @apiSuccessExample Success-Response:
      *     HTTP/1.1 200 OK
      *     {
@@ -33,11 +36,7 @@ class OffersGettersController extends require(path.join(__dirname, "abstracts", 
             });
             if (offers === null) return res.sendStatus(404);
             //
-            const { totalPagesAmount, items } = this._handleAllOffersPagination(req.query, offers);
-            res.send({
-                items,
-                totalPagesAmount,
-            });
+            res.send(paginationHandler(req.query, offers));
         } catch (e) {
             return res.sendStatus(500);
         }
@@ -70,21 +69,6 @@ class OffersGettersController extends require(path.join(__dirname, "abstracts", 
         } catch (e) {
             return res.sendStatus(500);
         }
-    }
-    //
-    // Helpers
-    //
-    _handleAllOffersPagination(query, offers) {
-        // calculate range indexes
-        const page = query.page * 1,
-            limit = query.limit * 1;
-        const start = (page - 1) * limit,
-            end = start + limit;
-        //
-        return {
-            totalPagesAmount: Math.ceil(offers.length / limit),
-            items: offers.splice(start, end),
-        };
     }
 }
 module.exports = OffersGettersController;

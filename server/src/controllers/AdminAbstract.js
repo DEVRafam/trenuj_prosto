@@ -3,24 +3,21 @@ const { promisify } = require("util");
 const fse = require("fs-extra");
 //
 module.exports = class {
-    constructor(models, pathToUploadedOffers) {
+    constructor(models, pathToUploadedDir) {
         this.Offer = models.Offer;
         this.User = models.User;
+        this.Event = models.Event;
         //
-        this.pathToUploadedOffers = pathToUploadedOffers;
+        this.pathToUploadedDir = pathToUploadedDir;
     }
-    //
-    // helpers functions only
-    //
     async deepUserAuthorization(req) {
         const { id: userId } = req.authorizedToken;
         const result = await this.User.findOne({ where: { id: userId } });
         return !!result;
     }
-    // for creating offer
-    generateRootDirForCreatingOffer() {
-        const dirName = `offer_${Date.now()}`;
-        fse.ensureDirSync(path.join(this.pathToUploadedOffers, dirName));
+    createDirToStoreImages(prefix) {
+        const dirName = `${prefix}_${Date.now()}`;
+        fse.ensureDirSync(path.join(this.pathToUploadedDir, dirName));
         return dirName;
     }
     async uploadSingleImage(imgKey, req, dirName) {
@@ -29,11 +26,11 @@ module.exports = class {
         const fileName = `${imgKey}.${ext}`;
         //
         const uploadImg = promisify(file.mv);
-        await uploadImg(path.join(this.pathToUploadedOffers, dirName, fileName));
+        await uploadImg(path.join(this.pathToUploadedDir, dirName, fileName));
         //
         return fileName;
     }
-    async uploadAllImagesForCreatingOffer(req, dirName) {
+    async uploadAllImages(req, dirName) {
         let logo,
             gallery = [];
         for (let imgKey in req.files) {
@@ -44,6 +41,19 @@ module.exports = class {
         //
         return { logo, gallery };
     }
+    async deleteRow(req, model) {
+        const { id } = req.params;
+        const modelData = await this[model].findOne({ where: { id: id * 1 } });
+        //
+        if (modelData === null) return 404;
+        else {
+            const dirPath = path.join(this.pathToUploadedDir, modelData.path);
+            fse.removeSync(dirPath);
+            await modelData.destroy();
+            return 200;
+        }
+    }
+    // OFFER DATA
     generateDataObjectForCreatingOffer(req, dirName, logo, gallery) {
         const dataToDB = JSON.parse(JSON.stringify(req.body));
         dataToDB.logo = logo;
@@ -51,5 +61,12 @@ module.exports = class {
         dataToDB.path = dirName;
         return dataToDB;
     }
-    // for offer deleting
+    // EVENT DATA
+    generateDataObjectForCreatingEvent(req, dirName, logo, images) {
+        const dataToDB = JSON.parse(JSON.stringify(req.body));
+        dataToDB.logo = logo;
+        dataToDB.images = JSON.stringify(images);
+        dataToDB.path = dirName;
+        return dataToDB;
+    }
 };

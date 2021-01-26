@@ -1,21 +1,23 @@
 const router = require("express").Router();
 module.exports = (di) => {
-    const eventController = di.get("controllers.event");
+    // Events Controllers:
+    const GettersController = di.get("controllers.events.getters");
+    const AdminController = di.get("controllers.events.admin");
+    // Middlewares:
     const { authenticate } = di.get("middlewares");
-    // //
-    router.post("/create", [authenticate], (...args) => eventController.createNewEvent(...args));
     //
-    router.delete("/:id", [authenticate], (...args) => eventController.deleteSingleEvent(...args));
-
+    // Admin routes:
     //
-    router.get("/all", (...args) => eventController.getAll(...args));
+    router.post("/create", [authenticate], (...args) => AdminController.createNewEvent(...args));
+    router.delete("/:id", [authenticate], (...args) => AdminController.deleteSingleEvent(...args));
     //
-    router.get("/single/:title", (...args) => eventController.getSingle(...args));
+    // common user routes
     //
-    router.get("/single/:title/logo", (...args) => eventController.getLogo(...args));
+    router.get("/all", (...args) => GettersController.allEvents(...args));
+    router.get("/single/:title", (...args) => GettersController.singleEvent(...args));
+    router.get("/single/:id/recommendations", (...args) => GettersController.singleEventRecommendations(...args));
+    router.get("/single/:id/logo", (...args) => GettersController.logo(...args));
+    router.get("/single/:id/content-img/:imgIndex", (...args) => GettersController.contentImage(...args));
     //
-    router.get("/single/:id/content-img/:imgIndex", (...args) => eventController.getContentImage(...args));
-    //
-    router.get("/single/:id/recommendations", (...args) => eventController.getRecommendatios(...args));
     return router;
 };

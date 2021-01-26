@@ -31,28 +31,40 @@ export default {
     },
     methods: {
         generateDate() {
-            return this.eventData.createdAt.slice(0, 10);
+            if (this.eventData) {
+                return this.eventData.createdAt.slice(0, 10);
+            }
         },
         generateLogo() {
-            const { API_ADDRESS, eventData } = this;
-            return `${API_ADDRESS}/api/events/single/${eventData.title}/logo`;
+            if (this.eventData) {
+                console.log(this.eventData);
+                const { API_ADDRESS, eventData } = this;
+                return `${API_ADDRESS}/api/events/single/${eventData.id}/logo`;
+            }
+        },
+        async getRecomendations() {
+            if (this.eventData) {
+                const { axios, API_ADDRESS } = this;
+                const { id } = this.eventData;
+                const { data: recommendations } = await axios.get(`${API_ADDRESS}/api/events/single/${id}/recommendations`);
+                this.recommendationsList = recommendations;
+            }
         }
     },
     async mounted() {
         const { title } = this.$route.params;
         const { axios, API_ADDRESS } = this;
-        // main event data
+        //
         try {
             const { data: eventData } = await axios.get(`${API_ADDRESS}/api/events/single/${title}`);
             this.eventData = eventData;
             document.title = eventData.title;
+            //
+            await this.getRecomendations();
         } catch (e) {
             this.$router.push({ path: "/404" });
         }
         // reccomendatios for the event
-        const { id } = this.eventData;
-        const { data: recommendations } = await axios.get(`${API_ADDRESS}/api/events/single/${id}/recommendations`);
-        this.recommendationsList = recommendations;
     }
 };
 </script>
