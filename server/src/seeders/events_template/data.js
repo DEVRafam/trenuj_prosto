@@ -6,6 +6,7 @@ module.exports = [
         images: '["image-1610957020851.jpg","image-1610957033592.jpg"]',
         logo: "logo.jpg",
         path: "event_1610957083839",
+        slug: "bali-(wyspa)",
     },
     {
         title: "Co to jest drzewo",
@@ -14,6 +15,7 @@ module.exports = [
         images: '["image-1610956577814.jpg","image-1610956677239.jpg"]',
         logo: "logo.jpg",
         path: "event_1610956678581",
+        slug: "co-to-jest-drzewo",
     },
     {
         title: "Starożytny Egipt",
@@ -22,6 +24,7 @@ module.exports = [
         images: '["image-1610956194461.jpg","image-1610956249984.jpg"]',
         logo: "logo.jpg",
         path: "event_1610956260793",
+        slug: "starozytny-egipt",
     },
     {
         title: "Zwierzęta hodowlane",
@@ -30,6 +33,7 @@ module.exports = [
         images: '["image-1610955856821.jpg"]',
         logo: "logo.jpg",
         path: "event_1610955861917",
+        slug: "zwierzeta-hodowlane",
     },
     {
         title: "Hongkong - pachnący port",
@@ -38,6 +42,7 @@ module.exports = [
         images: '["image-1610883145650.jpg","image-1610883213621.jpg"]',
         logo: "logo.jpg",
         path: "event_1610883251262",
+        slug: "hongkong---pachnacy-port",
     },
     {
         title: "Sarna jako rodzaj ssaka parzystokopytnego",
@@ -46,6 +51,7 @@ module.exports = [
         images: '["image-1610882814976.jpg","image-1610882845901.jpg"]',
         logo: "logo.jpg",
         path: "event_1610882857502",
+        slug: "sarna-jako-rodzaj-ssaka-parzystokopytnego",
     },
     {
         title: "Jachty na jeziorze mucharskim",
@@ -54,5 +60,6 @@ module.exports = [
         images: '["image-1610882466246.jpg","image-1610882511370.jpg"]',
         logo: "logo.jpg",
         path: "event_1610882549105",
+        slug: "jachty-na-jeziorze-mucharskim",
     },
 ];

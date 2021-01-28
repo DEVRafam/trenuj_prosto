@@ -28,7 +28,10 @@
 
 <script>
 import { mapActions, mapState, mapMutations } from "vuex";
+import generateSlugName from "../generateSlugName";
+//
 export default {
+    mixins: [generateSlugName],
     props: ["eventData"],
     computed: {
         ...mapState("admin_add_event", ["uloadStatus"])
@@ -37,7 +40,8 @@ export default {
         ...mapActions("admin_auth", ["logout"]),
         ...mapMutations("admin_add_event", ["setUploadStatus"]),
         newEventPath() {
-            return `/aktualnosci/${this.eventData.title}`;
+            const { eventData, generateSlugName } = this;
+            return `/aktualnosci/${generateSlugName(eventData.title)}`;
         }
     }
 };

@@ -20,18 +20,26 @@ export default {
             }
         },
         async logout() {
-            const user = JSON.parse(localStorage.getItem("user"));
-            const url = `${API_ADDRESS}/api/auth/logout`;
-            const data = { refreshToken: user.refreshToken };
-            const options = {
-                headers: {
-                    Authorization: `Bearer ${user.accessToken}`
-                }
+            const reset = () => {
+                localStorage.setItem("user", JSON.stringify({}));
+                location.reload();
             };
             //
-            await axios.post(url, data, options);
-            localStorage.setItem("user", JSON.stringify({}));
-            location.reload();
+            try {
+                const user = JSON.parse(localStorage.getItem("user"));
+                const url = `${API_ADDRESS}/api/auth/logout`;
+                const data = { refreshToken: user.refreshToken };
+                const options = {
+                    headers: {
+                        Authorization: `Bearer ${user.accessToken}`
+                    }
+                };
+                //
+                await axios.post(url, data, options);
+                reset();
+            } catch (e) {
+                reset();
+            }
         },
         async refreshToken() {
             return await refreshToken();

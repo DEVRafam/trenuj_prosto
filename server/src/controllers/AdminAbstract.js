@@ -1,6 +1,7 @@
 const path = require("path");
 const { promisify } = require("util");
 const fse = require("fs-extra");
+const generateSlugName = require("../helpers/generateSlugName");
 //
 module.exports = class {
     constructor(models, pathToUploadedDir) {
@@ -59,6 +60,7 @@ module.exports = class {
         dataToDB.logo = logo;
         dataToDB.gallery = JSON.stringify(gallery);
         dataToDB.path = dirName;
+        dataToDB.slug = generateSlugName(dataToDB.destination);
         return dataToDB;
     }
     // EVENT DATA
@@ -67,6 +69,7 @@ module.exports = class {
         dataToDB.logo = logo;
         dataToDB.images = JSON.stringify(images);
         dataToDB.path = dirName;
+        dataToDB.slug = generateSlugName(dataToDB.title);
         return dataToDB;
     }
 };

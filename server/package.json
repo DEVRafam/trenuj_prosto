@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "serve": "cross-env NODE_ENV=development nodemon src/server.js",
-        "db:rebuild": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all"
+        "db:rebuild": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all",
+        "test:deep": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all && jest --detectOpenHandles",
+        "test": "jest --detectOpenHandles"
     },
     "author": "",
     "license": "ISC",
@@ -26,5 +28,9 @@
         "nodemon": "^2.0.6",
         "sequelize": "^6.3.5",
         "sequelize-cli": "^6.2.0"
+    },
+    "devDependencies": {
+        "jest": "^26.6.3",
+        "supertest": "^6.1.3"
     }
 }

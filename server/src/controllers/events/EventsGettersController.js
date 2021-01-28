@@ -56,14 +56,18 @@ class EventsGettersController extends require(path.join(__dirname, "GettersAbstr
      *     }
      */
     async singleEvent(req, res) {
-        const { title } = req.params;
-        //
-        const result = await this.Event.findOne({
-            where: { title },
-            attributes: { exclude: this.EXCLUDE_FROM_SINGLE_EVENT },
-        });
-        if (result) res.send(result);
-        else res.sendStatus(404);
+        try {
+            const { slugName } = req.params;
+            //
+            const result = await this.Event.findOne({
+                where: { slug: slugName },
+                attributes: { exclude: this.EXCLUDE_FROM_SINGLE_EVENT },
+            });
+            if (result) res.send(result);
+            else res.sendStatus(404);
+        } catch (e) {
+            return res.sendStatus(500);
+        }
     }
     /**
      * @api {get} /single/:id/recommendations Get all events for certin page
@@ -78,17 +82,21 @@ class EventsGettersController extends require(path.join(__dirname, "GettersAbstr
      *         }]
      */
     async singleEventRecommendations(req, res) {
-        const { id } = req.params;
-        const recommendations = await this.Event.findAll({
-            where: {
-                id: { [Op.ne]: id },
-            },
-            attributes: { exclude: this.EXCLUDE_FORM_ALL_EVENTS },
-            limit: 3,
-            order: [["id", "DESC"]],
-        });
-        //
-        res.send(recommendations);
+        try {
+            const { id } = req.params;
+            const recommendations = await this.Event.findAll({
+                where: {
+                    id: { [Op.ne]: id },
+                },
+                attributes: { exclude: this.EXCLUDE_FORM_ALL_EVENTS },
+                limit: 3,
+                order: [["id", "DESC"]],
+            });
+            //
+            res.send(recommendations);
+        } catch (e) {
+            return res.sendStatus(500);
+        }
     }
 }
 module.exports = EventsGettersController;

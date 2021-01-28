@@ -7,7 +7,7 @@
             <h2 v-text="offer.destination"></h2>
             <span class="term" v-text="offerTerm()"></span>
             <p v-text="offerDescription()"></p>
-            <router-link :to="`/oferty/${offer.destination}`">Zobacz więcej</router-link>
+            <router-link :to="`/oferty/${offer.slug}`">Zobacz więcej</router-link>
         </div>
     </div>
 </template>

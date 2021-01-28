@@ -61,7 +61,7 @@ class OffersGettersController extends require(path.join(__dirname, "GettersAbstr
     async singleOffer(req, res) {
         try {
             const result = await this.Offer.findOne({
-                where: { destination: req.params.destination },
+                where: { slug: req.params.slugName },
                 attributes: { exclude: this.EXCLUDE_FROM_SINGLE_OFFER },
             });
             //

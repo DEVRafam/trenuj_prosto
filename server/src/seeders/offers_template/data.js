@@ -28,6 +28,7 @@ module.exports = [
         ]),
         turistBonPayment: "true",
         path: "offer_1610882549105",
+        slug: "krakow",
     },
     {
         destination: "Berlin",
@@ -56,6 +57,7 @@ module.exports = [
         ]),
         turistBonPayment: "true",
         path: "offer_1610882857502",
+        slug: "berlin",
     },
     {
         destination: "Gdańsk",
@@ -78,6 +80,7 @@ module.exports = [
         ]),
         turistBonPayment: "true",
         path: "offer_1610883251295",
+        slug: "gdansk",
     },
     {
         destination: "Paryż",
@@ -91,5 +94,6 @@ module.exports = [
         activities: '["\\tWieża Eiffla","\\tMuzeum w Luwrze ","Katedra Notre-Dame ","Łuk Triumfalny w Paryżu","Bazylika Sacré-Cœur","Panteon – dawny kościół,","budynki Sorbony","Les Invalides","Conciergerie ","Sainte-Chapelle ","Opéra Garnier","Hôtel Lambert "]',
         turistBonPayment: "true",
         path: "offer_1610883251262",
+        slug: "paryz",
     },
 ];

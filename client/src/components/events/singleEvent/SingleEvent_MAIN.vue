@@ -37,7 +37,6 @@ export default {
         },
         generateLogo() {
             if (this.eventData) {
-                console.log(this.eventData);
                 const { API_ADDRESS, eventData } = this;
                 return `${API_ADDRESS}/api/events/single/${eventData.id}/logo`;
             }

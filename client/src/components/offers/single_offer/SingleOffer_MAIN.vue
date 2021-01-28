@@ -37,10 +37,10 @@ export default {
     },
     async mounted() {
         const { axios, API_ADDRESS } = this;
-        const { destination } = this.$route.params;
+        const { destination: slug } = this.$route.params;
         //
         try {
-            const { data: offer } = await axios.get(`${API_ADDRESS}/api/offer/single/${destination}`);
+            const { data: offer } = await axios.get(`${API_ADDRESS}/api/offer/single/${slug}`);
             this.offer = offer;
             document.title = offer.destination;
         } catch (e) {

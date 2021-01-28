@@ -1,7 +1,7 @@
 export default {
     methods: {
         generateRouterPath(el) {
-            return `/aktualnosci/${el.title}`;
+            return `/aktualnosci/${el.slug}`;
         },
         getLogo(el) {
             const { API_ADDRESS } = this;

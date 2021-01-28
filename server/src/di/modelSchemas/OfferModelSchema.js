@@ -31,6 +31,9 @@ class OfferModelSchema {
             path: {
                 type: DataTypes.STRING,
             },
+            slug: {
+                type: DataTypes.STRING,
+            },
         };
         // set allowNull property to false for all schema fields
         for (let key in schema) schema[key].allowNull = false;

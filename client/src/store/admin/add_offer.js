@@ -16,7 +16,7 @@ export default {
         },
         DESCRIPTION_LENGTH: {
             min: 20,
-            max: 1000
+            max: 1500
         },
         ACTIVITY_LENGTH: {
             min: 10,

@@ -25,6 +25,7 @@ module.exports = class {
             if (offerData === null) return res.sendStatus(404);
             //
             const img = JSON.parse(offerData.gallery)[index];
+            if (img === undefined) return res.sendStatus(404);
             res.sendFile(path.join(this.pathToUploadedOffers, offerData.path, img));
         } catch (e) {
             return res.sendStatus(500);

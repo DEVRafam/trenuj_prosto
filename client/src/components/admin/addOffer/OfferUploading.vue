@@ -22,7 +22,7 @@
                     <span class="green">Oferta</span>
                     <span> została dodana pomyślnie!</span>
                 </h2>
-                <router-link :to="newOfferPath()">Przejdź do oferty</router-link>
+                <router-link :to="newOfferPath()">Przejdź dooferty</router-link>
             </div>
         </div>
     </section>
@@ -30,7 +30,10 @@
 
 <script>
 import { mapActions, mapState, mapMutations } from "vuex";
+import generateSlugName from "../generateSlugName";
+//
 export default {
+    mixins: [generateSlugName],
     props: ["offerData"],
     computed: {
         ...mapState("admin_add_offer", ["uploadingStatus"])
@@ -39,7 +42,8 @@ export default {
         ...mapActions("admin_auth", ["logout"]),
         ...mapMutations("admin_add_offer", ["setCurrentStage"]),
         newOfferPath() {
-            return `/oferty/${this.offerData.destination}`;
+            const { offerData, generateSlugName } = this;
+            return `/oferty/${generateSlugName(offerData.destination)}`;
         }
     }
 };

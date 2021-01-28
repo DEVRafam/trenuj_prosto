@@ -24,12 +24,13 @@ module.exports = class {
             const eventData = await this.Event.findOne({ where: { id } });
             if (eventData === null) return res.sendStatus(404);
             //
-            let img;
+            let img = false;
             JSON.parse(eventData.images).forEach((singleImage) => {
                 if (singleImage.includes(imgIndex)) {
                     img = singleImage;
                 }
             });
+            if (!img) return res.sendStatus(404);
             res.sendFile(path.join(this.pathToUploadedEvents, eventData.path, img));
         } catch (e) {
             return res.sendStatus(500);
