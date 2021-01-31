@@ -1,0 +1,40 @@
+section#files-to-download
+    div.content
+        width: 100%
+        max-width: 1200px
+        margin: 0 auto
+        display: flex
+        flex-wrap: wrap
+        div.file-wrap
+            @include flexCenter
+            flex-direction: column
+            width: 25%
+            margin-bottom: 20px
+            position: relative
+            border: 20px solid #fff
+            span.download
+                @include flexCenter
+                @include smoothHoverReversed
+                position: absolute
+                top: -15px
+                right: -15px
+                z-index: 5
+                color: #fff
+                cursor: pointer
+                user-select: none
+                font-size: 1.7rem
+                letter-spacing: 2px
+                width: 40px
+                height: 40px
+                border-radius: 5px
+            div.icon
+                @include confBgImg
+                width: 150px
+                height: 150px
+                margin-bottom: 10px
+                background-size: contain
+            h5
+                @include textUS
+                text-decoration: none
+                color: $mainColor
+                letter-spacing: 2px

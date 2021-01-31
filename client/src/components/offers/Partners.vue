@@ -1,7 +1,6 @@
 <template>
     <section id="partners">
         <OffersHeader></OffersHeader>
-        <OffersNavigation></OffersNavigation>
         <div class="content">
             <template v-for="partner in partnersList">
                 <div class="single-partner" :key="partner.name">
@@ -14,9 +13,7 @@
 </template>
 
 <script>
-import OffersNavigation from "./OffersNavigation";
 export default {
-    components: { OffersNavigation },
     data() {
         return {
             galleryPath: "",

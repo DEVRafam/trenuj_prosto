@@ -1,7 +1,6 @@
 <template>
     <section id="all-offers">
         <OffersHeader></OffersHeader>
-        <OffersNavigation></OffersNavigation>
         <!--  -->
         <template v-if="offers.length">
             <SingleOffer v-for="(offer, index) in offers" :key="index" :offer="offer" :auth="auth"></SingleOffer>
@@ -13,13 +12,12 @@
 
 <script>
 import SingleOffer from "./SingleOfferSummary";
-import OffersNavigation from "../OffersNavigation";
 import Pagination from "../../Pagination";
 //
 import { mapState, mapActions } from "vuex";
 //
 export default {
-    components: { SingleOffer, OffersNavigation, Pagination },
+    components: { SingleOffer, Pagination },
     computed: {
         ...mapState(["API_ADDRESS", "OFFERS_PER_PAGE"])
     },

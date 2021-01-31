@@ -1,7 +1,7 @@
 <template>
     <section id="single-offer">
         <OffersHeader></OffersHeader>
-        <OffersNavigation></OffersNavigation>
+        <!--  -->
         <div class="content" v-if="offer">
             <!--  -->
             <OfferHeader :offer="offer"></OfferHeader>
@@ -16,7 +16,6 @@
     </section>
 </template>
 <script>
-import OffersNavigation from "../OffersNavigation";
 import Contains from "./Contains";
 import Gallery from "./Gallery";
 import OfferHeader from "./OfferHeader";
@@ -26,7 +25,7 @@ import Organization from "./Organization";
 import { mapState } from "vuex";
 //
 export default {
-    components: { OffersNavigation, Contains, Gallery, OfferHeader, OfferLogo, Organization },
+    components: { Contains, Gallery, OfferHeader, OfferLogo, Organization },
     computed: {
         ...mapState(["API_ADDRESS"])
     },

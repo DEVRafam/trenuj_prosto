@@ -2,7 +2,7 @@
     <section id="offer-navigation">
         <router-link to="/oferty">Wszystkie oferty</router-link>
         <router-link to="/wyjezdzali-z-nami">Wyjeżdżali z nami</router-link>
-        <a href="">Pliki do pobrania</a>
+        <router-link to="/pliki-do-pobrania">Pliki do pobrania</router-link>
     </section>
 </template>
 

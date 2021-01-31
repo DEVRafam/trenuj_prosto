@@ -1,6 +1,5 @@
 <template>
     <section id="gymnastics">
-        <OffersHeader></OffersHeader>
         <!--  -->
         <h1>Zaufały nam następujące przedszkola:</h1>
         <ul>

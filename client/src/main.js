@@ -8,7 +8,7 @@ import "./filters/index";
 // Components
 //
 import Main from "./components/Main.vue";
-import OffersHeader from "./components/offers/OffersHeader";
+import OffersHeader from "./components/offers/header/Header_MAIN.vue";
 import EventsHeader from "./components/events/EventsHeader";
 Vue.component("OffersHeader", OffersHeader);
 Vue.component("EventsHeader", EventsHeader);

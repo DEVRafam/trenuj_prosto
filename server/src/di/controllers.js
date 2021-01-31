@@ -19,6 +19,10 @@ module.exports = {
             class: "controllers/offers/OffersGettersController",
             arguments: ["@models"],
         },
+        "controllers.offers.filesToDownload": {
+            class: "controllers/offers/FilesToDownloadController",
+            arguments: ["@models"],
+        },
         // events
         "controllers.events.getters": {
             class: "controllers/events/EventsGettersController",
