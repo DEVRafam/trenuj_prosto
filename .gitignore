@@ -11,3 +11,4 @@ di_test.js
 #
 /server/upload/offers/*
 /server/upload/events/*
+/server/files_to_download/*

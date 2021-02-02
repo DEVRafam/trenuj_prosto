@@ -20,7 +20,7 @@ export default {
         },
         ACTIVITY_LENGTH: {
             min: 10,
-            max: 50
+            max: 150
         }
     },
     mutations: {

@@ -1,5 +1,15 @@
 <template>
     <section id="our-offer">
+        <section class="route">
+            <div class="cutted-img">
+                <span class="text">Nasza Oferta</span>
+            </div>
+            <div class="redirect">
+                <h4>Bezpłatne zajęcia pokazowe dla wszystkich dzieci.</h4>
+                <router-link to="/oferty" class="route">Zobacz ofertę</router-link>
+            </div>
+            <!--  -->
+        </section>
         <!--  -->
         <section class="text">
             <h2>Zajęcia z gimnastyki kompensacyjno-korekcyjnej mają na celu przeciwdziałanie wadom postawy, są one adresowane do dzieci w wieku 2,5 -6 lat.</h2>
@@ -23,11 +33,5 @@
             </div>
         </section>
         <!--  -->
-        <section class="route">
-            <div class="cutted-img">
-                <span class="text">Nasza Oferta</span>
-            </div>
-            <!--  -->
-        </section>
     </section>
 </template>

@@ -7,22 +7,24 @@ section#our-offer
             display: none
     section.route
         div.cutted-img
-            background-position: left
+            background-position: right
             background-image: url('/img/home_page/offer.jpg')
-        h4
-            margin: 20px 0
-        a
-            @include smoothHover
-            text-decoration: none
-            padding: 5px 20px
-            font-size: 1.2rem
-            letter-spacing: 2px
+        div.redirect
+            margin-top: 50px
+            h4
+                margin: 0 0 20px 0
+                cursor: default
+            a
+                @include smoothHover
+                text-decoration: none
+                padding: 5px 20px
+                font-size: 1.2rem
+                letter-spacing: 2px
 
     @media screen and ( max-width: 1400px )
         section.route
-            align-self: flex-end
             margin-bottom: 20px
-            h4,a
+            div.redirect
                 display: none
         section.text
             div.redirect

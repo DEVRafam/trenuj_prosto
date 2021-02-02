@@ -1,5 +1,6 @@
 <template>
     <section id="offer-navigation">
+        <router-link to="/film-promocyjny">Film promocyjny</router-link>
         <router-link to="/oferty">Wszystkie oferty</router-link>
         <router-link to="/wyjezdzali-z-nami">Wyjeżdżali z nami</router-link>
         <router-link to="/pliki-do-pobrania">Pliki do pobrania</router-link>

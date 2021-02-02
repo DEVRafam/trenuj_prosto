@@ -3,6 +3,7 @@ import AllOffers from "../components/offers/all_offers/AllOffers_MAIN";
 import Partners from "../components/offers/Partners";
 import Gymnastics from "../components/offers/gymnastics/Gymnastics_MAIN";
 import FilesToDownload from "../components/offers/FilesToDownload.vue";
+import AdvertisementVideo from "../components/offers/AdvertisementVideo";
 //
 export default [
     {
@@ -46,6 +47,14 @@ export default [
         component: FilesToDownload,
         meta: {
             title: "Pliki do pobrania"
+        }
+    },
+    {
+        path: "/film-promocyjny",
+        name: "AdvertisementVideo",
+        component: AdvertisementVideo,
+        meta: {
+            title: "Film promocyjny"
         }
     }
 ];

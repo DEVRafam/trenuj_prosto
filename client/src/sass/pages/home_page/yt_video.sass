@@ -1,0 +1,41 @@
+section#yt-video
+    a
+        @include smoothHover
+        @include textUS
+        font-size: 1.2rem
+        padding: 2px 20px
+        text-decoration: none
+        cursor: pointer
+        letter-spacing: 2px
+    section.route
+        div.cutted-img
+            background-image: url('/img/home_page/video.jpg')
+        p
+            margin: 30px 0 30px 30px
+    section.text
+        div.text-wrap
+            iframe
+                height: 500px
+                width: 100%
+        div.info
+            display: none
+            
+    @media screen and ( max-width: 1400px )
+        section.route
+            align-self: flex-end
+            margin-bottom: 20px
+            a,p
+                display: none
+        section.text
+            div.text-wrap
+                div.info
+                    @include flexCenter
+                    flex-direction: column
+                    a
+                        margin-bottom: 30px
+                    
+    @media screen and ( max-width: 800px )
+        section.text
+            div.text-wrap
+                iframe
+                    height: 400px

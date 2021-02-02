@@ -85,8 +85,6 @@ section#logo
                 h3,p
                     text-align: center
         @media screen and ( max-width: 1000px )
-            top: 10px
-        @media screen and ( max-width: 700px )
             top: 50px
             left: 50%
             transform: translateX(-50%)
@@ -120,15 +118,31 @@ section#logo
                 right: 10%
                 bottom: 35%
         // scaling textes position
-        @media screen and ( max-width: 1450px )
+        @media screen and ( max-width: 1550px )
             div.left
                 div.route
                     top: 35%
                     left: 5%
             div.right
                 div.route
-                    bottom: 25%
+                    bottom: 20%
                     right: 5%
+        @media screen and ( max-height: 750px )
+            div.right
+                div.route
+                    bottom: 15%
+                    right: 5%
+        @media screen and ( max-height: 700px )
+            div.right,div.left
+                div.route
+                    width: 80%
+                    h2
+                        font-size: 1.9rem
+            div.right
+                div.route
+                    bottom: 5%
+                    right: 5%
+            
         // scaling images sizes
         div.left,
         div.right
@@ -156,35 +170,32 @@ section#logo
                 position: relative
                 width: 90%
                 h2
-                    font-size: 3rem
+                    font-size: 2.5rem
+                a
+                    margin-right: 0
+                    align-self: center
         div.left
             background-position: left
             height: 100vh
             background-size: 150%
+            div.route
+                margin-top: 100px
+                @media screen and ( max-height: 650px )
+                    margin-top: 200px
         div.right
             height: 50vh
             margin-top: 10px
             background-position: right
             background-size: 130%
     //
-    @media screen and ( max-width: 850px )
+    @media screen and ( max-width: 1000px )
         div.left
             background-size: cover        
-    //
-    @media screen and ( max-width: 800px )
-        div.right,
-        div.left
-            div.route
-                h2
-                    font-size: 2.5rem
-                a
-                    margin-right: 0
-                    align-self: center
-    //
-    @media screen and ( max-width: 700px )
-        div.left
-            div.route
-                margin-top: 60px
-                @media screen and ( max-height: 650px )
-                    margin-top: 200px
-                
+        //
+        @media screen and ( max-height: 800px )
+            div.left
+                background-size: 150%
+        //
+        @media screen and ( max-width: 700px )
+            div.left
+                background-size: cover !important           

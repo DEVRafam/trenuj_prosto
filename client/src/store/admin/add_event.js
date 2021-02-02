@@ -12,7 +12,7 @@ export default {
         },
         TEXT_LENGTH: {
             min: 10,
-            max: 750
+            max: 2000
         },
         EVENT_TITLE_LENGTH: {
             min: 10,

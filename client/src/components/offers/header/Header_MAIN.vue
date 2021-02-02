@@ -1,7 +1,7 @@
 <template>
     <section id="offer-header">
         <Logo></Logo>
-        <Navigation></Navigation>
+        <Navigation v-if="displayNavigation"></Navigation>
     </section>
 </template>
 
@@ -9,6 +9,11 @@
 import Logo from "./Logo";
 import Navigation from "./OffersNavigation";
 export default {
-    components: { Logo, Navigation }
+    components: { Logo, Navigation },
+    computed: {
+        displayNavigation() {
+            return !(this.$route.name === "Gymnastics");
+        }
+    }
 };
 </script>
