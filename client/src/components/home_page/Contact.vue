@@ -4,7 +4,7 @@
         <section class="text">
             <!--  -->
             <div class="contact-form phones">
-                <h4>Telefon kontaktowy <b-icon icon="envelope"></b-icon></h4>
+                <h4>Telefon kontaktowy <b-icon icon="telephone"></b-icon></h4>
                 <span class="way">
                     <strong>Arek:</strong>
                     <div>533 750 701</div>
@@ -16,7 +16,7 @@
             </div>
             <!--  -->
             <div class="contact-form">
-                <h4>Adres e-mail <b-icon icon="telephone"></b-icon></h4>
+                <h4>Adres e-mail <b-icon icon="envelope"></b-icon></h4>
                 <span class="way">trenujprosto@gmail.com</span>
             </div>
             <!--  -->
