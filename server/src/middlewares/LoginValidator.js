@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
             "string.empty": "Adres email jest wymagany!",
             "string.max": "Maksymalna ilość znaków to {#limit}",
         }),
-        password: Joi.string().max(32).required().trim().messages({
+        password: Joi.string().max(255).required().trim().messages({
             "string.trim": "Hasło nie może zawierać żadnych spacji na początku i końcu",
             "string.empty": "Hasło jest wymagane!",
             "string.max": "Maksymalna ilość znaków to {#limit}",

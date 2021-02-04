@@ -1,7 +1,7 @@
 module.exports = async () => {
     const credentials = {
-        email: "kacperksiazek@gmail.com",
-        password: "zaq12345",
+        email: "kamil.kuzia@onet.pl",
+        password: "TrenujProsto123",
     };
     const { body } = await request.post("/api/auth/login").send(credentials);
     __loginData = body;

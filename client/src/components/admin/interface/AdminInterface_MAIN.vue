@@ -17,6 +17,11 @@
                 <span class="text">Dodaj aktualność</span>
             </router-link>
             <!--  -->
+            <router-link to="/admin/zmien-haslo">
+                <b-icon icon="tools"></b-icon>
+                <span class="text">Zmień hasło</span>
+            </router-link>
+            <!--  -->
             <a @click="logout">
                 <b-icon icon="power"></b-icon>
                 <span class="text">Wyloguj</span>

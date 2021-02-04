@@ -1,4 +1,5 @@
 import Login from "../components/admin/Login";
+import ChangePassword from "../components/admin/ChangePassword";
 import AddOffer from "../components/admin/addOffer/AddOffer_MAIN";
 import AddEvent from "../components/admin/addEvent/AddEvent_MAIN";
 import { deepUserAuthorization, unauthorized } from "./_guards";
@@ -28,6 +29,15 @@ export default [
         component: AddEvent,
         meta: {
             title: "Dodaj aktualność"
+        },
+        beforeEnter: deepUserAuthorization
+    },
+    {
+        path: "/admin/zmien-haslo",
+        name: "ChangePassword",
+        component: ChangePassword,
+        meta: {
+            title: "Zmień hasło"
         },
         beforeEnter: deepUserAuthorization
     }

@@ -45,5 +45,9 @@ module.exports = {
             class: "controllers/auth/RefreshTokenController",
             arguments: ["@models", "%jwt%", "%config%"],
         },
+        "controllers.auth.changePassword": {
+            class: "controllers/auth/ChangePasswordController",
+            arguments: ["@models", "%jwt%", "%bcrypt%"],
+        },
     },
 };

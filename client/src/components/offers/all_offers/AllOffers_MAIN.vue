@@ -2,9 +2,16 @@
     <section id="all-offers">
         <OffersHeader></OffersHeader>
         <!--  -->
-        <template v-if="offers.length">
-            <SingleOffer v-for="(offer, index) in offers" :key="index" :offer="offer" :auth="auth"></SingleOffer>
-            <Pagination :pages="pages" :currentPage="currentPage" path="/oferty"></Pagination>
+        <template v-if="offers">
+            <template v-if="offers.length">
+                <SingleOffer v-for="(offer, index) in offers" :key="index" :offer="offer" :auth="auth"></SingleOffer>
+                <Pagination :pages="pages" :currentPage="currentPage" path="/oferty"></Pagination>
+            </template>
+            <!--  -->
+            <h1 class="blank" v-else>
+                <b-icon icon="x-circle"></b-icon>
+                <span>Nie znaleziono żadnych ofert!</span>
+            </h1>
         </template>
         <!--  -->
     </section>
@@ -24,7 +31,7 @@ export default {
     data() {
         const currentPage = this.$route.query.page || 1;
         return {
-            offers: [],
+            offers: false,
             pages: 0,
             currentPage,
             auth: false

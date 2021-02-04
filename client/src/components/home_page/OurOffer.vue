@@ -6,7 +6,7 @@
             </div>
             <div class="redirect">
                 <h4>Bezpłatne zajęcia pokazowe dla wszystkich dzieci.</h4>
-                <router-link to="/oferty" class="route">Zobacz ofertę</router-link>
+                <router-link to="/gimnastyka-korektycyjna" class="route">Zobacz ofertę</router-link>
             </div>
             <!--  -->
         </section>
@@ -29,7 +29,7 @@
             <!--  -->
             <div class="redirect">
                 <h4>Bezpłatne zajęcia pokazowe dla wszystkich dzieci.</h4>
-                <router-link to="/oferty" class="route">Zobacz ofertę</router-link>
+                <router-link to="/gimnastyka-korektycyjna" class="route">Zobacz ofertę</router-link>
             </div>
         </section>
         <!--  -->

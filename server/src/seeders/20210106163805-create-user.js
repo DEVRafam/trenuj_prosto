@@ -1,20 +1,20 @@
 const path = require("path");
 const bcrypt = require("bcrypt");
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
+    up: async () => {
         const di = require(path.join(__dirname, "..", "di", "index"));
         const { User } = di.get("models");
         // hash password
         const salt = await bcrypt.genSalt();
-        const password = await bcrypt.hash("zaq12345", salt);
+        const password = await bcrypt.hash("TrenujProsto123", salt);
         //
         await User.create({
-            name: "Kacper",
-            surname: "Ksiazek",
-            email: "kacperksiazek@gmail.com",
+            name: "Kamil",
+            surname: "Kuzia",
+            email: "kamil.kuzia@onet.pl",
             password,
         });
     },
 
-    down: async (queryInterface, Sequelize) => {},
+    down: async () => {},
 };

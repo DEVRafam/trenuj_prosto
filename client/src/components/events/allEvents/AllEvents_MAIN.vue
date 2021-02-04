@@ -3,10 +3,16 @@
         <EventsHeader></EventsHeader>
         <!--  -->
         <div class="events-wrap">
+            <!--  -->
             <template v-if="allEvents">
+                <template v-if="allEvents.length">
+                    <SingleEvent v-for="(item, index) in allEvents" :key="index" :item="item" :auth="auth"></SingleEvent>
+                </template>
                 <!--  -->
-                <SingleEvent v-for="(item, index) in allEvents" :key="index" :item="item" :auth="auth"></SingleEvent>
-                <!--  -->
+                <h1 class="blank" v-else>
+                    <b-icon icon="x-circle"></b-icon>
+                    <span>Nie znaleziono żadnych aktualności!</span>
+                </h1>
             </template>
         </div>
         <!--  -->

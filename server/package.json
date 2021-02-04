@@ -6,6 +6,7 @@
     "scripts": {
         "serve": "cross-env NODE_ENV=development nodemon src/server.js",
         "db:rebuild": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all",
+        "db:prod": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed --seed 20210106163805-create-user.js",
         "test:deep": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all && jest --detectOpenHandles",
         "test": "jest --detectOpenHandles"
     },

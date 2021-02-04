@@ -9,6 +9,18 @@ section#all-events
         justify-content: flex-start
         flex-wrap: wrap
         margin-top: 50px
+        h1.blank
+            @include textUS
+            @include flexCenter
+            flex-direction: column
+            margin-bottom: 50px
+            margin: 0 auto
+            svg
+                font-size: 5rem
+                color: $mainColor
+                margin-bottom: 10px
+            span
+                letter-spacing: 2px
         div.single-event
             @include flexCenter
             @include textUS
