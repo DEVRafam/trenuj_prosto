@@ -33,12 +33,39 @@ section#single-offer
                 max-width: 450px
                 background-color: $mainColor
                 transform: skew(-45deg) translate(-50%)
-        span.date
+        div.dates
             display: flex
             flex-direction: column
             color: $mainColor
             font-size: 1.2rem
             letter-spacing: 2px
+            ul
+                margin-top: 10px
+                li
+                    text-align: left
+                    list-style-type: none
+                    position: relative
+                    padding: 5px
+                    &::after
+                        content: ''
+                        position: absolute
+                        height: 10px
+                        width: 10px
+                        background-color: $mainColor
+                        top: 50%
+                        left: -30px
+                        transform: translateY(-50%)
+                        z-index: 1
+                li.soldOut
+                    @include textUS
+                    &::before
+                        content: 'WYPRZEDANE'
+                        @include flexCenter
+                        @include absoluteFull
+                        z-index: 2
+                        background-color: rgba(45, 52, 54,.95)
+                        color: $red
+                        letter-spacing: 5px
         div.logo
             @include confBgImg
             width: 100%
@@ -56,4 +83,10 @@ section#single-offer
             font-size: 1.2rem
             letter-spacing: 2px
             margin: 0
-        
+    @media screen and ( max-width: 500px )
+        div.content
+            div.dates
+                ul
+                    padding: 0 30px
+                    li
+                        font-size: 1rem

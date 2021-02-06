@@ -38,8 +38,8 @@ export default {
                 credentials: ""
             },
             credentials: {
-                email: "",
-                password: ""
+                email: "kamil.kuzia@onet.pl",
+                password: "TrenujProsto123"
             },
             hidePassword: true
         };

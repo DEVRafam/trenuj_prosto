@@ -13,11 +13,8 @@ class OfferModelSchema {
             gallery: {
                 type: DataTypes.TEXT,
             },
-            start: {
-                type: DataTypes.DATE,
-            },
-            end: {
-                type: DataTypes.DATE,
+            dates: {
+                type: DataTypes.STRING,
             },
             price: {
                 type: DataTypes.INTEGER,

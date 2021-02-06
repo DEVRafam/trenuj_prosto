@@ -22,7 +22,7 @@
                     <span class="green">Oferta</span>
                     <span> została dodana pomyślnie!</span>
                 </h2>
-                <router-link :to="newOfferPath()">Przejdź dooferty</router-link>
+                <router-link :to="newOfferPath()">Przejdź do oferty</router-link>
             </div>
         </div>
     </section>

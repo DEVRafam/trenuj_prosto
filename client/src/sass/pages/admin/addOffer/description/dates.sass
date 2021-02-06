@@ -1,0 +1,90 @@
+//
+div.field.dates
+    div.level.form
+        animation: fade-center-out .3s both
+    div.level.summary
+        animation: fade-center .3s both
+div.field.dates.active
+    div.level.form
+        animation: fade-center .3s both
+    div.level.summary
+        animation: fade-center-out .3s both
+//
+div.field.dates
+    position: relative
+    width: 100%
+    height: 120px
+    div.wrap
+        width: 100%
+        position: relative
+        height: 100%
+        div.level
+            @include absoluteFull
+        div.level.summary
+            display: flex
+            align-items: stretch
+            div.control
+                display: flex
+                flex-direction: column
+                justify-content: space-evenly
+                width: 250px
+                button
+                    @include smoothHover
+                    align-self: flex-start
+                    letter-spacing: 2px
+                    padding: 0px 20px
+                span
+                    text-align: left
+                    padding-left: 20px
+                    letter-spacing: 2px
+                    strong
+                        color: $mainColor
+            div.dates-list
+                display: flex
+                justify-content: flex-start
+                flex-direction: column
+                width: 100%
+                padding-right: 20px
+                overflow-y: scroll
+                @include innerScrollbar
+                div.termin-wrap
+                    display: flex
+                    align-items: center
+                    letter-spacing: 2px
+                    width: 100%
+                    height: 50%
+                    padding: 5px 10px
+                    cursor: default
+                    span.index
+                        @include flexCenter
+                        color: #fff
+                        font-size: 1.6rem
+                        height: 100%
+                        width: 30px
+                        background-color: $mainColor
+                    span.dates
+                        margin: 0 20px
+                        width: 100%
+                        text-align: left
+                    button
+                        @include smoothHover($red)
+        div.level.form
+            display: flex
+            width: 100%
+            justify-content: space-between
+            div.single-date-wrap
+                @include flexCenter
+                width: 35%
+                flex-direction: column
+                label
+                    width: 100%
+                    text-align: center                
+                    margin-bottom: 5px
+            div.btn-wrap
+                display: flex
+                justify-content: space-evenly
+                flex-direction: column
+                button
+                    @include smoothHover
+                    letter-spacing: 2px
+                    padding: 0px 20px

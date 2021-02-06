@@ -7,7 +7,7 @@ class OffersGettersController extends require(path.join(__dirname, "GettersAbstr
         super(models, pathToUploadedOffers);
         //
         this.EXCLUDE_FROM_SINGLE_OFFER = ["createdAt", "updatedAt", "path", "logo"];
-        this.EXCLUDE_FORM_ALL_OFFERS = ["createdAt", "updatedAt", "activities", "turistBonPayment", "path", "price", "gallery", "logo"];
+        this.EXCLUDE_FORM_ALL_OFFERS = ["createdAt", "updatedAt", "turistBonPayment", "path", "price", "gallery", "logo"];
     }
     /**
      * @api {get} /api/offer/all Get all offers for certin page

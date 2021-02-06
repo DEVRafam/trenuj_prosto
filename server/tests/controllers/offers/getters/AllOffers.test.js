@@ -12,7 +12,7 @@ describe("GET all offers", () => {
     });
     //
     it("should single offer excludes certin properties", () => {
-        ["createdAt", "updatedAt", "activities", "turistBonPayment", "path", "price", "gallery", "logo"].forEach((p) => {
+        ["createdAt", "updatedAt", "turistBonPayment", "path", "price", "gallery", "logo"].forEach((p) => {
             expect(singleOffer).not.toHaveProperty(p);
         });
     });

@@ -38,8 +38,7 @@ export default {
                 description: "",
                 logo: "",
                 gallery: [],
-                start: "",
-                end: "",
+                dates: [],
                 price: 0,
                 activities: [],
                 turistBonPayment: false

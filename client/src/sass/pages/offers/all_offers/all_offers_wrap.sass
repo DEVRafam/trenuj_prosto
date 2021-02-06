@@ -3,7 +3,7 @@ section#all-offers
     flex-direction: column
     align-items: center
     //
-    @import ./delete_offer_btn
+    @import ./admin
     //
     div.single-offer
         &:nth-of-type(1)
@@ -12,7 +12,6 @@ section#all-offers
             animation: fade-center .6s .25s both linear
         &:nth-of-type(3)
             animation: fade-center .6s .5s both linear
-        
     //
     h1.blank
         @include textUS
@@ -45,6 +44,24 @@ section#all-offers
             @include confBgImg
             width: 400px
             height: 250px
+            position: relative
+            span
+                display: none
+        div.img.soldOut
+            &::after
+               content: ''
+               @include absoluteFull
+               background-color: #000
+               opacity: .5 
+            span
+                @include absoluteCenter
+                @include textUS
+                font-size: 2.5rem
+                display: block
+                z-index: 5
+                color: $red
+                letter-spacing: 5px
+                font-weight: bold
         div.content
             @include textUS
             display: flex
@@ -80,6 +97,9 @@ section#all-offers
                 width: 300px
                 height: 200px
                 align-self: center
+            div.img.soldOut
+                span
+                    font-size: 2rem
     @media screen and ( max-width: 850px )
         div.single-offer
             max-width: 600px
@@ -88,6 +108,9 @@ section#all-offers
                 width: 100%
             div.img
                 height: 300px
+                &.soldOut
+                    span
+                        font-size: 2.5rem
             div.content
                 a
                     align-self: center

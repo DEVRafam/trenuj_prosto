@@ -1,8 +1,10 @@
 <template>
     <div class="single-offer" ref="offer">
-        <DeleteOffer :offer="offer" v-if="auth"></DeleteOffer>
+        <AdminInterface :offer="offer" v-if="auth"></AdminInterface>
         <!--  -->
-        <div class="img" :style="getLogo()"></div>
+        <div class="img" :style="getLogo()" :class="{ soldOut: isTotallySoldOut }">
+            <span>WYPRZEDANE</span>
+        </div>
         <div class="content">
             <h2 v-text="offer.destination"></h2>
             <span class="term" v-text="offerTerm()"></span>
@@ -13,12 +15,21 @@
 </template>
 
 <script>
-import DeleteOffer from "./DeleteSingleOffer";
+import AdminInterface from "./admin/AdminInterface_MAIN";
 import { mapState } from "vuex";
 export default {
-    components: { DeleteOffer },
+    components: { AdminInterface },
     computed: {
-        ...mapState(["API_ADDRESS"])
+        ...mapState(["API_ADDRESS"]),
+        isTotallySoldOut() {
+            const dates = JSON.parse(this.offer.dates);
+            let soldOutsAmount = 0;
+            dates.forEach(termin => {
+                if (termin.soldOut) soldOutsAmount++;
+            });
+            //
+            return soldOutsAmount === dates.length;
+        }
     },
     props: ["offer", "auth"],
     data() {
@@ -40,10 +51,15 @@ export default {
             return `${offer.description.slice(0, limit)}...`;
         },
         offerTerm() {
-            const { start, end } = this.offer;
-            //
-            const a = val => val.slice(0, 10);
-            return `${a(start)} do ${a(end)}`;
+            const dates = JSON.parse(this.offer.dates);
+            if (dates.length > 1) {
+                return "Dostępne w wielu terminach!";
+            } else {
+                const { start, end } = dates[0];
+                //
+                const a = val => val.slice(0, 10);
+                return `${a(start)} do ${a(end)}`;
+            }
         }
     }
 };

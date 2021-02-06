@@ -1,10 +1,22 @@
 <template>
     <header>
         <h1 v-text="offer.destination"></h1>
-        <span class="date">
-            <span>Wyciaczka w dniach:</span>
-            <strong v-text="offerTerm()"></strong>
-        </span>
+        <div class="dates">
+            <span>Dostępne terminy:</span>
+            <ul>
+                <template v-for="(item, index) in JSON.parse(offer.dates)">
+                    <li class="date" :key="index" :class="{ soldOut: !item.soldOut }">
+                        <strong>
+                            {{ datePart(item, "start") | fancyDate }}
+                        </strong>
+                        <span> - </span>
+                        <strong>
+                            {{ datePart(item, "end") | fancyDate }}
+                        </strong>
+                    </li>
+                </template>
+            </ul>
+        </div>
     </header>
 </template>
 
@@ -12,12 +24,10 @@
 export default {
     props: ["offer"],
     methods: {
-        offerTerm() {
+        datePart(item, part) {
             if (!this.offer) return;
-            const { start, end } = this.offer;
             //
-            const a = val => val.slice(0, 10);
-            return `${a(start)} do ${a(end)}`;
+            return item[part].slice(0, 10);
         }
     }
 };

@@ -1,6 +1,6 @@
 <template>
     <div class="delete-offer-wrap">
-        <button class="delete-offer" @click="showModal">Skasuj</button>
+        <button class="delete-offer" @click="showModal">Skasuj ofetę</button>
         <!--  -->
         <b-modal id="confirmation-modal" class="modal" title="Potwierdzenie" hide-footer ref="confirmation_modal" size="sm">
             <p class="info">Czy na pewno chcesz skasować ofertę?</p>

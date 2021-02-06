@@ -1,5 +1,7 @@
 section#describe
     div.content
+        @import ./dates
+        //
         div.field
             display: flex
             align-items: center
@@ -22,16 +24,6 @@ section#describe
                 text-align: left
             input
                 flex-grow: 1
-        div.field.times
-            justify-content: space-between
-            div.single-date-wrap
-                @include flexCenter
-                width: 45%
-                flex-direction: column
-                label
-                    width: 100%
-                    text-align: center                
-                    margin-bottom: 5px
         div.field.text
             flex-direction: column
             header

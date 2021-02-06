@@ -16,7 +16,7 @@ describe("GET single offers", () => {
         ["createdAt", "updatedAt", "path", "logo"].forEach((p) => {
             expect(offerData).not.toHaveProperty(p);
         });
-        ["destination", "description", "gallery", "start", "end", "price", "activities", "turistBonPayment", "slug"].forEach((p) => {
+        ["destination", "description", "gallery", "termins", "price", "activities", "turistBonPayment", "slug"].forEach((p) => {
             expect(offerData).toHaveProperty(p);
         });
     });

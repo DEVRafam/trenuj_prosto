@@ -48,7 +48,8 @@ export default {
             [
                 { prop: "destination", ...state.DESTINATION_LENGTH },
                 { prop: "description", ...state.DESCRIPTION_LENGTH },
-                { prop: "activities", min: 1, max: 99 }
+                { prop: "activities", min: 1, max: 99 },
+                { prop: "dates", min: 1, max: 99 }
             ].forEach(propObject => {
                 const { prop, min, max } = propObject;
                 const { length } = offerData[prop];
@@ -62,13 +63,14 @@ export default {
             //
             const data = new FormData();
             for (let key in offerData) {
-                if (!["gallery", "activities"].includes(key)) data.append(key, offerData[key]);
+                if (!["gallery", "activities", "dates"].includes(key)) data.append(key, offerData[key]);
             }
             //
             offerData.gallery.forEach((item, index) => {
                 data.append(`gallery-item-${index}`, item);
             });
             data.append("activities", JSON.stringify(offerData.activities));
+            data.append("dates", JSON.stringify(offerData.dates));
             //
             const token = JSON.parse(localStorage.getItem("user")).accessToken;
             const options = {
