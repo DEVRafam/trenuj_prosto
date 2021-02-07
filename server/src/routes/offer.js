@@ -11,6 +11,7 @@ module.exports = (di) => {
     //
     router.delete("/:id", [authenticate], (...args) => AdminController.deleteOffer(...args));
     router.post("/create", [authenticate, addingNewOfferValidatorBody], (...args) => AdminController.createNewOffer(...args));
+    router.patch("/:id", [authenticate], (...args) => AdminController.updateOffer(...args));
     //
     // common user routes
     //

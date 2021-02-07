@@ -15,8 +15,7 @@ class OffersAdminController extends require(path.join(__dirname, "..", "AdminAbs
      * @apiParam destination {String}
      * @apiParam description {String}
      * @apiParam activities {JSON}
-     * @apiParam end {Date}
-     * @apiParam start {Date}
+     * @apiParam dates {JSON}
      * @apiParam turistBonPayment {Boolean}
      * @apiParam price {Number}
      *
@@ -26,8 +25,11 @@ class OffersAdminController extends require(path.join(__dirname, "..", "AdminAbs
      *       "description": "Berlin – stolica, największe miasto Niemiec i zarazem kraj związkowy. Zajmuje powierzchnię ok. 892 km² i zamieszkuje go około 3,7 mln osób[2]. Jest największym miastem w Unii Europejskiej pod względem liczby mieszkańców. Berlin jest podzielony na dwanaście okręgów administracyjnych (Bezirk). Przez przestrzeń miejską przepływają m.in. rzeki Sprewa i Hawela, a ponadto znajduje się wiele jezior i zatok, w tym największe Müggelsee. ",
      *       "activities": '["\\tWieża Eiffla","\\tMuzeum w Luwrze ","Katedra Notre-Dame ","Łuk Triumfalny w Paryżu"]',
      *       "price": 1000,
-     *       "start": "2021-01-19T00:00:00.000Z",
-     *       "end": "2021-01-29T00:00:00.000Z",
+     *       "dates": [{
+     *          "start": "2021-01-19T00:00:00.000Z",
+     *          "end": "2021-01-29T00:00:00.000Z",
+     *          "soldOut": "false"
+     *        }],
      *       "turistBonPayment": "true"
      *
      *     }
@@ -88,6 +90,51 @@ class OffersAdminController extends require(path.join(__dirname, "..", "AdminAbs
             }
         } catch (e) {
             res.sendStatus(500);
+        }
+    }
+    /**
+     * @api {patch} /api/offer/:id Updating existing offer
+     *
+     * @apiHeader authorization {String} Bearer token to authorize user
+     *
+     * @apiParam activities {JSON}
+     * @apiParam dates {JSON}
+     *
+     * @apiParamExample {json} Request-Example:
+     *     {
+     *       "activities": '["\\tWieża Eiffla","\\tMuzeum w Luwrze ","Katedra Notre-Dame ","Łuk Triumfalny w Paryżu"]',
+     *       "dates": [{
+     *          "start": "2021-01-19T00:00:00.000Z",
+     *          "end": "2021-01-29T00:00:00.000Z",
+     *          "soldOut": "false"
+     *        }],
+     *     }
+     *
+     * @apiSuccessExample Success-Response:
+     *     HTTP/1.1 201 UPDATED
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 400 BAD REQUEST
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 401 UNAUTHORIZED
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 500 INTERNAL SERVER ERROR
+     *
+     */
+    async updateOffer(req, res) {
+        try {
+            const offerFromDB = await this.Offer.findOne({ where: { id: req.params.id } });
+            if (offerFromDB === null) return res.sendStatus(404);
+            else {
+                const { dates, activities } = req.body;
+                await offerFromDB.update({
+                    dates: JSON.stringify(dates),
+                    activities: JSON.stringify(activities),
+                });
+                //
+                return res.sendStatus(201);
+            }
+        } catch (e) {
+            return res.sendStatus(500);
         }
     }
 }

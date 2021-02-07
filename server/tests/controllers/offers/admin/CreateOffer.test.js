@@ -7,7 +7,7 @@ describe("Create new offer", () => {
     beforeAll(async (done) => {
         // load datas
         const loadAsset = (asset) => path.join(__basepath, "assets", asset);
-        const { destination, description, start, end, price, activities, turistBonPayment } = require(loadAsset("offerData"));
+        const { destination, description, price, activities, dates, turistBonPayment } = require(loadAsset("offerData"));
         // register globals
         Offer = di.get("models").Offer;
         newOfferDestination = destination;
@@ -23,8 +23,7 @@ describe("Create new offer", () => {
             .set(headers)
             .field("destination", destination)
             .field("description", description)
-            .field("start", start)
-            .field("end", end)
+            .field("dates", dates)
             .field("price", price)
             .field("activities", activities)
             .field("turistBonPayment", turistBonPayment)
@@ -53,8 +52,15 @@ describe("Create new offer", () => {
     });
     //
     it("should throw 400 response status when sending data is invalid", async (done) => {
-        const { status } = await request.post("/api/offer/create").set(headers).field("destination", "asdasd").field("description", "asd").field("start", "1341").field("end", "asdsadd").field("price", 0).field("activities", Date.now()).field("turistBonPayment", false);
+        const { status } = await request.post("/api/offer/create").set(headers).field("destination", "asdasd").field("description", "asd").field("dates", [""]).field("price", 0).field("activities", Date.now()).field("turistBonPayment", false);
         expect(status).toEqual(400);
+        //
+        done();
+    });
+    //
+    it("Unauthorized user can not create offer", async (done) => {
+        const { status } = await request.post("/api/offer/create").set("Authorization", `Bearer badToken123`).field("destination", "asdasd").field("description", "asd").field("dates", [""]).field("price", 0).field("activities", Date.now()).field("turistBonPayment", false);
+        expect(status).toEqual(401);
         //
         done();
     });

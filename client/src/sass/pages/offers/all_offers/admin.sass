@@ -1,26 +1,15 @@
-div.control-buttons-wrap
+button.toggle
     @include flexCenter
+    @include smoothHoverReversed($green)
     position: absolute
-    top: 5px
-    right: 5px
+    top: -5px
+    right: -5px
     z-index: 20
-    button.toggle,
-    button.delete-offer
-        @include flexCenter
-        font-size: 1.2rem
-        letter-spacing: 3px
-        padding: 0 20px
-        height: 35px
-        border-radius: 5px
-        width: 50px
-        &:focus
-            outline: none
-    button.toggle
-        margin-left: 20px
-        &.closing
-            @include smoothHoverReversed()
-        &.opening
-            @include smoothHoverReversed($green)
-    button.delete-offer
-            @include smoothHoverReversed($red)
-//
+    font-size: 1.2rem
+    letter-spacing: 3px
+    padding: 0 20px
+    height: 35px
+    border-radius: 5px
+    width: 50px
+    &:focus
+        outline: none

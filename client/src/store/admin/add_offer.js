@@ -40,7 +40,7 @@ export default {
         validateOfferDataObject({ state }, offerData) {
             let result = true;
             // required properites
-            ["logo", "start", "end", "price"].forEach(property => {
+            ["logo", "price"].forEach(property => {
                 if (!offerData[property]) result = false;
             });
             if (result === false) return false;

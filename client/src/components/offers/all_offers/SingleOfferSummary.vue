@@ -1,6 +1,6 @@
 <template>
     <div class="single-offer" ref="offer">
-        <AdminInterface :offer="offer" v-if="auth"></AdminInterface>
+        <AdminInterface :offer="offer" v-if="auth" :logo="logo"></AdminInterface>
         <!--  -->
         <div class="img" :style="getLogo()" :class="{ soldOut: isTotallySoldOut }">
             <span>WYPRZEDANE</span>
@@ -23,6 +23,7 @@ export default {
         ...mapState(["API_ADDRESS"]),
         isTotallySoldOut() {
             const dates = JSON.parse(this.offer.dates);
+            if (dates.length === 0) return false;
             let soldOutsAmount = 0;
             dates.forEach(termin => {
                 if (termin.soldOut) soldOutsAmount++;
@@ -34,7 +35,8 @@ export default {
     props: ["offer", "auth"],
     data() {
         return {
-            descriptionLength: 200
+            descriptionLength: 200,
+            logo: ""
         };
     },
     methods: {
@@ -44,6 +46,8 @@ export default {
             const { id } = offer;
             //
             const url = `${API_ADDRESS}/api/offer/single/${id}/logo`;
+            this.logo = `background-image: url(${url})`;
+            //
             return `background-image: url(${url})`;
         },
         offerDescription() {
@@ -51,8 +55,10 @@ export default {
             return `${offer.description.slice(0, limit)}...`;
         },
         offerTerm() {
-            const dates = JSON.parse(this.offer.dates);
-            if (dates.length > 1) {
+            const dates = JSON.parse(this.offer.dates).filter(date => !date.soldOut);
+            if (!dates.length) {
+                return "Brak dostępnych terminów";
+            } else if (dates.length > 1) {
                 return "Dostępne w wielu terminach!";
             } else {
                 const { start, end } = dates[0];

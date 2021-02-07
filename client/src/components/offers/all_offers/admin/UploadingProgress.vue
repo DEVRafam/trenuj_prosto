@@ -21,7 +21,11 @@
                 <span class="green">Oferta</span>
                 <span> została zaktualizowana pomyślnie!</span>
             </h2>
-            <router-link :to="pathToOffer()">Przejdź do oferty</router-link>
+            <div class="btn-wrap">
+                <router-link :to="pathToOffer()">Przejdź do oferty</router-link>
+                <button @click="goBack" class="back">Powrót</button>
+                <button @click="() => goBack(true)" class="reload">Odśwież</button>
+            </div>
         </div>
     </section>
 </template>
@@ -36,8 +40,11 @@ export default {
         pathToOffer() {
             return `/oferty/${this.offer.slug}`;
         },
-        goBack() {
+        goBack(reload = false) {
             this.$emit("change-status", false);
+            if (reload) {
+                this.$router.go(this.$router.currentRoute);
+            }
         }
     }
 };

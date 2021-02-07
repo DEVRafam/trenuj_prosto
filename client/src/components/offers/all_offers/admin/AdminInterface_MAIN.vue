@@ -1,18 +1,16 @@
 <template>
     <div class="admin-main-wrap">
-        <div class="control-buttons-wrap">
-            <!--  -->
-            <button class="toggle" @click="$refs.modal.show()">
-                <b-icon icon="gear-fill"></b-icon>
-            </button>
-        </div>
+        <button class="toggle" @click="$refs.modal.show()">
+            <b-icon icon="gear-fill"></b-icon>
+        </button>
         <!--  -->
         <!--  -->
         <!--  -->
         <b-modal ref="modal" hide-footer hide-header>
             <section class="admin-interface">
+                <div class="bg" :style="logo"></div>
                 <!--  -->
-                <header>
+                <header class="main-header">
                     <h1>
                         <span>Zmiany w ofercie- </span>
                         <span class="color" v-text="offer.destination"></span>
@@ -41,11 +39,14 @@ import DeleteBTN from "./DeleteSingleOffer";
 import DatesEditor from "./DatesEditor";
 import ActivitiesEditor from "./ActivitiesEditor";
 import UploadingProgress from "./UploadingProgress";
+import { mapState } from "vuex";
 //
 export default {
     components: { DeleteBTN, DatesEditor, ActivitiesEditor, UploadingProgress },
-    props: ["offer"],
+    props: ["offer", "logo"],
     computed: {
+        ...mapState(["API_ADDRESS"]),
+        //
         accessToUpdate() {
             const { dates, offer, activities } = this;
             return JSON.stringify(dates) !== offer.dates || JSON.stringify(activities) !== offer.activities;
@@ -59,8 +60,34 @@ export default {
         };
     },
     methods: {
+        prepareDataForUploading() {
+            const { API_ADDRESS, offer, dates, activities } = this;
+            const token = JSON.parse(localStorage.getItem("user")).accessToken;
+            //
+            return {
+                url: `${API_ADDRESS}/api/offer/${offer.id}`,
+                data: { dates, activities },
+                options: {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            };
+        },
         async uploadChanges() {
+            const { url, data, options } = this.prepareDataForUploading();
+            //
             this.uploadingStatus = "pending";
+            try {
+                await this.axios.patch(url, data, options);
+                setTimeout(() => {
+                    this.uploadingStatus = "positive";
+                }, 300);
+            } catch (e) {
+                setTimeout(() => {
+                    this.uploadingStatus = "negative";
+                }, 300);
+            }
         }
     }
 };
