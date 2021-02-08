@@ -1,8 +1,12 @@
 export default {
     mounted() {
-        const offerFromLocalStorage = localStorage.getItem(this.PROPERTY_NAME_IN_LOCAL_STORAGE);
+        let offerFromLocalStorage = localStorage.getItem(this.PROPERTY_NAME_IN_LOCAL_STORAGE);
         if (offerFromLocalStorage != null) {
-            this.offerData = JSON.parse(offerFromLocalStorage);
+            offerFromLocalStorage = JSON.parse(offerFromLocalStorage);
+            ["destination", "description", "dates", "price", "activities", "turistBonPayment"].forEach(prop => {
+                let val = offerFromLocalStorage[prop];
+                if (val) this.offerData[prop] = val;
+            });
             this.offerData.logo = "";
             this.offerData.gallery = [];
         }
