@@ -189,3 +189,23 @@ section.admin-interface
                 @include smoothHover
             button.reload
                 @include smoothHover($green)
+
+    //
+    @media screen and ( max-height: 800px )
+        margin-top: 50px
+    //
+    @media screen and ( max-height: 700px )
+        height: 535px
+        div.content
+            section.dates-editor,
+            section.activities-editor
+                div.table-wrap
+                    height: 260px
+    //
+    @media screen and ( max-height: 620px )
+        height: 485px
+        div.content
+            section.dates-editor,
+            section.activities-editor
+                div.table-wrap
+                    height: 210px
